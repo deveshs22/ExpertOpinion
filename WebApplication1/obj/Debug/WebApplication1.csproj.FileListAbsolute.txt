@@ -1,0 +1,6 @@
+E:\Chander\app1\WebApplication1\WebApplication1\bin\WebApplication1.dll.config
+E:\Chander\app1\WebApplication1\WebApplication1\bin\WebApplication1.dll
+E:\Chander\app1\WebApplication1\WebApplication1\bin\WebApplication1.pdb
+E:\Chander\app1\WebApplication1\WebApplication1\obj\Debug\WebApplication1.csprojResolveAssemblyReference.cache
+E:\Chander\app1\WebApplication1\WebApplication1\obj\Debug\WebApplication1.dll
+E:\Chander\app1\WebApplication1\WebApplication1\obj\Debug\WebApplication1.pdb

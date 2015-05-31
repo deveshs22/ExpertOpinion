@@ -1,0 +1,25 @@
+<div class="modal-header">
+    <h3>
+        Sign up!</h3>
+</div>
+<div class="modal-body" id="divsignup">
+    <h4 ng-show="emailExists">Email Already Exists</h4>
+    <h5 ng-show="userCreated">Thank you for Registering, An Email has been sent to your registered Mail Id for Verification</h5>
+    <form id="userentry-form" ng-submit="addUser()" ng-hide="userCreated">
+        <div>
+            <input type="text" placeholder="First name" name="" required ng-model="$parent.Name"><br /><br />
+            <input type="email" placeholder="Email Address" required ng-model="$parent.email"><br /><br />
+            <input type="password" placeholder="Password" required ng-model="$parent.password"><br />
+            <br />
+            <button ng-disabled="IsLoading" type="submit" class="btn btn-primary btn-large large padded-btn-block">
+                Sign up
+            </button>
+            <img ng-show="IsLoading" src="content/images/loading.gif" />
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    Already a Member? <a href ng-click="openLogin()">Log In</a>
+    <button class="btn btn-warning" ng-click="cancel()">
+        Cancel</button>
+</div>
