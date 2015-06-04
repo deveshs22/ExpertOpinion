@@ -79,10 +79,15 @@
             $scope.UserName = '';
         }
 
-        $scope.openSignIn = function () {
+        $scope.openSignIn = function (logintype) {
             var modalInstance = $modal.open({
                 templateUrl: 'app/dialogs/SignInModal.html',
-                controller: SignInModalInstanceCtrl
+                controller: SignInModalInstanceCtrl,
+                resolve: {
+                    logintype: function () {
+                        return logintype;
+                    }
+                }
             });
             modalInstance.result.then(function (userLoggedIn,uname) {
             }, function (userLoggedIn,uname) {

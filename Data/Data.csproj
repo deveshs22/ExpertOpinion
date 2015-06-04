@@ -48,17 +48,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\City.cs" />
+    <Compile Include="Models\Country.cs" />
     <Compile Include="Models\ExpertDetail.cs" />
     <Compile Include="Models\ExpertOpinionDBContext.cs" />
     <Compile Include="Models\FollowUp.cs" />
+    <Compile Include="Models\Mapping\CityMap.cs" />
+    <Compile Include="Models\Mapping\CountryMap.cs" />
     <Compile Include="Models\Mapping\ExpertDetailMap.cs" />
     <Compile Include="Models\Mapping\FollowUpMap.cs" />
     <Compile Include="Models\Mapping\PaymentMap.cs" />
     <Compile Include="Models\Mapping\QuestionMap.cs" />
+    <Compile Include="Models\Mapping\StateMap.cs" />
     <Compile Include="Models\Mapping\UserMap.cs" />
     <Compile Include="Models\Mapping\UserTypeMap.cs" />
     <Compile Include="Models\Payment.cs" />
     <Compile Include="Models\Question.cs" />
+    <Compile Include="Models\State.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -67,6 +73,10 @@
     <Compile Include="Repository\UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
+    <None Include="CodeTemplates\ReverseEngineerCodeFirst\Context.tt" />
+    <None Include="CodeTemplates\ReverseEngineerCodeFirst\Entity.tt" />
+    <None Include="CodeTemplates\ReverseEngineerCodeFirst\Mapping.tt" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

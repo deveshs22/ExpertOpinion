@@ -148,7 +148,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Attachments\" />
-    <Folder Include="Models\" />
+    <Folder Include="Views\Country\" />
     <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
@@ -171,15 +171,19 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Common.cs" />
+    <Compile Include="Controllers\CityController.cs" />
+    <Compile Include="Controllers\StateController.cs" />
+    <Compile Include="Controllers\CountryController.cs" />
     <Compile Include="Controllers\QuestionController.cs" />
     <Compile Include="Controllers\UploadController.cs" />
+    <Compile Include="Controllers\ExpertDetailController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Handlers\AuthenticationHandler1.cs" />
-    <Compile Include="Handlers\CorsHandler.cs" />
+    <Compile Include="Models\Handlers\AuthenticationHandler1.cs" />
+    <Compile Include="Models\Handlers\CorsHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

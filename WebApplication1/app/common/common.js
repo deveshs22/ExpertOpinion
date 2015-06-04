@@ -183,10 +183,11 @@
 })();
 
 
-var SignInModalInstanceCtrl = function ($scope,$modal,$modalInstance, userdatacontext) {
+var SignInModalInstanceCtrl = function ($scope, $modal, $modalInstance, userdatacontext, logintype) {
     $scope.email = "";
     $scope.password = "";
     $scope.IsLoading = false;
+    $scope.IsAdminLogin = logintype == 2;
     var id = localStorage.getItem("uid");
     $scope.login = function () {
         $scope.IsLoading = true;
@@ -229,12 +230,19 @@ var SignInModalInstanceCtrl = function ($scope,$modal,$modalInstance, userdataco
 
         var modalInstance = $modal.open({
             templateUrl: 'app/dialogs/SignUpModal.html',
-            controller: SignUpModalInstanceCtrl
+            controller: SignUpModalInstanceCtrl,
+            resolve: {
+                logintype: function () {
+                    return logintype;
+                }
+            }
         })
     };
 };
 
-var SignUpModalInstanceCtrl = function ($scope, $modal, $modalInstance, userdatacontext, common) {
+var SignUpModalInstanceCtrl = function ($scope, $modal, $modalInstance, userdatacontext, common, logintype) {
+
+    $scope.IsAdminLogin = logintype == 2;
 
     $scope.cancel = function () {
         $modalInstance.dismiss(false);
@@ -259,7 +267,7 @@ var SignUpModalInstanceCtrl = function ($scope, $modal, $modalInstance, userdata
             userInfoData.Name = $scope.Name;
             userInfoData.Email = $scope.email;
             userInfoData.Pwd = $scope.password;
-            userInfoData.UserTypeId = 1;
+            userInfoData.UserTypeId = logintype;
             userInfoData.UserUniqueId = common.getGUID();
             userInfoData.isActive = false;
             $scope.IsLoading = true;
@@ -284,8 +292,18 @@ var EmailVerifiedModalInstanceCtrl = function ($scope, $modalInstance, $location
             location.href = '/';
             return;
         }
+        debugger;
+        if (result.UserTypeId == 2)
+            $scope.IsAdminLogin = true;
         localStorage.setItem("uid", result.UserUniqueId);
     });
+
+    $scope.gotoProfile=function()
+    {
+        debugger;
+        $modalInstance.dismiss(false);
+        $location.url('\profile');
+    }
 
 
     $scope.cancel = function () {

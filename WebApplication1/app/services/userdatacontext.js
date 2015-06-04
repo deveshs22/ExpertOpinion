@@ -12,7 +12,12 @@
             GetUserLoginbyEmail:GetUserLoginbyEmail,
             CreateUser: CreateUser,
             GetUserLoginbyUID: GetUserLoginbyUID,
-            GetUserNamebyUID: GetUserNamebyUID
+            GetUserNamebyUID: GetUserNamebyUID,
+            GetCountryList: GetCountryList,
+            GetStateList: GetStateList,
+            GetCityList: GetCityList,
+            uploadFile: uploadFile,
+            CreateExpertProfile: CreateExpertProfile
         };
 
         return service;
@@ -26,7 +31,7 @@
         }
 
         function GetUserLoginbyEmail(email) {
-            return common.$http.get(common.serviceBaseURL + 'User/GetUserLoginbyEmail/' + email);
+            return common.$http.get(common.serviceBaseURL + 'User/GetUserLoginbyEmail/' + email + '/');
         }
 
         function GetUserLoginbyUID(uid) {
@@ -40,5 +45,34 @@
         function CreateUser(userInfoData) {
             return common.$http.post(common.serviceBaseURL + 'User/PostUser', userInfoData);
         }
+
+        function GetCountryList()
+        {
+            return common.$http.get(common.serviceBaseURL + 'Country');
+        }
+
+        function GetStateList(countryId) {
+            return common.$http.get(common.serviceBaseURL + 'State/GetStatesbyCountry/' + countryId);
+        }
+
+        function GetCityList(stateId) {
+            return common.$http.get(common.serviceBaseURL + 'City/GetCitiesbyState/' + stateId);
+        }
+
+        function uploadFile(files) {
+            var fd = new FormData();
+            fd.append("file", files[0]);
+            return common.$http.post(common.serviceBaseURL + 'upload/PostFormData', fd, {
+                headers: { 'Content-Type': undefined },
+                transformRequest: angular.identity
+            })
+        };
+
+        function CreateExpertProfile(profileData)
+        {
+            return common.$http.post(common.serviceBaseURL + 'ExpertDetail/PostExpertDetail', profileData);
+        }
+
+
     }
 })();

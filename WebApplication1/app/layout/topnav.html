@@ -9,6 +9,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="#">Expert Opinion</a>
+            <a class="pull-right"  href ng-click="openSignIn(2)">Login As Expert</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -26,7 +27,7 @@
                     <a href="#">    Contact Us</a>
                 </li>
                 <li ng-hide="userLoggedIn">
-                    <a href ng-click="openSignIn()">    Login <span class="caret"></span></a>
+                    <a href ng-click="openSignIn(1)">    Login <span class="caret"></span></a>
                 </li>
 
                 <li>

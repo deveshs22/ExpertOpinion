@@ -16,19 +16,25 @@ namespace Data.Models
         {
         }
 
+        public DbSet<City> Cities { get; set; }
+        public DbSet<Country> Countries { get; set; }
         public DbSet<ExpertDetail> ExpertDetails { get; set; }
         public DbSet<FollowUp> FollowUps { get; set; }
         public DbSet<Payment> Payments { get; set; }
         public DbSet<Question> Questions { get; set; }
+        public DbSet<State> States { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<UserType> UserTypes { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Configurations.Add(new CityMap());
+            modelBuilder.Configurations.Add(new CountryMap());
             modelBuilder.Configurations.Add(new ExpertDetailMap());
             modelBuilder.Configurations.Add(new FollowUpMap());
             modelBuilder.Configurations.Add(new PaymentMap());
             modelBuilder.Configurations.Add(new QuestionMap());
+            modelBuilder.Configurations.Add(new StateMap());
             modelBuilder.Configurations.Add(new UserMap());
             modelBuilder.Configurations.Add(new UserTypeMap());
         }

@@ -53,6 +53,18 @@
                                 }
                             }
                         },
+                        ,
+                        {
+                            url: '/profile',
+                            config: {
+                                templateUrl: 'app/dashboard/profile.html',
+                                title: 'Profile',
+                                settings: {
+                                    nav: 1,
+                                    content: '<i class="fa fa-dashboard"></i> Profile'
+                                }
+                            }
+                        },
             {
                 url: '/admin',
                 config: {

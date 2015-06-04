@@ -24,7 +24,12 @@
             {
                 var modalInstance = $modal.open({
                     templateUrl: 'app/dialogs/SignInModal.html',
-                    controller: SignInModalInstanceCtrl
+                    controller: SignInModalInstanceCtrl,
+                    resolve: {
+                        logintype: function () {
+                            return 1;
+                        }
+                    }
                 });
                 modalInstance.result.then(function (userLoggedIn, uname) {
                 }, function (userLoggedIn, uname) {
