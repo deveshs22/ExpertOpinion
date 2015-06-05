@@ -24,11 +24,15 @@ namespace DataService.Controllers
                 foreach (string file in httpRequest.Files)
                 {
                     var postedFile = httpRequest.Files[file];
+                    string fileName;
+                    if (httpRequest.QueryString["filename"] != null)
+                        fileName = httpRequest.QueryString["filename"];
+                    else
+                        fileName = Guid.NewGuid().ToString()+"."+postedFile.FileName.Split('.')[1];
 
-                    var filePath = Guid.NewGuid() + "." + postedFile.FileName.Split('.')[1];
-                    postedFile.SaveAs(HttpContext.Current.Server.MapPath("/Attachments/") + filePath);
+                    postedFile.SaveAs(HttpContext.Current.Server.MapPath("/Attachments/") + fileName);
 
-                    docfiles.Add(filePath);
+                    docfiles.Add(fileName);
                 }
                 result = Request.CreateResponse(HttpStatusCode.Created, docfiles);
             }

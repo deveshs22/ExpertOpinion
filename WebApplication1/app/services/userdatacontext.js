@@ -59,10 +59,10 @@
             return common.$http.get(common.serviceBaseURL + 'City/GetCitiesbyState/' + stateId);
         }
 
-        function uploadFile(files) {
+        function uploadFile(files, filename) {
             var fd = new FormData();
             fd.append("file", files[0]);
-            return common.$http.post(common.serviceBaseURL + 'upload/PostFormData', fd, {
+            return common.$http.post(common.serviceBaseURL + 'upload/PostFormData?filename=' + filename, fd, {
                 headers: { 'Content-Type': undefined },
                 transformRequest: angular.identity
             })
