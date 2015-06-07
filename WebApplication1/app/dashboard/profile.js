@@ -127,8 +127,7 @@
             
             userdatacontext.CreateExpertProfile(profileData).success(function (result) {
                 $scope.IsLoading = false;
-                
-                //$location.url('/payment');
+                $location.url('\expertdashboard');
             });
             
         }

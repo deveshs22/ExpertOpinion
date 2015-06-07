@@ -65,6 +65,18 @@
                                 }
                             }
                         },
+                        {
+                            url: '/expertdashboard',
+                            config: {
+                                templateUrl: 'app/dashboard/expertdashboard.html',
+                                title: 'ExpertDashboard',
+                                settings: {
+                                    nav: 1,
+                                    content: '<i class="fa fa-dashboard"></i> Expert Dashboard'
+                                }
+                            }
+                        }
+                        ,
             {
                 url: '/admin',
                 config: {

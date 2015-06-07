@@ -41,6 +41,11 @@ namespace DataService.Controllers
             return QuestionRepository.Get(t => t.QuestionId == id);
         }
 
+        // GET api/<controller>/5
+        public IEnumerable<Question> GetQuestionsbyExpertId(int id)
+        {
+            return QuestionRepository.GetAll(t => t.ExpertId == id && t.Active==true);
+        }
         
         // POST api/<controller>
         public HttpResponseMessage PostQuestion(object questionobj)

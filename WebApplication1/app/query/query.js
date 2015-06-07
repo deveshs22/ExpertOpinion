@@ -14,7 +14,6 @@
         vm.people = [];
         vm.title = 'Query';
         
-
         $scope.showoption2 = false;
         $scope.showoption3 = false;
         $scope.showaddanother = false;

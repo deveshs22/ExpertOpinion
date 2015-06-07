@@ -173,6 +173,7 @@
     <Compile Include="Common.cs" />
     <Compile Include="Controllers\CityController.cs" />
     <Compile Include="Controllers\CountryController.cs" />
+    <Compile Include="Controllers\FollowUpController.cs" />
     <Compile Include="Controllers\QuestionController.cs" />
     <Compile Include="Controllers\StateController.cs" />
     <Compile Include="Controllers\UploadController.cs" />

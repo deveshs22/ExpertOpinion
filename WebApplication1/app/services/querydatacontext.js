@@ -8,13 +8,23 @@
         var $q = common.$q;
         var service = {
             CreateQuestion: CreateQuestion,
-            uploadFile: uploadFile
+            uploadFile: uploadFile,
+            GetQuestionsforExpert: GetQuestionsforExpert,
+            GetFollowupsforExpert: GetFollowupsforExpert
         };
 
         return service;
 
         function CreateQuestion(queryData) {
             return common.$http.post(common.serviceBaseURL + 'Question/PostQuestion', queryData);
+        }
+
+        function GetQuestionsforExpert(expertId) {
+            return common.$http.get(common.serviceBaseURL + 'Question/GetQuestionsbyExpertId/'+ expertId);
+        }
+
+        function GetFollowupsforExpert(expertId) {
+            return common.$http.get(common.serviceBaseURL + 'FollowUp/GetFollowUpsbyExpertId/'+ expertId);
         }
 
         function uploadFile(files) {
