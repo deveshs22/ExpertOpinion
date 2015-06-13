@@ -64,7 +64,20 @@
                                     content: '<i class="fa fa-dashboard"></i> Profile'
                                 }
                             }
-                        },
+                        }
+                        ,
+                        {
+                            url: '/reply',
+                            config: {
+                                templateUrl: 'app/query/reply.html',
+                                title: 'Profile',
+                                settings: {
+                                    nav: 1,
+                                    content: '<i class="fa fa-dashboard"></i> Reply'
+                                }
+                            }
+                        }
+                        ,
                         {
                             url: '/expertdashboard',
                             config: {

@@ -13,6 +13,12 @@
         vm.people = [];
         vm.title = 'Expert Dashboard';
 
+        $scope.gotoReply = function (qid)
+        {
+            debugger;
+            $location.url('/reply?qid='+qid);
+        }
+
         $scope.Questions = [];
         $scope.FollowUps = [];
 

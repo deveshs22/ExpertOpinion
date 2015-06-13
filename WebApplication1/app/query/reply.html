@@ -1,0 +1,38 @@
+﻿<section id="reply-view" class="mainbar" data-ng-controller="reply as vm">
+    <div class="pull-left w100p">
+        <!-- Jumbotron Header -->
+        <header class="jumbotron eo-header">
+            <div class="container">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="clearfix"></div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 bxshadow">
+
+
+                        <div class="w100p fl frmbx">
+
+                            <div class="frmbg">
+
+                                <div class="frmheader ff_myriad bold">{{question.Description}}</div>
+                                <form class="frmcontent" ng-submit="SubmitReply()">
+                                    <div class="row">
+                                        <textarea rows="5" class="col-md-12" ng-model="question.ExpertReply" required />
+                                    </div>
+                                    <br/>
+                                    <div class="row">
+                                        <div class="col-md-2 pull-right">
+                                            <input type="submit" class="btn btn-primary pull-right" value="Submit Answer"  />
+                                        </div>
+                                    </div>
+                                </form>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+        </header>
+    </div>
+</section>
