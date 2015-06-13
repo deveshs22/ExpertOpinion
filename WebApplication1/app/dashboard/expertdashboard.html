@@ -42,7 +42,7 @@
                                             {{question.CreatedOn | date:'dd-MM-yyyy'}}
                                         </div>
                                         <div class="col-md-1">
-                                            <a href>Answer</a>
+                                            <a ng-href="#/reply?qid={{question.QuestionId}}">Answer</a>
                                         </div>
                                     </div>
                                 </div>
@@ -59,7 +59,7 @@
                                             {{question.CreatedOn | date:'dd-MM-yyyy'}}
                                         </div>
                                         <div class="col-md-1">
-                                            <a href>Answer</a>
+                                            <a ng-href="reply?qid=question.QuestionId">Answer</a>
                                         </div>
                                     </div>
                                 </div>
