@@ -148,6 +148,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Attachments\" />
+    <Folder Include="Models\" />
     <Folder Include="Views\Country\" />
     <Folder Include="Views\User\" />
   </ItemGroup>
@@ -183,8 +184,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Handlers\AuthenticationHandler1.cs" />
-    <Compile Include="Models\Handlers\CorsHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
