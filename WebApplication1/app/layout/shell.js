@@ -3,9 +3,9 @@
     
     var controllerId = 'shell';
     angular.module('app').controller(controllerId,
-        ['$scope', '$rootScope', '$modal', 'common', 'config', 'userdatacontext', shell]);
+        ['$scope', '$rootScope', '$modal','$location', 'common', 'config', 'userdatacontext', shell]);
 
-    function shell($scope, $rootScope, $modal, common, config, userdatacontext) {
+    function shell($scope, $rootScope, $modal, $location, common, config, userdatacontext) {
         var vm = this;
         var logSuccess = common.logger.getLogFn(controllerId, 'success');
         //var events = config.events;
@@ -35,12 +35,17 @@
         }
 
         $scope.getUserNameFromUID = function () {
+            debugger;
             if (localStorage.getItem("uid") != undefined) {
 
-                userdatacontext.GetUserNamebyUID(localStorage.getItem("uid")).success(function (result) {
+                userdatacontext.GetUserLoginbyUID(localStorage.getItem("uid")).success(function (result) {
                     if (result != "" && result != "null" && result != null && result != undefined)
-                        $scope.UserName = result.replace('"', '').replace('"', '');
+                        $scope.UserName = result.Name.replace('"', '').replace('"', '');
                     $scope.userLoggedIn = true;
+                    if (result.UserTypeId == 2) {
+                        debugger;
+                        $location.url('/expertdashboard');
+                    }
                 }
                 );
             }

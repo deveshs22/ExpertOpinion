@@ -44,8 +44,14 @@ namespace DataService.Controllers
         // GET api/<controller>/5
         public IEnumerable<FollowUp> GetFollowUpsbyExpertId(int id)
         {
-            return FollowUpRepository.GetAll(t => t.ExpertId == id && t.Active==true);
+            return FollowUpRepository.GetAll(t => t.ExpertId == id && t.Active==true && t.ExpertReply==null);
         }
+
+        public IEnumerable<FollowUp> GetFollowUpsbyQuestionId(int id)
+        {
+            return FollowUpRepository.GetAll(t => t.QuestionId == id);
+        }
+
         
         // POST api/<controller>
         public HttpResponseMessage PostFollowUp(object FollowUpobj)

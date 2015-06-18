@@ -13,6 +13,7 @@
             CreateUser: CreateUser,
             GetUserLoginbyUID: GetUserLoginbyUID,
             GetUserNamebyUID: GetUserNamebyUID,
+            GetUserNamebyID:GetUserNamebyID,
             GetCountryList: GetCountryList,
             GetStateList: GetStateList,
             GetCityList: GetCityList,
@@ -40,6 +41,10 @@
 
         function GetUserNamebyUID(uid) {
             return common.$http.get(common.serviceBaseURL + 'User/GetUserNamebyUID/' + uid);
+        }
+
+        function GetUserNamebyID(id) {
+            return common.$http.get(common.serviceBaseURL + 'User/GetUserNamebyID/' + id);
         }
 
         function CreateUser(userInfoData) {

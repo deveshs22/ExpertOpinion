@@ -11,6 +11,7 @@
             uploadFile: uploadFile,
             GetQuestionsforExpert: GetQuestionsforExpert,
             GetFollowupsforExpert: GetFollowupsforExpert,
+            GetFollowUpForQuestion:GetFollowUpForQuestion,
             GetQuestion: GetQuestion,
             UpdateQuestion: UpdateQuestion
         };
@@ -36,6 +37,10 @@
 
         function GetQuestion(qid) {
             return common.$http.get(common.serviceBaseURL + 'Question/Get/' + qid);
+        }
+
+         function GetFollowUpForQuestion(qid) {
+             return common.$http.get(common.serviceBaseURL + 'FollowUp/GetFollowUpsbyQuestionId/' + qid);
         }
 
         function UpdateQuestion(qid,question)

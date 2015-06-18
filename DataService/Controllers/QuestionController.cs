@@ -70,30 +70,32 @@ namespace DataService.Controllers
             }
         }
 
-        // PUT api/<controller>
-        //public HttpResponseMessage UpdateUser(int id, User user)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
-        //    }
+         //PUT api/<controller>
+        public HttpResponseMessage UpdateQuestion(int id, Question question)
+        {
+            if (!ModelState.IsValid)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+            }
 
-        //    if (id != user.UserId)
-        //    {
-        //        return Request.CreateResponse(HttpStatusCode.BadRequest);
-        //    }
-        //    UserRepository.Attach(user);
-        //    try
-        //    {
-        //        unitOfWork.SaveChanges();
-        //    }
-        //    catch (DbUpdateConcurrencyException ex)
-        //    {
-        //        return Request.CreateErrorResponse(HttpStatusCode.NotFound, ex);
-        //    }
+            if (id != question.QuestionId)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+            
+            QuestionRepository.Attach(question);
+            
+            try
+            {
+                unitOfWork.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, ex);
+            }
 
-        //    return Request.CreateResponse(HttpStatusCode.OK);
-        //}
+            return Request.CreateResponse(HttpStatusCode.OK);
+        }
  
         // DELETE api/<controller>/5
         public HttpResponseMessage DeleteQuestion(int id)

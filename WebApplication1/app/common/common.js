@@ -286,7 +286,6 @@ var SignUpModalInstanceCtrl = function ($scope, $modal, $modalInstance, userdata
 var EmailVerifiedModalInstanceCtrl = function ($scope, $modalInstance, $location, userdatacontext, common) {
     $scope.email = common.getParameterByName("email");
 
-
     userdatacontext.GetUserLoginbyEmail($scope.email).success(function (result) {
         if (result == "null") {
             location.href = '/';

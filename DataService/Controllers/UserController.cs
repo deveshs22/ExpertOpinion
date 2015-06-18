@@ -77,6 +77,16 @@ namespace DataService.Controllers
             }
             return null;
         }
+
+        public string GetUserNamebyID(int id)
+        {
+            User user = UserRepository.Get(t => t.UserId == id);
+            if (user != null)
+            {
+                return user.Name;
+            }
+            return null;
+        }
  
         // POST api/<controller>
         public HttpResponseMessage PostUser(object userobj)

@@ -52,14 +52,14 @@
                                 <div class="frmcontent">
                                     <div class="row" ng-repeat="question in FollowUps">
                                         <div class="col-md-8">
-                                            {{question.Description}}
+                                            {{question.FollowUpQuestion}}
 
                                         </div>
                                         <div class="col-md-2">
                                             {{question.CreatedOn | date:'dd-MM-yyyy'}}
                                         </div>
                                         <div class="col-md-1">
-                                            <a ng-href="reply?qid=question.QuestionId">Answer</a>
+                                            <a ng-href="#/reply?fid={{question.QuestionId}}">Answer</a>
                                         </div>
                                     </div>
                                 </div>
