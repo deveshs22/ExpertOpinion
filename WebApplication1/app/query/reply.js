@@ -27,7 +27,7 @@
         $scope.getUserName= function(id)
         {
             userdatacontext.GetUserNamebyID(id).success(function (result) {
-                $scope.PatientName = result.replace('"', '').replace('"', '');;
+                $scope.PatientName = result.replace('"', '').replace('"', '');
             });
         }
 
