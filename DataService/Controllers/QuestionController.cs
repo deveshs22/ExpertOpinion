@@ -46,6 +46,12 @@ namespace DataService.Controllers
         {
             return QuestionRepository.GetAll(t => t.ExpertId == id && t.Active==true);
         }
+
+        // GET api/<controller>/5
+        public IEnumerable<Question> GetQuestionsbyUserId(int id)
+        {
+            return QuestionRepository.GetAll(t => t.UserId == id && t.Active == true);
+        }
         
         // POST api/<controller>
         public HttpResponseMessage PostQuestion(object questionobj)
@@ -71,31 +77,31 @@ namespace DataService.Controllers
         }
 
          //PUT api/<controller>
-        public HttpResponseMessage UpdateQuestion(int id, Question question)
-        {
-            if (!ModelState.IsValid)
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
-            }
+        //public HttpResponseMessage UpdateQuestion(int id, Question question)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+        //    }
 
-            if (id != question.QuestionId)
-            {
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
-            }
+        //    if (id != question.QuestionId)
+        //    {
+        //        return Request.CreateResponse(HttpStatusCode.BadRequest);
+        //    }
             
-            QuestionRepository.Attach(question);
+        //    QuestionRepository.Attach(question);
             
-            try
-            {
-                unitOfWork.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException ex)
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.NotFound, ex);
-            }
+        //    try
+        //    {
+        //        unitOfWork.SaveChanges();
+        //    }
+        //    catch (DbUpdateConcurrencyException ex)
+        //    {
+        //        return Request.CreateErrorResponse(HttpStatusCode.NotFound, ex);
+        //    }
 
-            return Request.CreateResponse(HttpStatusCode.OK);
-        }
+        //    return Request.CreateResponse(HttpStatusCode.OK);
+        //}
  
         // DELETE api/<controller>/5
         public HttpResponseMessage DeleteQuestion(int id)

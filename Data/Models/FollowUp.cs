@@ -17,8 +17,8 @@ namespace Data.Models
         public Nullable<bool> Active { get; set; }
         public Nullable<System.DateTime> LastModifiedOn { get; set; }
         public Nullable<int> LastModifiedBy { get; set; }
-        public virtual Question Question { get; set; }
-        public virtual User User { get; set; }
-        public virtual User User1 { get; set; }
+        public Question Question { get; set; }
+        public User User { get; set; }
+        public User User1 { get; set; }
     }
 }

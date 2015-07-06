@@ -14,8 +14,8 @@ namespace Data.Models
         public int StateId { get; set; }
         public string StateName { get; set; }
         public int CountryId { get; set; }
-        public virtual Country Country { get; set; }
-        public virtual ICollection<ExpertDetail> ExpertDetails { get; set; }
-        public virtual ICollection<ExpertDetail> ExpertDetails1 { get; set; }
+        public Country Country { get; set; }
+        public ICollection<ExpertDetail> ExpertDetails { get; set; }
+        public ICollection<ExpertDetail> ExpertDetails1 { get; set; }
     }
 }

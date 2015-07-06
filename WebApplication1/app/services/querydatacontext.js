@@ -10,6 +10,7 @@
             CreateQuestion: CreateQuestion,
             uploadFile: uploadFile,
             GetQuestionsforExpert: GetQuestionsforExpert,
+            GetQuestionsforUser:GetQuestionsforUser,
             GetFollowupsforExpert: GetFollowupsforExpert,
             GetFollowUpForQuestion:GetFollowUpForQuestion,
             GetQuestion: GetQuestion,
@@ -27,7 +28,11 @@
         }
 
         function GetFollowupsforExpert(expertId) {
-            return common.$http.get(common.serviceBaseURL + 'FollowUp/GetFollowUpsbyExpertId/'+ expertId);
+            return common.$http.get(common.serviceBaseURL + 'FollowUp/GetFollowUpsbyExpertId/' + expertId);
+        }
+
+        function GetQuestionsforUser(userId) {
+            return common.$http.get(common.serviceBaseURL + 'Question/GetQuestionsbyUserId/' + userId);
         }
 
         function GetQuestion(qid)

@@ -82,6 +82,7 @@
             localStorage.removeItem("uid");
             $scope.userLoggedIn = false;
             $scope.UserName = '';
+            $location.url('/');
         }
 
         $scope.openSignIn = function (logintype) {

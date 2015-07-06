@@ -23,11 +23,11 @@ namespace Data.Models
         public Nullable<System.DateTime> LastLogin { get; set; }
         public int UserTypeId { get; set; }
         public string UserUniqueId { get; set; }
-        public virtual ICollection<ExpertDetail> ExpertDetails { get; set; }
-        public virtual ICollection<FollowUp> FollowUps { get; set; }
-        public virtual ICollection<FollowUp> FollowUps1 { get; set; }
-        public virtual ICollection<Question> Questions { get; set; }
-        public virtual ICollection<Question> Questions1 { get; set; }
+        public ICollection<ExpertDetail> ExpertDetails { get; set; }
+        public ICollection<FollowUp> FollowUps { get; set; }
+        public ICollection<FollowUp> FollowUps1 { get; set; }
+        public ICollection<Question> Questions { get; set; }
+        public ICollection<Question> Questions1 { get; set; }
         public UserType UserType { get; set; }
     }
 }

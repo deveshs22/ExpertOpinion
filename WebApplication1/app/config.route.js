@@ -89,6 +89,18 @@
                                 }
                             }
                         }
+                                                ,
+                        {
+                            url: '/userdashboard',
+                            config: {
+                                templateUrl: 'app/dashboard/userdashboard.html',
+                                title: 'UserDashboard',
+                                settings: {
+                                    nav: 1,
+                                    content: '<i class="fa fa-dashboard"></i> User Dashboard'
+                                }
+                            }
+                        }
                         ,
             {
                 url: '/admin',

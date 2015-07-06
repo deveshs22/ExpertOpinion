@@ -28,8 +28,8 @@ namespace Data.Models
         public Nullable<System.DateTime> RepliedOn { get; set; }
         public Nullable<System.DateTime> LastModifiedOn { get; set; }
         public Nullable<int> LastModifiedBy { get; set; }
-        public virtual ICollection<FollowUp> FollowUps { get; set; }
-        public virtual User User { get; set; }
-        public virtual User User1 { get; set; }
+        public ICollection<FollowUp> FollowUps { get; set; }
+        public User User { get; set; }
+        public User User1 { get; set; }
     }
 }
