@@ -32,6 +32,12 @@ namespace DataService.Controllers
         {
             return UserRepository.GetAll();
         }
+
+        // GET api/<controller>
+        public IEnumerable<User> GetExperts()
+        {
+            return UserRepository.GetAll(t => t.UserTypeId == 2);
+        }
  
         // GET api/<controller>/5
         public User Get(int id)

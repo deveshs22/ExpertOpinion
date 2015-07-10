@@ -131,9 +131,7 @@
                                                         <label for="exampleInputEmail1">Speciality</label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <select class="form-control" ng-model="selectedSpeciality" required>
-                                                            <option>General Physician</option>
-                                                            <option>Dentist</option>
+                                                        <select class="form-control" ng-model="selectedSpeciality" required data-ng-options="s.Speciality1 for s in Specialities">
                                                         </select>
                                                     </div>
                                                 </div>

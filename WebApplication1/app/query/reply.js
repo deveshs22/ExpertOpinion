@@ -24,13 +24,25 @@
 
         var fid = common.getParameterByName("fid");
 
+        var userfid = common.getParameterByName("userfid");
+
+        function getQuestionandFollowupDetail(qid)
+        {
+            querydatacontext.GetQuestion(qid).success(function (result) {
+                $scope.question = result;
+                $scope.getUserName($scope.question.UserId);
+            });
+            querydatacontext.GetFollowUpForQuestion(qid).success(function (result) {
+                $scope.FollowUps = result;
+            });
+        }
+
         $scope.getUserName= function(id)
         {
             userdatacontext.GetUserNamebyID(id).success(function (result) {
                 $scope.PatientName = result.replace('"', '').replace('"', '');
             });
         }
-
 
         if (qid != "" && qid != undefined) {
             $scope.IsreplyingtoQuestion = true;
@@ -41,15 +53,13 @@
         }
         else if (fid != "" &&  fid != undefined)
         {
-            debugger;
             $scope.IsreplyingtoFollowup = true;
-            querydatacontext.GetQuestion(fid).success(function (result) {
-                $scope.question = result;
-                $scope.getUserName($scope.question.UserId);
-            });
-            querydatacontext.GetFollowUpForQuestion(fid).success(function (result) {
-                $scope.FollowUps = result;
-            });
+            getQuestionandFollowupDetail(fid);
+        }
+        else if (userfid != "" && userfid != undefined)
+        {
+            $scope.IsFollowuptoreply = true;
+            getQuestionandFollowupDetail(userfid);
         }
 
         $scope.answer = '';

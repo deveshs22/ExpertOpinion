@@ -4,7 +4,6 @@
     angular.module('app').controller(controllerId, ['common', '$scope', '$modal', '$location', 'userdatacontext', profile]);
 
     function profile(common, $scope, $modal, $location, userdatacontext) {
-        debugger;
         var vm = this;
         vm.news = {
             title: 'Expert Opinion',
@@ -13,12 +12,20 @@
         vm.messageCount = 0;
         vm.people = [];
         vm.title = 'Dashboard';
+        $scope.selectedSpeciality = {};
         $scope.selectedCountry = {};
         $scope.selectedState = {};
         $scope.selectedCity = {};
         $scope.showoption2 = false;
         $scope.showoption3 = false;
         $scope.showaddanother = false;
+        $scope.Specialities = [];
+
+        userdatacontext.GetSpecialities().success(function (result) {
+            debugger;
+            $scope.Specialities = result;
+        });
+
         $scope.addAnother = function () {
             $scope.showaddanother = false;
             if (!$scope.showoption2) {

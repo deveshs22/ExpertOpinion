@@ -59,11 +59,13 @@
     <Compile Include="Models\Mapping\FollowUpMap.cs" />
     <Compile Include="Models\Mapping\PaymentMap.cs" />
     <Compile Include="Models\Mapping\QuestionMap.cs" />
+    <Compile Include="Models\Mapping\SpecialityMap.cs" />
     <Compile Include="Models\Mapping\StateMap.cs" />
     <Compile Include="Models\Mapping\UserMap.cs" />
     <Compile Include="Models\Mapping\UserTypeMap.cs" />
     <Compile Include="Models\Payment.cs" />
     <Compile Include="Models\Question.cs" />
+    <Compile Include="Models\Speciality.cs" />
     <Compile Include="Models\State.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserType.cs" />

@@ -173,6 +173,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Common.cs" />
     <Compile Include="Controllers\CityController.cs" />
+    <Compile Include="Controllers\SpecialityController.cs" />
     <Compile Include="Controllers\CountryController.cs" />
     <Compile Include="Controllers\FollowUpController.cs" />
     <Compile Include="Controllers\QuestionController.cs" />

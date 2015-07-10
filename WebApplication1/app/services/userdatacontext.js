@@ -18,6 +18,7 @@
             GetStateList: GetStateList,
             GetCityList: GetCityList,
             uploadFile: uploadFile,
+            GetSpecialities:GetSpecialities,
             CreateExpertProfile: CreateExpertProfile
         };
 
@@ -25,6 +26,11 @@
 
         function GetUser() {
             return common.$http.get(common.serviceBaseURL + 'User/GetUser/0');
+        }
+
+        function GetExperts()
+        {
+            return common.$http.get(common.serviceBaseURL + 'User/GetExperts');
         }
 
         function GetUserLogin(email, pwd) {
@@ -49,6 +55,10 @@
 
         function CreateUser(userInfoData) {
             return common.$http.post(common.serviceBaseURL + 'User/PostUser', userInfoData);
+        }
+
+        function GetSpecialities() {
+            return common.$http.get(common.serviceBaseURL + 'Speciality/');
         }
 
         function GetCountryList()
