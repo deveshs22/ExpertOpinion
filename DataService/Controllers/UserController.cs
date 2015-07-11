@@ -1,16 +1,15 @@
-﻿using Data.Models;
-using DataService.Repository;
-using System.Collections;
+﻿using System;
 using System.Collections.Generic;
-using System.Web.Http;
-using System.Linq;
-using System.Net.Http;
-using System.Net;
-using System;
 using System.Data.Entity.Infrastructure;
-using System.Web.Script.Serialization;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Text;
-using System.Security;
+using System.Web.Http;
+using System.Web.Script.Serialization;
+
+using Data.Models;
+using DataService.Repository;
 
 namespace DataService.Controllers
 {

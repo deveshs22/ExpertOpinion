@@ -1,21 +1,14 @@
-﻿using Data.Models;
-using DataService.Repository;
-using System.Collections;
-using System.Collections.Generic;
-using System.Web.Http;
-using System.Linq;
-using System.Net.Http;
+﻿using System.Collections.Generic;
 using System.Net;
-using System;
-using System.Data.Entity.Infrastructure;
-using System.Web.Script.Serialization;
-using System.Text;
-using System.Security;
-using System.IO;
-using System.Web;
+using System.Net.Http;
+using System.Web.Http;
+
+using Data.Models;
+using DataService.Repository;
 
 namespace DataService.Controllers
 {
+    [RoutePrefix("api/followups")]
     public class FollowUpController : ApiController
     {
         UnitOfWork unitOfWork;
@@ -30,23 +23,31 @@ namespace DataService.Controllers
         }
  
         // GET api/<controller>
+        [HttpGet]
+        [Route("")]
         public IEnumerable<FollowUp> GetFollowUps()
         {
             return FollowUpRepository.GetAll();
         }
  
         // GET api/<controller>/5
+        [HttpGet]
+        [Route("{id:int}")]
         public FollowUp Get(int id)
         {
             return FollowUpRepository.Get(t => t.FollowUpId == id);
         }
 
         // GET api/<controller>/5
+        [HttpGet]
+        [Route("byexpert/{id:int}")]
         public IEnumerable<FollowUp> GetFollowUpsbyExpertId(int id)
         {
             return FollowUpRepository.GetAll(t => t.ExpertId == id && t.Active==true && t.ExpertReply==null);
         }
 
+        [HttpGet]
+        [Route("byquestion/{id:int}")]
         public IEnumerable<FollowUp> GetFollowUpsbyQuestionId(int id)
         {
             return FollowUpRepository.GetAll(t => t.QuestionId == id);
@@ -54,6 +55,7 @@ namespace DataService.Controllers
 
         
         // POST api/<controller>
+        [HttpPost]
         public HttpResponseMessage PostFollowUp(object FollowUpobj)
         {
             //JavaScriptSerializer js = new JavaScriptSerializer();
@@ -103,6 +105,8 @@ namespace DataService.Controllers
         //}
  
         // DELETE api/<controller>/5
+        [HttpDelete]
+        [Route("{id:int}")]
         public HttpResponseMessage DeleteFollowUp(int id)
         {
             //FollowUp FollowUp = FollowUpRepository.Get(t => t.FollowUpId == id);

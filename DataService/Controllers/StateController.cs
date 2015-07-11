@@ -1,21 +1,12 @@
-﻿using Data.Models;
-using DataService.Repository;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Web.Http;
-using System.Linq;
-using System.Net.Http;
-using System.Net;
-using System;
-using System.Data.Entity.Infrastructure;
-using System.Web.Script.Serialization;
-using System.Text;
-using System.Security;
-using System.IO;
-using System.Web;
+
+using Data.Models;
+using DataService.Repository;
 
 namespace DataService.Controllers
 {
+    [RoutePrefix("api/states")]
     public class StateController : ApiController
     {
         UnitOfWork unitOfWork;
@@ -30,17 +21,23 @@ namespace DataService.Controllers
         }
 
         // GET api/<controller>
+        [HttpGet]
+        [Route("")]
         public IEnumerable<State> GetStates()
         {
             return StateRepository.GetAll();
         }
 
         // GET api/<controller>/5
+        [HttpGet]
+        [Route("{id:int}")]
         public State Get(int id)
         {
             return StateRepository.Get(t => t.StateId == id);
         }
 
+        [HttpGet]
+        [Route("bycountry/{id:int}")]
         public IEnumerable<State> GetStatesbyCountry(int id)
         {
             return StateRepository.GetAll(t => t.CountryId == id);

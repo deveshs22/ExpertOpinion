@@ -1,21 +1,18 @@
-﻿using Data.Models;
-using DataService.Repository;
-using System.Collections;
+﻿using System;
 using System.Collections.Generic;
-using System.Web.Http;
-using System.Linq;
-using System.Net.Http;
-using System.Net;
-using System;
 using System.Data.Entity.Infrastructure;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
 using System.Web.Script.Serialization;
-using System.Text;
-using System.Security;
-using System.IO;
-using System.Web;
+
+using Data.Models;
+using DataService.Repository;
 
 namespace DataService.Controllers
 {
+    [RoutePrefix("api/questions")]
     public class QuestionController : ApiController
     {
         UnitOfWork unitOfWork;
@@ -30,30 +27,39 @@ namespace DataService.Controllers
         }
  
         // GET api/<controller>
+        [HttpGet]
+        [Route("")]
         public IEnumerable<Question> GetQuestions()
         {
             return QuestionRepository.GetAll();
         }
  
         // GET api/<controller>/5
+        [HttpGet]
+        [Route("{id:int}")]
         public Question Get(int id)
         {
             return QuestionRepository.Get(t => t.QuestionId == id);
         }
 
         // GET api/<controller>/5
+        [HttpGet]
+        [Route("byexpert/{id:int}")]
         public IEnumerable<Question> GetQuestionsbyExpertId(int id)
         {
             return QuestionRepository.GetAll(t => t.ExpertId == id && t.Active==true);
         }
 
         // GET api/<controller>/5
+        [HttpGet]
+        [Route("byuser/{id:int}")]
         public IEnumerable<Question> GetQuestionsbyUserId(int id)
         {
             return QuestionRepository.GetAll(t => t.UserId == id && t.Active == true);
         }
         
         // POST api/<controller>
+        [HttpPost]
         public HttpResponseMessage PostQuestion(object questionobj)
         {
             JavaScriptSerializer js = new JavaScriptSerializer();
@@ -77,33 +83,37 @@ namespace DataService.Controllers
         }
 
          //PUT api/<controller>
-        //public HttpResponseMessage UpdateQuestion(int id, Question question)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
-        //    }
+        [HttpPut()]
+        [Route("{id:int}")]
+        public HttpResponseMessage UpdateQuestion(int id, Question question)
+        {
+            if (!ModelState.IsValid)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+            }
 
-        //    if (id != question.QuestionId)
-        //    {
-        //        return Request.CreateResponse(HttpStatusCode.BadRequest);
-        //    }
-            
-        //    QuestionRepository.Attach(question);
-            
-        //    try
-        //    {
-        //        unitOfWork.SaveChanges();
-        //    }
-        //    catch (DbUpdateConcurrencyException ex)
-        //    {
-        //        return Request.CreateErrorResponse(HttpStatusCode.NotFound, ex);
-        //    }
+            if (id != question.QuestionId)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
 
-        //    return Request.CreateResponse(HttpStatusCode.OK);
-        //}
+            QuestionRepository.Attach(question);
+
+            try
+            {
+                unitOfWork.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, ex);
+            }
+
+            return Request.CreateResponse(HttpStatusCode.OK);
+        }
  
         // DELETE api/<controller>/5
+        [HttpDelete]
+        [Route("{id:int}")]
         public HttpResponseMessage DeleteQuestion(int id)
         {
             Question question = QuestionRepository.Get(t => t.QuestionId == id);

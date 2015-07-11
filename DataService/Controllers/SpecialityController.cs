@@ -1,21 +1,12 @@
-﻿using Data.Models;
-using DataService.Repository;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Web.Http;
-using System.Linq;
-using System.Net.Http;
-using System.Net;
-using System;
-using System.Data.Entity.Infrastructure;
-using System.Web.Script.Serialization;
-using System.Text;
-using System.Security;
-using System.IO;
-using System.Web;
+
+using Data.Models;
+using DataService.Repository;
 
 namespace DataService.Controllers
 {
+    [RoutePrefix("api/specialities")]
     public class SpecialityController : ApiController
     {
         UnitOfWork unitOfWork;
@@ -30,12 +21,16 @@ namespace DataService.Controllers
         }
 
         // GET api/<controller>
+        [HttpGet]
+        [Route("")]
         public IEnumerable<Speciality> GetSpecialitys()
         {
             return SpecialityRepository.GetAll();
         }
 
         // GET api/<controller>/5
+        [HttpGet]
+        [Route("{id:int}")]
         public Speciality Get(int id)
         {
             return SpecialityRepository.Get(t => t.SpecialityId == id);

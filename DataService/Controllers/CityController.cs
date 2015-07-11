@@ -1,21 +1,12 @@
-﻿using Data.Models;
-using DataService.Repository;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Web.Http;
-using System.Linq;
-using System.Net.Http;
-using System.Net;
-using System;
-using System.Data.Entity.Infrastructure;
-using System.Web.Script.Serialization;
-using System.Text;
-using System.Security;
-using System.IO;
-using System.Web;
+
+using Data.Models;
+using DataService.Repository;
 
 namespace DataService.Controllers
 {
+    [RoutePrefix("api/cities")]
     public class CityController : ApiController
     {
         UnitOfWork unitOfWork;
@@ -30,17 +21,23 @@ namespace DataService.Controllers
         }
 
         // GET api/<controller>
+        [HttpGet]
+        [Route("")]
         public IEnumerable<City> GetCitys()
         {
             return CityRepository.GetAll();
         }
 
         // GET api/<controller>/5
+        [HttpGet]
+        [Route("{id:int}")]
         public City Get(int id)
         {
             return CityRepository.Get(t => t.CityId == id);
         }
 
+        [HttpGet]
+        [Route("bystate/{id:int}")]
         public IEnumerable<City> GetCitiesbyState(int id)
         {
             return CityRepository.GetAll(t => t.StateId == id);

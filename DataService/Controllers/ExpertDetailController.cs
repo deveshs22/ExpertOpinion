@@ -1,19 +1,18 @@
-﻿using Data.Models;
-using DataService.Repository;
-using System.Collections;
+﻿using System;
 using System.Collections.Generic;
-using System.Web.Http;
-using System.Linq;
-using System.Net.Http;
-using System.Net;
-using System;
 using System.Data.Entity.Infrastructure;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
 using System.Web.Script.Serialization;
-using System.Text;
-using System.Security;
+
+using Data.Models;
+using DataService.Repository;
 
 namespace DataService.Controllers
 {
+    [RoutePrefix("api/expertdetails")]
     public class ExpertDetailController : ApiController
     {
         UnitOfWork unitOfWork;
@@ -28,18 +27,23 @@ namespace DataService.Controllers
         }
  
         // GET api/<controller>
+        [HttpGet]
+        [Route("")]
         public IEnumerable<ExpertDetail> GetExpertDetails()
         {
             return ExpertDetailRepository.GetAll();
         }
  
         // GET api/<controller>/5
+        [HttpGet]
+        [Route("{id:int}")]
         public ExpertDetail Get(int id)
         {
             return ExpertDetailRepository.Get(t => t.ExpertDetailId == id);
         }
     
         // POST api/<controller>
+        [HttpPost]
         public HttpResponseMessage PostExpertDetail(object ExpertDetailobj)
         {
             JavaScriptSerializer js = new JavaScriptSerializer();
@@ -88,7 +92,9 @@ namespace DataService.Controllers
         //}
  
         // DELETE api/<controller>/5
-        public HttpResponseMessage DeleteUser(int id)
+        [HttpDelete]
+        [Route("{id:int}")]
+        public HttpResponseMessage Delete(int id)
         {
             ExpertDetail expertDetail = ExpertDetailRepository.Get(t => t.ExpertDetailId == id);
             if (expertDetail == null)
