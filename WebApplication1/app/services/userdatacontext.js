@@ -2,6 +2,8 @@
     'use strict';
 
     var serviceId = 'userdatacontext';
+    
+
     angular.module('app').factory(serviceId, ['common', userdatacontext]);
 
     function userdatacontext(common) {
@@ -22,62 +24,64 @@
             CreateExpertProfile: CreateExpertProfile
         };
 
-        return service;
+        var usersApi = common.serviceBaseURL + '/users/';
+
+        return service;       
 
         function GetUser() {
-            return common.$http.get(common.serviceBaseURL + 'User/GetUser/0');
+            return common.$http.get(usersApi + '0');
         }
 
         function GetExperts()
         {
-            return common.$http.get(common.serviceBaseURL + 'User/GetExperts');
+            return common.$http.get(usersApi + 'experts');
         }
 
         function GetUserLogin(email, pwd) {
-            return common.$http.get(common.serviceBaseURL + 'User/GetUserLogin/'+pwd+','+email+'/');
+            return common.$http.get(usersApi + 'login/' + pwd+ ','+ email+ '/');
         }
 
         function GetUserLoginbyEmail(email) {
-            return common.$http.get(common.serviceBaseURL + 'User/GetUserLoginbyEmail/' + email + '/');
+            return common.$http.get(usersApi + 'login/email/' + email + '/');
         }
 
         function GetUserLoginbyUID(uid) {
-            return common.$http.get(common.serviceBaseURL + 'User/GetUserLoginbyUID/' + uid);
+            return common.$http.get(usersApi + 'login/uid/' + uid);
         }
 
         function GetUserNamebyUID(uid) {
-            return common.$http.get(common.serviceBaseURL + 'User/GetUserNamebyUID/' + uid);
+            return common.$http.get(usersApi + 'uname/uid/' + uid);
         }
 
         function GetUserNamebyID(id) {
-            return common.$http.get(common.serviceBaseURL + 'User/GetUserNamebyID/' + id);
+            return common.$http.get(usersApi + 'uname/id/' + id);
         }
 
         function CreateUser(userInfoData) {
-            return common.$http.post(common.serviceBaseURL + 'User/PostUser', userInfoData);
+            return common.$http.post(usersApi , userInfoData);
         }
 
         function GetSpecialities() {
-            return common.$http.get(common.serviceBaseURL + 'Speciality/');
+            return common.$http.get(usersApi + 'Speciality/');
         }
 
         function GetCountryList()
         {
-            return common.$http.get(common.serviceBaseURL + 'Country');
+            return common.$http.get(usersApi + 'Country');
         }
 
         function GetStateList(countryId) {
-            return common.$http.get(common.serviceBaseURL + 'State/GetStatesbyCountry/' + countryId);
+            return common.$http.get(usersApi + 'State/GetStatesbyCountry/' + countryId);
         }
 
         function GetCityList(stateId) {
-            return common.$http.get(common.serviceBaseURL + 'City/GetCitiesbyState/' + stateId);
+            return common.$http.get(usersApi + 'City/GetCitiesbyState/' + stateId);
         }
 
         function uploadFile(files, filename) {
             var fd = new FormData();
             fd.append("file", files[0]);
-            return common.$http.post(common.serviceBaseURL + 'upload/PostFormData?filename=' + filename, fd, {
+            return common.$http.post(usersApi + 'upload/PostFormData?filename=' + filename, fd, {
                 headers: { 'Content-Type': undefined },
                 transformRequest: angular.identity
             })
@@ -85,7 +89,7 @@
 
         function CreateExpertProfile(profileData)
         {
-            return common.$http.post(common.serviceBaseURL + 'ExpertDetail/PostExpertDetail', profileData);
+            return common.$http.post(usersApi + 'ExpertDetail/PostExpertDetail', profileData);
         }
 
 

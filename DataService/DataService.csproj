@@ -154,6 +154,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Common.cs" />
+    <Compile Include="Constants.cs" />
     <Compile Include="Controllers\CityController.cs" />
     <Compile Include="Controllers\SpecialityController.cs" />
     <Compile Include="Controllers\CountryController.cs" />

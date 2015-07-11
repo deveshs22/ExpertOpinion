@@ -14,6 +14,7 @@ using System.Security;
 
 namespace DataService.Controllers
 {
+    [RoutePrefix("api/users")]
     public class UserController : ApiController
     {
         UnitOfWork unitOfWork;
@@ -28,30 +29,39 @@ namespace DataService.Controllers
         }
  
         // GET api/<controller>
+        [HttpGet]
+        [Route("")]
         public IEnumerable<User> GetUsers()
         {
             return UserRepository.GetAll();
         }
 
         // GET api/<controller>
+        [HttpGet]
+        [Route("expert")]
         public IEnumerable<User> GetExperts()
         {
-            return UserRepository.GetAll(t => t.UserTypeId == 2);
+            return UserRepository.GetAll(t => t.UserTypeId == Constants.UserTypeExpert);
         }
  
         // GET api/<controller>/5
+        [HttpGet]
+        [Route("{id:int}")]
         public User Get(int id)
         {
             return UserRepository.Get(t => t.UserId == id);
         }
 
         // GET api/<controller>/5
+        [HttpGet]
+        [Route("login/{id}")]
         public User GetUserLogin(string id)
         {
             return UserRepository.Get(t => t.Email == id.Split(',')[1] && t.Pwd==id.Split(',')[0]);
         }
 
-
+        [HttpGet]
+        [Route("login/email/{id}")]
         public User GetUserLoginbyEmail(string id)
         {
             User user = UserRepository.Get(t => t.Email == id);
@@ -68,12 +78,15 @@ namespace DataService.Controllers
 
         }
 
-
+        [HttpGet]
+        [Route("login/uid/{id}")]
         public User GetUserLoginbyUID(string id)
         {
             return UserRepository.Get(t => t.UserUniqueId == id);
         }
 
+        [HttpGet]
+        [Route("uname/uid/{id}")]
         public string GetUserNamebyUID(string id)
         {
             User user = UserRepository.Get(t => t.UserUniqueId == id);
@@ -84,6 +97,8 @@ namespace DataService.Controllers
             return null;
         }
 
+        [HttpGet]
+        [Route("uname/id/{id}")]
         public string GetUserNamebyID(int id)
         {
             User user = UserRepository.Get(t => t.UserId == id);
@@ -95,6 +110,7 @@ namespace DataService.Controllers
         }
  
         // POST api/<controller>
+        [HttpPost]
         public HttpResponseMessage PostUser(object userobj)
         {
             JavaScriptSerializer js = new JavaScriptSerializer();
@@ -135,31 +151,35 @@ namespace DataService.Controllers
         }
  
         // PUT api/<controller>
-        //public HttpResponseMessage UpdateUser(int id, User user)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
-        //    }
+        [HttpPut()]
+        [Route("{id:int}")]
+        public HttpResponseMessage PutUser(int id, User user)
+        {
+            if (!ModelState.IsValid)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+            }
 
-        //    if (id != user.UserId)
-        //    {
-        //        return Request.CreateResponse(HttpStatusCode.BadRequest);
-        //    }
-        //    UserRepository.Attach(user);
-        //    try
-        //    {
-        //        unitOfWork.SaveChanges();
-        //    }
-        //    catch (DbUpdateConcurrencyException ex)
-        //    {
-        //        return Request.CreateErrorResponse(HttpStatusCode.NotFound, ex);
-        //    }
+            if (id != user.UserId)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+            UserRepository.Attach(user);
+            try
+            {
+                unitOfWork.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, ex);
+            }
 
-        //    return Request.CreateResponse(HttpStatusCode.OK);
-        //}
+            return Request.CreateResponse(HttpStatusCode.OK);
+        }
  
         // DELETE api/<controller>/5
+        [HttpDelete]
+        [Route("{id:int}")]
         public HttpResponseMessage DeleteUser(int id)
         {
             User user = UserRepository.Get(t => t.UserId == id);
