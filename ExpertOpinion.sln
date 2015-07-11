@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataService", "DataService\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{5698860C-8B87-498C-80BF-B2EEA157CCC2}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WebApplication1(2)", "http://localhost:49729", "{F940C3FF-328F-400A-A1D2-0AEBE55F32D3}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WebApplication1", "http://localhost:49729", "{F940C3FF-328F-400A-A1D2-0AEBE55F32D3}"
 	ProjectSection(WebsiteProperties) = preProject
 		UseIISExpress = "true"
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
