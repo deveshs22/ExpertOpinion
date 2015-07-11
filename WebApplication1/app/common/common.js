@@ -45,7 +45,7 @@
             textContains: textContains,
             getParameterByName: getParameterByName,
             getGUID:getGUID,
-            serviceBaseURL: 'http://localhost:1179/api/',
+            serviceBaseURL: 'http://66.219.98.58/api/',
             queryData: queryData
         };
 
@@ -169,7 +169,7 @@
         $scope.IsLoading = false;
         $scope.SendResetMail = function () {
             $scope.IsLoading = true;
-            $http.get('http://localhost:1119/api/userinfo/GetResetPasswordLink/' + $scope.email).success(function (result) {
+            $http.get('http://66.219.98.58/api/userinfo/GetResetPasswordLink/' + $scope.email).success(function (result) {
                 $scope.IsLoading = false;
                 if (result == 0) {
                     $scope.emailMessage = "Email Address is not correct.";

@@ -35,7 +35,7 @@
         }
 
         $scope.getUserNameFromUID = function () {
-            debugger;
+            //debugger;
             if (localStorage.getItem("uid") != undefined) {
 
                 userdatacontext.GetUserLoginbyUID(localStorage.getItem("uid")).success(function (result) {
@@ -43,7 +43,7 @@
                         $scope.UserName = result.Name.replace('"', '').replace('"', '');
                     $scope.userLoggedIn = true;
                     if (result.UserTypeId == 2) {
-                        debugger;
+              //          debugger;
                         $location.url('/expertdashboard');
                     }
                 }

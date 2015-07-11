@@ -31,11 +31,9 @@
                 </li>
 
                 <li>
-                    <div style="float:right;" ng-show="userLoggedIn">
-                        <span margin-right:-80px;>
+                    <div class="loginstatus" ng-show="userLoggedIn">
                             Welcome {{UserName}}
-                        </span>
-                    <br/>
+                        
                         <a href ng-click="SignOut()">Sign Out</a>
                     </div>
                 </li>

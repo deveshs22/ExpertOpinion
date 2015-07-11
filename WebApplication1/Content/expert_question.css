@@ -54,8 +54,10 @@ body {padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if us
 
 .bdrblue{border-bottom:5px solid #2368c4;}
 
-
-
+.loginstatus{position: relative;
+  display: block;
+  padding:15px;}
+.loginstatus a{margin-left:10px}
 
 .nav_largeview{float:right}
 .eo_menu, .eo_menu a, .eo_menu  .navbar-inverse .navbar-nav>li>a{color:#fff !important;}
