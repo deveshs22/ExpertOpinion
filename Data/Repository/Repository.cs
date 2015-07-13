@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Web;
 
 namespace DataService.Repository
@@ -33,6 +34,22 @@ namespace DataService.Repository
         public T Get(Func<T, bool> predicate)
         {
             return _objectSet.FirstOrDefault(predicate);
+        }
+
+        public IEnumerable<T> GetWithInclude(params Expression<Func<T, object>>[] includes)
+        {
+            IQueryable<T> query = _objectSet;
+            if (includes != null)
+            {
+                foreach (var include in includes)
+                    query = query.Include(include);
+            }
+            return query.AsEnumerable();
+        }
+
+        public T GetById(object id)
+        {
+            return _objectSet.Find(id);
         }
 
         public void Add(T entity)

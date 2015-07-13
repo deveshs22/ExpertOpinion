@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Net;
 using System.Net.Http;
 using System.Text;
@@ -40,7 +41,7 @@ namespace DataService.Controllers
         [Route("expert")]
         public IEnumerable<User> GetExperts()
         {
-            return UserRepository.GetAll(t => t.UserTypeId == Constants.UserTypeExpert);
+            return UserRepository.GetWithInclude(t => t.ExpertDetails).Where(u=>u.UserTypeId == Constants.UserTypeExpert);
         }
  
         // GET api/<controller>/5
