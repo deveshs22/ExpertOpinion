@@ -20,37 +20,34 @@
         return service;
 
         function CreateQuestion(queryData) {
-            return common.$http.post(common.serviceBaseURL + 'Question/PostQuestion', queryData);
+            return common.$http.post(common.serviceBaseURL + 'questions', queryData);
         }
 
         function GetQuestionsforExpert(expertId) {
-            return common.$http.get(common.serviceBaseURL + 'Question/GetQuestionsbyExpertId/'+ expertId);
+            return common.$http.get(common.serviceBaseURL + 'questions/byexpert/' + expertId);
         }
 
         function GetFollowupsforExpert(expertId) {
-            return common.$http.get(common.serviceBaseURL + 'FollowUp/GetFollowUpsbyExpertId/' + expertId);
+            return common.$http.get(common.serviceBaseURL + 'followups/byexpert/' + expertId);
         }
 
         function GetQuestionsforUser(userId) {
-            return common.$http.get(common.serviceBaseURL + 'Question/GetQuestionsbyUserId/' + userId);
+            return common.$http.get(common.serviceBaseURL + 'questions/byuser/' + userId);
         }
 
         function GetQuestion(qid)
         {
-            return common.$http.get(common.serviceBaseURL + 'Question/Get/' + qid);
+            return common.$http.get(common.serviceBaseURL + 'questions/' + qid);
         }
 
-        function GetQuestion(qid) {
-            return common.$http.get(common.serviceBaseURL + 'Question/Get/' + qid);
-        }
 
          function GetFollowUpForQuestion(qid) {
-             return common.$http.get(common.serviceBaseURL + 'FollowUp/GetFollowUpsbyQuestionId/' + qid);
+             return common.$http.get(common.serviceBaseURL + 'followups/byquestion/' + qid);
         }
 
         function UpdateQuestion(qid,question)
         {
-            return common.$http.put(common.serviceBaseURL + 'Question/UpdateQuestion/' + qid, question);
+            return common.$http.put(common.serviceBaseURL + 'questions/UpdateQuestion/' + qid, question);
         }
 
         function uploadFile(files) {

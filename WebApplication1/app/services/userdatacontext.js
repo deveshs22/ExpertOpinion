@@ -62,26 +62,25 @@
         }
 
         function GetSpecialities() {
-            return common.$http.get(usersApi + 'Speciality/');
+            return common.$http.get(common.serviceBaseURL + 'Speciality/');
         }
 
-        function GetCountryList()
-        {
-            return common.$http.get(usersApi + 'Country');
+        function GetCountryList() {
+            return common.$http.get(common.serviceBaseURL + 'countries');
         }
 
         function GetStateList(countryId) {
-            return common.$http.get(usersApi + 'State/GetStatesbyCountry/' + countryId);
+            return common.$http.get(common.serviceBaseURL + 'State/states/' + countryId);
         }
 
         function GetCityList(stateId) {
-            return common.$http.get(usersApi + 'City/GetCitiesbyState/' + stateId);
+            return common.$http.get(common.serviceBaseURL + 'cities/bystate/' + stateId);
         }
 
         function uploadFile(files, filename) {
             var fd = new FormData();
             fd.append("file", files[0]);
-            return common.$http.post(usersApi + 'upload/PostFormData?filename=' + filename, fd, {
+            return common.$http.post(common.serviceBaseURL + 'upload/PostFormData?filename=' + filename, fd, {
                 headers: { 'Content-Type': undefined },
                 transformRequest: angular.identity
             })
@@ -89,7 +88,7 @@
 
         function CreateExpertProfile(profileData)
         {
-            return common.$http.post(usersApi + 'ExpertDetail/PostExpertDetail', profileData);
+            return common.$http.post(common.serviceBaseURL + 'ExpertDetail/PostExpertDetail', profileData);
         }
 
 
