@@ -60,6 +60,7 @@ namespace DataService.Controllers
         
         // POST api/<controller>
         [HttpPost]
+        [Route("")]
         public HttpResponseMessage PostQuestion(object questionobj)
         {
             JavaScriptSerializer js = new JavaScriptSerializer();
@@ -72,7 +73,7 @@ namespace DataService.Controllers
                 QuestionRepository.Add(question);
                 unitOfWork.SaveChanges();
                 HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, question);
-                response.Headers.Location = new Uri(Url.Link("DefaultApi", new { id = question.QuestionId }));
+                response = new HttpResponseMessage(HttpStatusCode.OK);
                 return response;
             }
             else
@@ -110,6 +111,35 @@ namespace DataService.Controllers
 
             return Request.CreateResponse(HttpStatusCode.OK);
         }
+
+
+        //PUT api/<controller>
+        [HttpPut()]
+        [Route("assignexpert/{id:int}")]
+        public HttpResponseMessage AssignExperttoQuestion(int id, int expertid)
+        {
+            if (!ModelState.IsValid)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+            }
+
+            var question = QuestionRepository.Get(a => a.QuestionId == id);
+            question.ExpertId = expertid;
+
+            QuestionRepository.Attach(question);
+
+            try
+            {
+                unitOfWork.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, ex);
+            }
+
+            return Request.CreateResponse(HttpStatusCode.OK);
+        }
+
  
         // DELETE api/<controller>/5
         [HttpDelete]

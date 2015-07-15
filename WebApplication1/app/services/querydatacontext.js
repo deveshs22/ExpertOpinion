@@ -14,7 +14,8 @@
             GetFollowupsforExpert: GetFollowupsforExpert,
             GetFollowUpForQuestion:GetFollowUpForQuestion,
             GetQuestion: GetQuestion,
-            UpdateQuestion: UpdateQuestion
+            UpdateQuestion: UpdateQuestion,
+            AssignExpertToQuestion: AssignExpertToQuestion
         };
 
         return service;
@@ -48,6 +49,10 @@
         function UpdateQuestion(qid,question)
         {
             return common.$http.put(common.serviceBaseURL + 'questions/UpdateQuestion/' + qid, question);
+        }
+
+        function AssignExpertToQuestion(qid, expertId) {
+            return common.$http.put(common.serviceBaseURL + 'questions/assignexpert/' + qid, expertId);
         }
 
         function uploadFile(files) {

@@ -21,10 +21,11 @@
             GetCityList: GetCityList,
             uploadFile: uploadFile,
             GetSpecialities:GetSpecialities,
-            CreateExpertProfile: CreateExpertProfile
+            CreateExpertProfile: CreateExpertProfile,
+            GetExperts: GetExperts
         };
 
-        var usersApi = common.serviceBaseURL + '/users/';
+        var usersApi = common.serviceBaseURL + 'users/';
 
         return service;       
 
@@ -90,7 +91,6 @@
         {
             return common.$http.post(common.serviceBaseURL + 'ExpertDetail/PostExpertDetail', profileData);
         }
-
 
     }
 })();

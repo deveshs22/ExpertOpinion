@@ -1,4 +1,4 @@
-﻿<section id="payment-view" class="mainbar" data-ng-controller="query as vm">
+﻿<section id="payment-view" class="mainbar" data-ng-controller="payment as vm">
     <div class="pull-left w100p">
         <!-- Jumbotron Header -->
         <header class="jumbotron eo-header">
@@ -10,7 +10,7 @@
                         <div class="w100p fl frmbx">
                             <div class="frmbg">
                                 <div class="frmheader ff_myriad bold">Payment Details</div>
-                                <div class="frmcontent">
+                                <form class="frmcontent" ng-submit="SubmitPayment()">
                                     <div class="col-md-3">
                                         <label for="exampleInputEmail1">Select Expert</label>
                                     </div>
@@ -18,7 +18,9 @@
                                         <select class="form-control" data-ng-model="selectedExpert"
                                                 data-ng-options="s.Name for s in ExpertList"></select>
                                     </div>
-                                </div>
+                                    <br />
+                                    <button type="submit" class="btn btn-primary pull-right">Submit</button>
+                                </form>
                             </div>
                         </div>
 

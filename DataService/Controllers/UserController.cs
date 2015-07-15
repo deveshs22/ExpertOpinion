@@ -38,10 +38,15 @@ namespace DataService.Controllers
 
         // GET api/<controller>
         [HttpGet]
-        [Route("expert")]
-        public IEnumerable<User> GetExperts()
+        [Route("experts")]
+        public IEnumerable<object> GetExperts()
         {
-            return UserRepository.GetWithInclude(t => t.ExpertDetails).Where(u=>u.UserTypeId == Constants.UserTypeExpert);
+            return UserRepository.GetWithInclude(t => t.ExpertDetails).Where(u => u.UserTypeId == Constants.UserTypeExpert).Select(user => new
+            {
+                UserId = user.UserId,
+                Name = user.Name,
+                ExpertInfo = user.ExpertDetails
+            });
         }
  
         // GET api/<controller>/5
