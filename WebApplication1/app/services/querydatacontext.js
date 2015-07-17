@@ -51,8 +51,8 @@
             return common.$http.put(common.serviceBaseURL + 'questions/UpdateQuestion/' + qid, question);
         }
 
-        function AssignExpertToQuestion(qid, expertId) {
-            return common.$http.put(common.serviceBaseURL + 'questions/assignexpert/' + qid, expertId);
+        function AssignExpertToQuestion(qid, question) {
+            return common.$http.put(common.serviceBaseURL + 'questions/' + qid, question);
         }
 
         function uploadFile(files) {

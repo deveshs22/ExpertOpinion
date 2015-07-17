@@ -14,18 +14,20 @@
         vm.messageCount = 0;
         $scope.ExpertList = [];
         $scope.selectedExpert = {};
+        $scope.Question = {};
         vm.title = 'Payment';
+        var qid = common.getParameterByName("qid");
 
         $scope.SubmitPayment = function()
         {
-            debugger;
-            querydatacontext.AssignExpertToQuestion(8, 13);
+            $scope.Question.ExpertId = $scope.selectedExpert.UserId;
+            querydatacontext.AssignExpertToQuestion(qid, $scope.Question);
         }
 
         activate();
 
         function activate() {
-            var promises = [getExperts()];
+            var promises = [getExperts(),getQuestion()];
             common.activateController(promises, controllerId);
             //    .then(function () { log('Activated Dashboard View'); });
             //getExperts();
@@ -34,8 +36,14 @@
         function getExperts()
         {
             userdatacontext.GetExperts().success(function (result) {
-                debugger;
                 $scope.ExpertList = result;
+            });
+        }
+
+        function getQuestion()
+        {
+            querydatacontext.GetQuestion(qid).success(function (result) {
+                $scope.Question = result;
             });
         }
     }

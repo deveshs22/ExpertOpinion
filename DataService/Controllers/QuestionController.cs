@@ -73,7 +73,7 @@ namespace DataService.Controllers
                 QuestionRepository.Add(question);
                 unitOfWork.SaveChanges();
                 HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, question);
-                response = new HttpResponseMessage(HttpStatusCode.OK);
+                response.Content = new StringContent(question.QuestionId.ToString());
                 return response;
             }
             else

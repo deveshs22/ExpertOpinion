@@ -48,8 +48,9 @@
             queryData.UserId = localStorage.getItem("id");
             queryData.Description = common.queryData.question;
             querydatacontext.CreateQuestion(queryData).success(function (result) {
+                debugger;
                 $scope.IsLoading = false;
-                $location.url('/payment');
+                $location.url('/payment?qid='+result);
             });
         }
 
