@@ -31,11 +31,22 @@
                 </li>
 
                 <li>
-                    <div class="loginstatus" ng-show="userLoggedIn">
+                    <div class="btn-group" ng-show="userLoggedIn" style="margin-top:5px;" >
+                        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#" style="background-color: #4888de;">
                             Welcome {{UserName}}
-                        
-                        <a href ng-click="SignOut()">Sign Out</a>
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" style="background-color: #4888de;">
+                            <li class="alert-link" style="background-color: #4888de;">
+                                <a ng-href="{{UserTypeId==1 ? '#/userdashboard' : '#/expertdashboard'}}" style="background-color: #4888de;">
+                                    View Dashboard
+                                </a>
+                            </li>
+                        </ul>
                     </div>
+                </li>
+                <li>
+                    <a href ng-click="SignOut()">Sign Out</a>
                 </li>
             </ul>
             

@@ -42,6 +42,7 @@
                     if (result != "" && result != "null" && result != null && result != undefined)
                         $scope.UserName = result.Name.replace('"', '').replace('"', '');
                     $scope.userLoggedIn = true;
+                    $scope.UserTypeId = result.UserTypeId;
                     if (result.UserTypeId == 2) {
               //          debugger;
                         $location.url('/expertdashboard');

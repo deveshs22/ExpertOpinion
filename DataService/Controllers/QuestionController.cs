@@ -47,7 +47,7 @@ namespace DataService.Controllers
         [Route("byexpert/{id:int}")]
         public IEnumerable<Question> GetQuestionsbyExpertId(int id)
         {
-            return QuestionRepository.GetAll(t => t.ExpertId == id && t.Active==true);
+            return QuestionRepository.GetAll(t => t.ExpertId == id && t.Active == true && t.ExpertReply == null);
         }
 
         // GET api/<controller>/5

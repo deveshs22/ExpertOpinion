@@ -2,9 +2,12 @@
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-
+using System.Linq;
 using Data.Models;
 using DataService.Repository;
+using System.Web.Script.Serialization;
+using System;
+using System.Data.Entity.Infrastructure;
 
 namespace DataService.Controllers
 {
@@ -53,56 +56,63 @@ namespace DataService.Controllers
             return FollowUpRepository.GetAll(t => t.QuestionId == id);
         }
 
-        
         // POST api/<controller>
         [HttpPost]
+        [Route("")]
         public HttpResponseMessage PostFollowUp(object FollowUpobj)
         {
-            //JavaScriptSerializer js = new JavaScriptSerializer();
-            //var json = FollowUpobj;
-            //FollowUp FollowUp = js.Deserialize<FollowUp>(json.ToString());
-            //FollowUp.Active = true;
-            //FollowUp.CreatedOn = DateTime.Now;
-            //if (ModelState.IsValid)
-            //{
-            //    FollowUpRepository.Add(FollowUp);
-            //    unitOfWork.SaveChanges();
-            //    HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, FollowUp);
-            //    response.Headers.Location = new Uri(Url.Link("DefaultApi", new { id = FollowUp.FollowUpId }));
-            //    return response;
-            //}
-            //else
-            //{
-            //    var errors = ModelState.Values.SelectMany(v => v.Errors);
-            //    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
-            //}
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            var json = FollowUpobj;
+            FollowUp FollowUp = js.Deserialize<FollowUp>(json.ToString());
+            FollowUp.Active = true;
+            FollowUp.CreatedOn = DateTime.Now;
+            FollowUp.LastModifiedOn = DateTime.Now;
+            if (ModelState.IsValid)
+            {
+                FollowUpRepository.Add(FollowUp);
+                unitOfWork.SaveChanges();
+                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, FollowUp);
+                return response;
+            }
+            else
+            {
+                var errors = ModelState.Values.SelectMany(v => v.Errors);
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+            }
             return Request.CreateResponse(HttpStatusCode.OK, "");
         }
 
-        // PUT api/<controller>
-        //public HttpResponseMessage UpdateUser(int id, User user)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
-        //    }
+        //PUT api/<controller>
+        [HttpPut()]
+        [Route("{id:int}")]
+        public HttpResponseMessage UpdateFollowUp(int id, FollowUp followup)
+        {
+            if (!ModelState.IsValid)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+            }
 
-        //    if (id != user.UserId)
-        //    {
-        //        return Request.CreateResponse(HttpStatusCode.BadRequest);
-        //    }
-        //    UserRepository.Attach(user);
-        //    try
-        //    {
-        //        unitOfWork.SaveChanges();
-        //    }
-        //    catch (DbUpdateConcurrencyException ex)
-        //    {
-        //        return Request.CreateErrorResponse(HttpStatusCode.NotFound, ex);
-        //    }
+            if (id != followup.FollowUpId)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
 
-        //    return Request.CreateResponse(HttpStatusCode.OK);
-        //}
+            followup.LastModifiedOn = DateTime.Now;
+            followup.RepliedOn = DateTime.Now;
+            FollowUpRepository.Attach(followup);
+
+            try
+            {
+                unitOfWork.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, ex);
+            }
+
+            return Request.CreateResponse(HttpStatusCode.OK);
+        }
+
  
         // DELETE api/<controller>/5
         [HttpDelete]

@@ -14,7 +14,9 @@
             GetFollowupsforExpert: GetFollowupsforExpert,
             GetFollowUpForQuestion:GetFollowUpForQuestion,
             GetQuestion: GetQuestion,
-            UpdateQuestion: UpdateQuestion
+            UpdateQuestion: UpdateQuestion,
+            CreateFollowup: CreateFollowup,
+            UpdateFollowup: UpdateFollowup
         };
 
         return service;
@@ -22,6 +24,11 @@
         function CreateQuestion(queryData) {
             return common.$http.post(common.serviceBaseURL + 'questions', queryData);
         }
+
+        function CreateFollowup(followupData) {
+            return common.$http.post(common.serviceBaseURL + 'followups', followupData);
+        }
+
 
         function GetQuestionsforExpert(expertId) {
             return common.$http.get(common.serviceBaseURL + 'questions/byexpert/' + expertId);
@@ -48,6 +55,10 @@
         function UpdateQuestion(qid,question)
         {
             return common.$http.put(common.serviceBaseURL + 'questions/' + qid, question);
+        }
+
+        function UpdateFollowup(fid, followup) {
+            return common.$http.put(common.serviceBaseURL + 'followups/' + fid, followup);
         }
 
         function uploadFile(files) {

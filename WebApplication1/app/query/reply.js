@@ -46,6 +46,41 @@
             });
         }
 
+        $scope.FollowUpQuestion = '';
+
+        $scope.SubmitFollowuptoReply= function()
+        {
+            var followup = {};
+            followup.FollowUpQuestion = $scope.FollowUpQuestion;
+            followup.QuestionId = userfid;
+            followup.FolllowUpIndex = $scope.FollowUps.length;
+            followup.UserId = $scope.question.UserId;
+            followup.ExpertId = $scope.question.ExpertId;
+            followup.LastModifiedBy = $scope.question.UserId;
+            querydatacontext.CreateFollowup(followup).success(function (result) {
+                $scope.FollowUpQuestion = '';
+                querydatacontext.GetFollowUpForQuestion(userfid).success(function (result) {
+                    $scope.FollowUps = result;
+                });
+            });
+        }
+
+        $scope.ExpertFollowupReply='';
+        $scope.SubmitReplytoFollowup= function()
+        {
+            var fupid = common.getParameterByName("fupid");
+            var followup= $scope.FollowUps.filter(function (r) {
+                return r.FollowUpId = fupid;
+            })[0];
+            
+            followup.ExpertReply = $scope.ExpertFollowupReply;
+            querydatacontext.UpdateFollowup(fupid,followup).success(function (result) {
+                $scope.ExpertFollowupReply = '';
+                $scope.FollowUps = result;
+                $location.url('/expertdashboard');
+            });
+        }
+
         $scope.getUserName= function(id)
         {
             userdatacontext.GetUserNamebyID(id).success(function (result) {
@@ -76,7 +111,7 @@
         $scope.SubmitReply = function ()
         {
             querydatacontext.UpdateQuestion(qid,$scope.question).success(function (result) {
-                debugger;
+                $location.url('/expertdashboard');
             });
         }
 
