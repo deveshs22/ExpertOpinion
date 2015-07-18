@@ -16,6 +16,15 @@
         activate();
         $scope.question = {};
         $scope.FollowUps = [];
+        $scope.showingAdditional = false;
+
+        $scope.ShowHideAdditional=function()
+        {
+            if ($scope.showingAdditional)
+                $scope.showingAdditional = false;
+            else
+                $scope.showingAdditional = true;
+        }
 
         $scope.IsreplyingtoQuestion = false;
         $scope.IsreplyingtoFollowup = false;

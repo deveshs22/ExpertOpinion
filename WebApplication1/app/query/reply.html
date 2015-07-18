@@ -14,27 +14,34 @@
                                         <div class="col-md-4">
                                             By:{{PatientName}}
                                         </div>
-                                        <div class="col-md-5">
-                                            Gender:{{PatientName}}
+                                        <div class="col-md-2">
+                                            Gender:{{question.PatientGender}}
                                         </div>
                                         <div class="col-md-3">
-                                            <div class="btn-group">
+                                            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#" ng-click="ShowHideAdditional()">
+                                                <span ng-hide="showingAdditional">Show Additional Details</span>
+                                                <span ng-show="showingAdditional">Hide Additional Details</span>
+                                            </a>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label ng-hide="question.Attach1!=undefined && question.Attach1!=''">No Reports Attached</label>
+                                            <div class="btn-group" ng-show="question.Attach1!=undefined && question.Attach1!=''">
                                                 <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-                                                    View Additional Details:
+                                                    View Reports:
                                                     <span class="caret"></span>
                                                 </a>
                                                 <ul class="dropdown-menu">
-                                                    <li>
+                                                    <li ng-show="question.Attach1!=undefined && question.Attach1!=''">
                                                         <a target="_blank" ng-href='http://localhost:1179/Attachments/{{question.Attach1}}'>
                                                             Report 1
                                                         </a>
                                                     </li>
-                                                    <li>
+                                                    <li ng-show="question.Attach2!=undefined && question.Attach2!=''">
                                                         <a target="_blank" ng-href='http://localhost:1179/Attachments/{{question.Attach2}}'>
                                                             Report 2
                                                         </a>
                                                     </li>
-                                                    <li>
+                                                    <li ng-show="question.Attach3!=undefined && question.Attach3!=''">
                                                         <a target="_blank" ng-href='http://localhost:1179/Attachments/{{question.Attach3}}'>
                                                             Report 3
                                                         </a>
@@ -48,6 +55,23 @@
                                         <div class="col-md-3">
                                             Date:{{question.CreatedOn| date:'dd-MM-yyyy'}}
                                         </div>
+                                    </div>
+                                </div>
+                                <br/>
+                                <div ng-show="showingAdditional" class="alert-warning">
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <label> Visited Doctor </label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <label>{{question.VisitedDoctor?'Yes':'No'}}</label>
+                                        </div>
+                                    </div>
+                                    <div class="rows">
+                                        Remarks:
+                                    </div>
+                                    <div class="rows">
+                                        <div>{{question.Remarks}}</div>
                                     </div>
                                 </div>
                                 <form class="frmcontent" ng-submit="SubmitReply()" ng-show="IsreplyingtoQuestion">

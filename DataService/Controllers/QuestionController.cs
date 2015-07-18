@@ -112,34 +112,6 @@ namespace DataService.Controllers
             return Request.CreateResponse(HttpStatusCode.OK);
         }
 
-
-        //PUT api/<controller>
-        [HttpPut()]
-        [Route("assignexpert/{id:int}")]
-        public HttpResponseMessage AssignExperttoQuestion(int id, int expertid)
-        {
-            if (!ModelState.IsValid)
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
-            }
-
-            var question = QuestionRepository.Get(a => a.QuestionId == id);
-            question.ExpertId = expertid;
-
-            QuestionRepository.Attach(question);
-
-            try
-            {
-                unitOfWork.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException ex)
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.NotFound, ex);
-            }
-
-            return Request.CreateResponse(HttpStatusCode.OK);
-        }
-
  
         // DELETE api/<controller>/5
         [HttpDelete]

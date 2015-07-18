@@ -19,7 +19,9 @@
                                                 data-ng-options="s.Name for s in ExpertList"></select>
                                     </div>
                                     <br />
-                                    <button type="submit" class="btn btn-primary pull-right">Submit</button>
+                                    <button type="submit" class="btn btn-primary pull-right" ng-hide="expertSubmitted">Submit</button>
+                                    <br/>
+                                    <label ng-show="expertSubmitted">Expert has been assigned to this question</label>
                                 </form>
                             </div>
                         </div>

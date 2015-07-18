@@ -17,11 +17,13 @@
         $scope.Question = {};
         vm.title = 'Payment';
         var qid = common.getParameterByName("qid");
-
+        $scope.expertSubmitted = false;
         $scope.SubmitPayment = function()
         {
             $scope.Question.ExpertId = $scope.selectedExpert.UserId;
-            querydatacontext.AssignExpertToQuestion(qid, $scope.Question);
+            querydatacontext.UpdateQuestion(qid, $scope.Question).success(function (result) {
+                $scope.expertSubmitted = true;
+            });
         }
 
         activate();
@@ -30,7 +32,6 @@
             var promises = [getExperts(),getQuestion()];
             common.activateController(promises, controllerId);
             //    .then(function () { log('Activated Dashboard View'); });
-            //getExperts();
         }
 
         function getExperts()
