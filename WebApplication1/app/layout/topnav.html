@@ -8,11 +8,11 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#" >Expert Opinion</a>
-            
+            <a class="navbar-brand" href="#">Expert Opinion</a>
+
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        
             <ul class="nav navbar-nav nav_largeview">
                 <li>
                     <a ng-href="{{'#/expert'}}">Experts </a>
@@ -27,45 +27,42 @@
                     <a ng-href="{{'#/contactus'}}"> Contact Us</a>
                 </li>
                 <li ng-hide="userLoggedIn">
-                    
-                        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#" style="background-color: #4888de;">
-                            Login
-                            <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu" style="background-color: #4888de;">
-                            <li>
-                                <a href ng-click="openSignIn(1)"> Patient</a>
-                            </li>
-                            <li>
-                                <a href ng-click="openSignIn(2)"> Expert </a>
-                            </li>
-                        </ul>
-                    
 
-                    
+                    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#" style="background-color: #4888de;">
+                        Login
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" style="background-color: #4888de;">
+                        <li>
+                            <a href ng-click="openSignIn(1)"> Patient</a>
+                        </li>
+                        <li>
+                            <a href ng-click="openSignIn(2)"> Expert </a>
+                        </li>
+                    </ul>
                 </li>
 
-                <li>
-                    <div class="btn-group" ng-show="userLoggedIn" style="margin-top:5px;" >
-                        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#" style="background-color: #4888de;">
-                            Welcome {{UserName}}
-                            <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu" style="background-color: #4888de;">
-                            <li class="alert-link" style="background-color: #4888de;">
-                                <a ng-href="{{UserTypeId==2 ? '#/expertdashboard' : '#/userdashboard'}}" style="background-color: #4888de;">
-                                    View Dashboard
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li>
-                    <a href ng-click="SignOut()">Sign Out</a>
-                </li>
-            </ul>
-            
-        </div>
+                <li ng-show="userLoggedIn">
+                    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#" style="background-color: #4888de;">
+                        Welcome {{UserName}}
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" style="background-color: #4888de;">
+                        <li >
+                            <a ng-href="{{UserTypeId==2 ? '#/expertdashboard' : '#/userdashboard'}}" style="background-color: #4888de;">
+                                View Dashboard
+                            </a>
+                        </li>
+                        <li>
+                            <a href ng-click="SignOut()">Sign Out</a>
+                        </li>
+                    </ul>
+        
+        </li>
+        
+        </ul>
+
+
         <!-- /.navbar-collapse -->
     </div>
     <!-- /.container -->
