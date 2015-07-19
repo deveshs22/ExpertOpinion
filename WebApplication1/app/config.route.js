@@ -5,7 +5,7 @@
 
     // Collect the routes
     app.constant('routes', getRoutes());
-    
+
     // Configure the routes and route resolvers
     app.config(['$routeProvider', 'routes', routeConfigurator]);
     function routeConfigurator($routeProvider, routes) {
@@ -110,6 +110,54 @@
                     settings: {
                         nav: 2,
                         content: '<i class="fa fa-lock"></i> Admin'
+                    }
+                }
+            }
+            ,
+            {
+                url: '/expert',
+                config: {
+                    title: 'expert',
+                    templateUrl: 'app/expert/expert.html',
+                    settings: {
+                        nav: 2,
+                        content: '<i class="fa fa-lock"></i> Expert'
+                    }
+                }
+            }
+             ,
+            {
+                url: '/hospital',
+                config: {
+                    title: 'hospital',
+                    templateUrl: 'app/static/hospital.html',
+                    settings: {
+                        nav: 2,
+                        content: '<i class="fa fa-lock"></i> Hospital'
+                    }
+                }
+            }
+             ,
+            {
+                url: '/aboutus',
+                config: {
+                    title: 'aboutus',
+                    templateUrl: 'app/static/aboutus.html',
+                    settings: {
+                        nav: 2,
+                        content: '<i class="fa fa-lock"></i> About Us'
+                    }
+                }
+            }
+             ,
+            {
+                url: '/contactus',
+                config: {
+                    title: 'contactus',
+                    templateUrl: 'app/static/contactus.html',
+                    settings: {
+                        nav: 2,
+                        content: '<i class="fa fa-lock"></i> Contact Us'
                     }
                 }
             }

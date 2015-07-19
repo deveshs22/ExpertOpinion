@@ -9,25 +9,40 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="#" >Expert Opinion</a>
-            <a class="pull-right" href ng-click="openSignIn(2)" ng-hide="userLoggedIn">Login As Expert</a>
+            
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav nav_largeview">
                 <li>
-                    <a href="#">Experts </a>
+                    <a ng-href="{{'#/expert'}}">Experts </a>
                 </li>
                 <li>
-                    <a href="#">      Hospitals </a>
+                    <a ng-href="{{'#/hospital'}}">Hospitals</a>
                 </li>
                 <li>
-                    <a href="#">      About   </a>
+                    <a ng-href="{{'#/aboutus'}}"> About </a>
                 </li>
                 <li>
-                    <a href="#">    Contact Us</a>
+                    <a ng-href="{{'#/contactus'}}"> Contact Us</a>
                 </li>
                 <li ng-hide="userLoggedIn">
-                    <a href ng-click="openSignIn(1)">    Login <span class="caret"></span></a>
+                    
+                        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#" style="background-color: #4888de;">
+                            Login
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" style="background-color: #4888de;">
+                            <li>
+                                <a href ng-click="openSignIn(1)"> Patient</a>
+                            </li>
+                            <li>
+                                <a href ng-click="openSignIn(2)"> Expert </a>
+                            </li>
+                        </ul>
+                    
+
+                    
                 </li>
 
                 <li>
@@ -38,7 +53,7 @@
                         </a>
                         <ul class="dropdown-menu" style="background-color: #4888de;">
                             <li class="alert-link" style="background-color: #4888de;">
-                                <a ng-href="{{UserTypeId==1 ? '#/userdashboard' : '#/expertdashboard'}}" style="background-color: #4888de;">
+                                <a ng-href="{{UserTypeId==2 ? '#/expertdashboard' : '#/userdashboard'}}" style="background-color: #4888de;">
                                     View Dashboard
                                 </a>
                             </li>
