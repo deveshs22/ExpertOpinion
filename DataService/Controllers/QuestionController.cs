@@ -52,6 +52,14 @@ namespace DataService.Controllers
 
         // GET api/<controller>/5
         [HttpGet]
+        [Route("historybyexpert/{id:int}")]
+        public IEnumerable<Question> GetQuestionsHistorybyExpertId(int id)
+        {
+            return QuestionRepository.GetAll(t => t.ExpertId == id);
+        }
+
+        // GET api/<controller>/5
+        [HttpGet]
         [Route("byuser/{id:int}")]
         public IEnumerable<Question> GetQuestionsbyUserId(int id)
         {

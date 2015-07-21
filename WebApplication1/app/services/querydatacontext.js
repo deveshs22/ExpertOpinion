@@ -16,7 +16,8 @@
             GetQuestion: GetQuestion,
             UpdateQuestion: UpdateQuestion,
             CreateFollowup: CreateFollowup,
-            UpdateFollowup: UpdateFollowup
+            UpdateFollowup: UpdateFollowup,
+            GetQuestionsHistoryforExpert: GetQuestionsHistoryforExpert
         };
 
         return service;
@@ -32,6 +33,10 @@
 
         function GetQuestionsforExpert(expertId) {
             return common.$http.get(common.serviceBaseURL + 'questions/byexpert/' + expertId);
+        }
+
+        function GetQuestionsHistoryforExpert(expertId) {
+            return common.$http.get(common.serviceBaseURL + 'questions/historybyexpert/' + expertId);
         }
 
         function GetFollowupsforExpert(expertId) {
