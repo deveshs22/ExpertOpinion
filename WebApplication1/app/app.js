@@ -1,6 +1,13 @@
 ﻿(function () {
     'use strict';
     
+    var roles = {
+        User: 1,
+        Expert: 2
+    };
+
+    var routeForUnauthorizedAccess = '/dashboard';
+
     var app = angular.module('app', [
         // Angular modules 
         'ngAnimate',        // animations
