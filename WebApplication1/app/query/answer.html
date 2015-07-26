@@ -74,53 +74,10 @@
                                         <div>{{question.Remarks}}</div>
                                     </div>
                                 </div>
-                                <form class="frmcontent" ng-submit="SubmitReply()" ng-show="IsreplyingtoQuestion">
-                                    <div class="row">
-                                        <textarea rows="5" class="col-md-12" ng-model="question.ExpertReply" required />
-                                    </div>
-                                    <br />
-                                    <div class="row">
-                                        <div class="col-md-2 pull-right">
-                                            <input type="submit" class="btn btn-primary pull-right" value="Submit Answer" />
-                                        </div>
-                                    </div>
-                                </form>
-                                <form class="frmcontent" ng-submit="SubmitReplytoFollowup()" ng-show="IsreplyingtoFollowup">
-                                    <div class="row">
-                                        <textarea rows="5" class="col-md-12" ng-model="ExpertFollowupReply" required />
-                                    </div>
-                                    <br />
-                                    <div class="row">
-                                        <div class="col-md-2 pull-right">
-                                            <input type="submit" class="btn btn-primary pull-right" value="Submit Followup Answer" />
-                                        </div>
-                                    </div>
-                                    <br/>
+                                <form class="frmcontent">
                                     <div class="row" ng-repeat="followup in FollowUps | orderBy:'LastModifiedOn':true">
                                         <p class="alert-success">{{followup.ExpertReply}} {{followup.RepliedOn | date:'dd-MM-yyyy'}}</p>
                                         <p class="alert-danger">{{followup.FollowUpQuestion}} {{followup.CreatedOn | date:'dd-MM-yyyy'}}</p>
-                                    </div>
-                                </form>
-
-                                <form class="frmcontent" ng-submit="SubmitFollowuptoReply()" ng-show="IsFollowuptoreply">
-                                    <div class="row">
-                                        <textarea rows="5" class="col-md-12" ng-model="FollowUpQuestion" required />
-                                    </div>
-                                    <br />
-                                    <div class="row">
-                                        <div class="col-md-2 pull-right">
-                                            <input type="submit" class="btn btn-primary pull-right" value="Submit Followup" />
-                                        </div>
-                                    </div>
-                                    <br />
-                                    <div class="row" ng-repeat="followup in FollowUps | orderBy:'FollowUpIndex'">
-                                        <p class="alert-success">{{followup.ExpertReply}} {{followup.RepliedOn | date:'dd-MM-yyyy'}}</p>
-                                        <p class="alert-danger">{{followup.FollowUpQuestion}} {{followup.CreatedOn | date:'dd-MM-yyyy'}}</p>
-                                    </div>
-                                    <div class="row">
-                                        <p class="alert-info">
-                                            {{question.ExpertReply}}
-                                        </p>
                                     </div>
                                 </form>
                                 </div>

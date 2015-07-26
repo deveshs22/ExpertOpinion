@@ -32,5 +32,6 @@ namespace Data.Models
         public State State { get; set; }
         public State State1 { get; set; }
         public User User { get; set; }
+        public virtual Speciality Speciality { get; set; }
     }
 }

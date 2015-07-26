@@ -272,8 +272,9 @@ var SignUpModalInstanceCtrl = function ($scope, $modal, $modalInstance, userdata
             userInfoData.isActive = false;
             $scope.IsLoading = true;
             userdatacontext.CreateUser(userInfoData).success(function (result) {
+                debugger;
                 $scope.IsLoading = false;
-                if (result.UserId == undefined) {
+                if (result == "null") {
                     $scope.emailExists = true;
                     return;
                 }

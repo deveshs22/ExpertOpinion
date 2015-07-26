@@ -116,6 +116,7 @@ namespace DataService.Controllers
  
         // POST api/<controller>
         [HttpPost]
+        [Route("")]
         public HttpResponseMessage PostUser(object userobj)
         {
             JavaScriptSerializer js = new JavaScriptSerializer();
@@ -135,7 +136,7 @@ namespace DataService.Controllers
                 UserRepository.Add(user);
                 unitOfWork.SaveChanges();
                 HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, user);
-                response.Headers.Location = new Uri(Url.Link("DefaultApi", new { id = user.UserId }));
+                response.Content = new StringContent(user.UserId.ToString());
 
                 StringBuilder sb = new StringBuilder();
                 sb.Append("<html><body>");

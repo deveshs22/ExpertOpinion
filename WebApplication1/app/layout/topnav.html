@@ -12,60 +12,57 @@
 
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
-        
-            <ul class="nav navbar-nav nav_largeview">
-                <li>
-                    <a ng-href="{{'#/expert'}}">Experts </a>
-                </li>
-                <li>
-                    <a ng-href="{{'#/hospital'}}">Hospitals</a>
-                </li>
-                <li>
-                    <a ng-href="{{'#/aboutus'}}"> About </a>
-                </li>
-                <li>
-                    <a ng-href="{{'#/contactus'}}"> Contact Us</a>
-                </li>
-                <li ng-hide="userLoggedIn">
 
-                    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#" style="background-color: #4888de;">
-                        Login
-                        <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu" style="background-color: #4888de;">
-                        <li>
-                            <a href ng-click="openSignIn(1)"> Patient</a>
-                        </li>
-                        <li>
-                            <a href ng-click="openSignIn(2)"> Expert </a>
-                        </li>
-                    </ul>
-                </li>
+        <ul class="nav navbar-nav nav_largeview">
+            <li>
+                <a ng-href="{{'#/expert'}}">Experts </a>
+            </li>
+            <li>
+                <a ng-href="{{'#/hospital'}}">Hospitals</a>
+            </li>
+            <li>
+                <a ng-href="{{'#/aboutus'}}"> About </a>
+            </li>
+            <li>
+                <a ng-href="{{'#/contactus'}}"> Contact Us</a>
+            </li>
+            <li ng-hide="userLoggedIn">
 
-                <li ng-show="userLoggedIn">
-                        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#" style="background-color: #4888de;">
-                            Welcome {{UserName}}
-                            <span class="caret"></span>
+                <a class="btn dropdown-toggle" data-toggle="dropdown" href="#" style="background-color: #4888de;">
+                    Login
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" style="background-color: #4888de;">
+                    <li>
+                        <a href ng-click="openSignIn(1)"> Patient</a>
+                    </li>
+                    <li>
+                        <a href ng-click="openSignIn(2)"> Expert </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li ng-show="userLoggedIn">
+                <a class="btn dropdown-toggle" data-toggle="dropdown" href="#" style="background-color: #4888de;">
+                    Welcome {{UserName}}
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" style="background-color: #4888de;">
+                    <li>
+                        <a ng-href="{{UserTypeId==2 ? '#/expertdashboard' : '#/userdashboard'}}" style="background-color: #4888de;">
+                            View Dashboard
                         </a>
-                        <ul class="dropdown-menu" style="background-color: #4888de;">
-                        <li >
-                            <a ng-href="{{UserTypeId==2 ? '#/expertdashboard' : '#/userdashboard'}}" style="background-color: #4888de;">
-                                    View Dashboard
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+                    </li>
+                </ul>
+                
+            </li>
+            <li ng-show="userLoggedIn">
+                <a href ng-click="SignOut()">Sign Out</a>
                 </li>
-                <li ng-show="userLoggedIn">
-                    <a href ng-click="SignOut()">Sign Out</a>
-                </li>
-                    </ul>
+</ul>
+    </div>
+                
         
-        </li>
-        
-            </ul>
-            
-
         <!-- /.navbar-collapse -->
     </div>
     <!-- /.container -->
