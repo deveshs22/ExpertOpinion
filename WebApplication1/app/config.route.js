@@ -41,7 +41,17 @@
                                 }
                             }
                         },
-                        ,
+                        {
+                            url: '/questions',
+                            config: {
+                                templateUrl: 'app/dashboard/questions.html',
+                                title: 'Payment',
+                                settings: {
+                                    nav: 1,
+                                    content: '<i class="fa fa-dashboard"></i> Dashboard'
+                                }
+                            }
+                        },
                         {
                             url: '/payment',
                             config: {
