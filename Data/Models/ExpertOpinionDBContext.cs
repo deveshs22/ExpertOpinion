@@ -20,6 +20,9 @@ namespace Data.Models
         public DbSet<Country> Countries { get; set; }
         public DbSet<ExpertDetail> ExpertDetails { get; set; }
         public DbSet<FollowUp> FollowUps { get; set; }
+        public DbSet<Hospital> Hospitals { get; set; }
+        public DbSet<HospitalSpeciality> HospitalSpecialities { get; set; }
+        public DbSet<HospitalSpecialityDetail> HospitalSpecialityDetails { get; set; }
         public DbSet<Payment> Payments { get; set; }
         public DbSet<Question> Questions { get; set; }
         public DbSet<Speciality> Specialities { get; set; }
@@ -33,6 +36,9 @@ namespace Data.Models
             modelBuilder.Configurations.Add(new CountryMap());
             modelBuilder.Configurations.Add(new ExpertDetailMap());
             modelBuilder.Configurations.Add(new FollowUpMap());
+            modelBuilder.Configurations.Add(new HospitalMap());
+            modelBuilder.Configurations.Add(new HospitalSpecialityMap());
+            modelBuilder.Configurations.Add(new HospitalSpecialityDetailMap());
             modelBuilder.Configurations.Add(new PaymentMap());
             modelBuilder.Configurations.Add(new QuestionMap());
             modelBuilder.Configurations.Add(new SpecialityMap());

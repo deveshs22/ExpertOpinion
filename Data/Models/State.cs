@@ -17,5 +17,6 @@ namespace Data.Models
         public Country Country { get; set; }
         public ICollection<ExpertDetail> ExpertDetails { get; set; }
         public ICollection<ExpertDetail> ExpertDetails1 { get; set; }
+        public ICollection<Hospital> Hospitals { get; set; }
     }
 }

@@ -26,6 +26,8 @@ namespace Data.Models
         public string Certificate1 { get; set; }
         public string Certificate2 { get; set; }
         public string Certificate3 { get; set; }
+        public string Qualification { get; set; }
+        public string Description { get; set; }
         public City City { get; set; }
         public Country Country { get; set; }
         public Country Country1 { get; set; }

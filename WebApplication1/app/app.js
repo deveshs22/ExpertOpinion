@@ -21,6 +21,35 @@
         // 3rd Party Modules
         'ui.bootstrap'      // ui-bootstrap (ex: carousel, pagination, dialog)
     ]);
+
+    jQuery.browser = {};
+    (function () {
+        jQuery.browser.msie = false;
+        jQuery.browser.version = 0;
+        if (navigator.userAgent.match(/MSIE ([0-9]+)\./)) {
+            jQuery.browser.msie = true;
+            jQuery.browser.version = RegExp.$1;
+        }
+    })();
+
+    app.directive('chosen', function () {
+        var linker = function (scope, element, attrs) {
+            var list = attrs['chosen'];
+
+            scope.$watch(list, function () {
+                element.trigger('liszt:updated');
+                element.trigger("chosen:updated");
+            });
+
+            element.chosen();
+        };
+
+        return {
+            restrict: 'A',
+            link: linker
+        }
+    })
+
     
     // Handle routing errors and success events
     app.run(['$route',  function ($route) {

@@ -53,10 +53,16 @@
     <Compile Include="Models\ExpertDetail.cs" />
     <Compile Include="Models\ExpertOpinionDBContext.cs" />
     <Compile Include="Models\FollowUp.cs" />
+    <Compile Include="Models\Hospital.cs" />
+    <Compile Include="Models\HospitalSpeciality.cs" />
+    <Compile Include="Models\HospitalSpecialityDetail.cs" />
     <Compile Include="Models\Mapping\CityMap.cs" />
     <Compile Include="Models\Mapping\CountryMap.cs" />
     <Compile Include="Models\Mapping\ExpertDetailMap.cs" />
     <Compile Include="Models\Mapping\FollowUpMap.cs" />
+    <Compile Include="Models\Mapping\HospitalMap.cs" />
+    <Compile Include="Models\Mapping\HospitalSpecialityDetailMap.cs" />
+    <Compile Include="Models\Mapping\HospitalSpecialityMap.cs" />
     <Compile Include="Models\Mapping\PaymentMap.cs" />
     <Compile Include="Models\Mapping\QuestionMap.cs" />
     <Compile Include="Models\Mapping\SpecialityMap.cs" />

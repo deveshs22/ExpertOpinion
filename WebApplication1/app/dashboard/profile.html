@@ -126,83 +126,100 @@
                                     </form>
                                     <form ng-show="IsStep2" ng-submit="saveProfile()">
                                         <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-md-3">
-                                                        <label for="exampleInputEmail1">Speciality</label>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <select class="form-control" ng-model="selectedSpeciality" required data-ng-options="s.Speciality1 for s in Specialities">
-                                                        </select>
-                                                    </div>
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label for="exampleInputEmail1">Qualification</label>
                                                 </div>
-                                                <br />
-                                                <div class="row">
-                                                    <div class="col-md-3">
-                                                        <label for="exampleInputEmail1">State License Number / NPI</label>
-                                                    </div>
-                                                    <div class="col-md-5">
-                                                        <input type="text" required class="form-control" ng-model="licenceno" />
-                                                    </div>
+                                                <div class="col-md-5">
+                                                    <input type="text" required class="form-control" ng-model="qualification" />
                                                 </div>
-                                                <br />
-                                                <div class="row">
-                                                    <div class="col-md-3">
-                                                        <label for="exampleInputEmail1">Issuer Name</label>
-                                                    </div>
-                                                    <div class="col-md-5">
-                                                        <input type="text" required class="form-control" ng-model="issuerName" />
-                                                    </div>
+                                            </div>
+                                            <br />
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label for="exampleInputEmail1">Speciality</label>
                                                 </div>
-                                                <br />
-                                                <div class="row">
-                                                    <div class="col-md-3">
-                                                        <label for="exampleInputEmail1">Issuer Country</label>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <select class="form-control" data-ng-model="selectedIssuerCountry" ng-change="IssuerCountryChanged()"
-                                                                data-ng-options="s.CountryName for s in CountryList"
-                                                                data-ng-values="s.CountryId for s in CountryList"></select>
-                                                    </div>
+                                                <div class="col-md-3">
+                                                    <select class="form-control" ng-model="selectedSpeciality" required data-ng-options="s.Speciality1 for s in Specialities"></select>
                                                 </div>
-                                                <br />
-                                                <div class="row">
-                                                    <div class="col-md-3">
-                                                        <label for="exampleInputEmail1">Issuer State / Region </label>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <select class="form-control" data-ng-model="selectedIssuerState" 
-                                                                data-ng-options="s.StateName for s in IssuerStateList"
-                                                                data-ng-values="s.StateId for s in IssuerStateList"></select>
-                                                    </div>
+                                            </div>
+                                            <br />
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label for="exampleInputEmail1">State License Number / NPI</label>
                                                 </div>
-                                                <br />
-                                                <div class="row">
-                                                    <div class="col-md-3">
-                                                        <label for="exampleInputEmail1">Issuer Contact Number </label>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <input type="text" required class="form-control" ng-model="issuerContactNo" />
-                                                    </div>
+                                                <div class="col-md-5">
+                                                    <input type="text" required class="form-control" ng-model="licenceno" />
                                                 </div>
-                                                <br />
-                                                <div class="row">
-                                                    <div class="col-md-3">
-                                                        <label for="exampleInputEmail1">Upload Resume</label>
-                                                    </div>
-                                                    <div class="col-md-8">
-                                                        <input id="expertResume" class="form-control" type="file" accept="image/*" />
-                                                    </div>
+                                            </div>
+                                            <br />
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label for="exampleInputEmail1">Issuer Name</label>
                                                 </div>
-                                                <br />
-                                                <div class="row">
-                                                    <div class="col-md-3">
-                                                        <label for="exampleInputEmail1">Upload Certificate</label>
-                                                    </div>
-                                                    <div class="col-md-8">
-                                                        <b>You can upload upto 3 Certificates </b>
-                                                        <span>(Formats accepted: pdf, image) Max size 2 MB</span>
-                                                    </div>
+                                                <div class="col-md-5">
+                                                    <input type="text" required class="form-control" ng-model="issuerName" />
                                                 </div>
+                                            </div>
+                                            <br />
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label for="exampleInputEmail1">Issuer Country</label>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <select class="form-control" data-ng-model="selectedIssuerCountry" ng-change="IssuerCountryChanged()"
+                                                            data-ng-options="s.CountryName for s in CountryList"
+                                                            data-ng-values="s.CountryId for s in CountryList"></select>
+                                                </div>
+                                            </div>
+                                            <br />
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label for="exampleInputEmail1">Issuer State / Region </label>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <select class="form-control" data-ng-model="selectedIssuerState"
+                                                            data-ng-options="s.StateName for s in IssuerStateList"
+                                                            data-ng-values="s.StateId for s in IssuerStateList"></select>
+                                                </div>
+                                            </div>
+                                            <br />
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label for="exampleInputEmail1">Issuer Contact Number </label>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <input type="text" required class="form-control" ng-model="issuerContactNo" />
+                                                </div>
+                                            </div>
+                                            <br />
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label for="exampleInputEmail1">About Yourself</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <textarea class="form-control" rows="5" ng-model="description"></textarea>
+                                                </div>
+                                            </div>
+                                            <br />
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label for="exampleInputEmail1">Upload Resume</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <input id="expertResume" class="form-control" type="file" accept="image/*" />
+                                                </div>
+                                            </div>
+                                            <br />
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label for="exampleInputEmail1">Upload Certificate</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <b>You can upload upto 3 Certificates </b>
+                                                    <span>(Formats accepted: pdf, image) Max size 2 MB</span>
+                                                </div>
+                                            </div>
                                             <div class="row">
                                                 <div class="col-md-3">
                                                     <label class="pull-right" for="exampleInputEmail1">Certificate1</label>
@@ -232,8 +249,8 @@
                                                     <a class="form-control; pull-right" href ng-click="addAnother()">Add another Certificate</a>
                                                 </div>
                                             </div>
-                                                <br />
-                                            </div>
+                                            <br />
+                                        </div>
                                             <button type="submit" class="btn btn-primary pull-left" ng-click="goprevious()" ng-show="IsStep2">Go to Personal Details</button>
                                             <button type="submit" class="btn btn-primary pull-right" ng-show="IsStep2">Submit</button>
                                             <img ng-show="IsLoading" class="pull-right" src="content/images/loading.gif" />

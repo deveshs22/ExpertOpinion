@@ -156,6 +156,8 @@
     <Compile Include="Common.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Controllers\CityController.cs" />
+    <Compile Include="Controllers\HospitalController.cs" />
+    <Compile Include="Controllers\HospitalSpecialityController.cs" />
     <Compile Include="Controllers\SpecialityController.cs" />
     <Compile Include="Controllers\CountryController.cs" />
     <Compile Include="Controllers\FollowUpController.cs" />
