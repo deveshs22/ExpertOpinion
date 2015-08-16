@@ -45,7 +45,7 @@
             textContains: textContains,
             getParameterByName: getParameterByName,
             getGUID:getGUID,
-            serviceBaseURL: 'http://localhost:1179/api/',
+            serviceBaseURL: 'http://localhost:1179/api/',  //http://66.219.98.58/api
             queryData: queryData
         };
 

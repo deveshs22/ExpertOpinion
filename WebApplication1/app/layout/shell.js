@@ -47,6 +47,10 @@
               //          debugger;
                         $location.url('/expertdashboard');
                     }
+                    if (result.UserTypeId == 3) {
+                        //          debugger;
+                        $location.url('/admin');
+                    }
                 }
                 );
             }
