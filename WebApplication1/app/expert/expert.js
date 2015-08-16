@@ -1,10 +1,10 @@
 ﻿(function () {
     'use strict';
     var controllerId = 'expert';
-    angular.module('app').controller(controllerId, ['common', '$scope', '$modal', '$location', 'querydatacontext', 'userdatacontext', expert]);
+    angular.module('app').controller(controllerId, ['common', '$scope', '$modal', '$location', 'querydatacontext', 'userdatacontext','masterdatacontext', expert]);
 
     function expert
-        (common, $scope, $modal, $location, querydatacontext, userdatacontext) {
+        (common, $scope, $modal, $location, querydatacontext, userdatacontext, masterdatacontext) {
         var vm = this;
         vm.news = {
             title: 'Expert Opinion',
@@ -24,7 +24,7 @@
 
         function getExperts()
         {
-            userdatacontext.GetExperts().success(function (result) {
+            masterdatacontext.GetExperts().success(function (result) {
                 debugger;
                 $scope.ExpertList = result;
             });

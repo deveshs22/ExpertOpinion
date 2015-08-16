@@ -1,9 +1,9 @@
 ﻿(function () {
     'use strict';
     var controllerId = 'profile';
-    angular.module('app').controller(controllerId, ['common', '$scope', '$modal', '$location', 'userdatacontext', profile]);
+    angular.module('app').controller(controllerId, ['common', '$scope', '$modal', '$location', 'userdatacontext', 'masterdatacontext', profile]);
 
-    function profile(common, $scope, $modal, $location, userdatacontext) {
+    function profile(common, $scope, $modal, $location, userdatacontext, masterdatacontext) {
         var vm = this;
         vm.news = {
             title: 'Expert Opinion',
@@ -21,7 +21,7 @@
         $scope.showaddanother = false;
         $scope.Specialities = [];
 
-        userdatacontext.GetSpecialities().success(function (result) {
+        masterdatacontext.GetSpecialities().success(function (result) {
             debugger;
             $scope.Specialities = result;
         });
@@ -90,23 +90,23 @@
             $scope.IsLoading = true;
             if ($('#expertPhoto').val()) {
                 $scope.photoname = common.getGUID() +'.' +$('#expertPhoto').val().split('.')[1];
-                userdatacontext.uploadFile(document.getElementById('expertPhoto').files, $scope.photoname);
+                masterdatacontext.uploadFile(document.getElementById('expertPhoto').files, $scope.photoname);
             }
             if ($('#expertResume').val()) {
                 $scope.resumename = common.getGUID() + '.' + $('#expertResume').val().split('.')[1];
-                userdatacontext.uploadFile(document.getElementById('expertResume').files, $scope.resumename);
+                masterdatacontext.uploadFile(document.getElementById('expertResume').files, $scope.resumename);
             }
             if ($('#certificate1').val()) {
                 $scope.certificate1name = common.getGUID() + '.' + $('#certificate1').val().split('.')[1];
-                userdatacontext.uploadFile(document.getElementById('certificate1').files, $scope.certificate1name);
+                masterdatacontext.uploadFile(document.getElementById('certificate1').files, $scope.certificate1name);
             }
             if ($('#certificate2').val()) {
                 $scope.certificate2name = common.getGUID() + '.' + $('#certificate2').val().split('.')[1];
-                userdatacontext.uploadFile(document.getElementById('certificate2').files, $scope.certificate2name);
+                masterdatacontext.uploadFile(document.getElementById('certificate2').files, $scope.certificate2name);
             }
             if ($('#certificate3').val()) {
                 $scope.certificate3name = common.getGUID() + '.' + $('#certificate3').val().split('.')[1];
-                userdatacontext.uploadFile(document.getElementById('certificate3').files, $scope.certificate3name);
+                masterdatacontext.uploadFile(document.getElementById('certificate3').files, $scope.certificate3name);
             }
 
             var profileData = {};
@@ -130,7 +130,8 @@
             profileData.Certificate1 = $scope.certificate1name;
             profileData.Certificate2 = $scope.certificate2name;
             profileData.Certificate3 = $scope.certificate3name;
-
+            profileData.Qualification = $scope.qualification;
+            profileData.Description = $scope.description;
             
             userdatacontext.CreateExpertProfile(profileData).success(function (result) {
                 $scope.IsLoading = false;
@@ -143,27 +144,27 @@
 
         function getCountryList()
         {
-            userdatacontext.GetCountryList().success(function (result) {
+            masterdatacontext.GetCountryList().success(function (result) {
                 $scope.CountryList = result;
             });
         }
 
         function getStateList(countryId) {
-            userdatacontext.GetStateList(countryId).success(function (result) {
+            masterdatacontext.GetStateList(countryId).success(function (result) {
                 debugger;
                 $scope.StateList = result;
             });
         }
 
         function getIssuerStateList(countryId) {
-            userdatacontext.GetStateList(countryId).success(function (result) {
+            masterdatacontext.GetStateList(countryId).success(function (result) {
                 debugger;
                 $scope.IssuerStateList = result;
             });
         }
 
         function getCityList(stateId) {
-            userdatacontext.GetCityList(stateId).success(function (result) {
+            masterdatacontext.GetCityList(stateId).success(function (result) {
                 debugger;
                 $scope.CityList = result;
             });

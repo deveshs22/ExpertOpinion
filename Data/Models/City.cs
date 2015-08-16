@@ -14,5 +14,6 @@ namespace Data.Models
         public string CityName { get; set; }
         public int StateId { get; set; }
         public ICollection<ExpertDetail> ExpertDetails { get; set; }
+        public ICollection<Hospital> Hospitals { get; set; }
     }
 }

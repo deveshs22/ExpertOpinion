@@ -1,10 +1,10 @@
 ﻿(function () {
     'use strict';
     var controllerId = 'payment';
-    angular.module('app').controller(controllerId, ['common', '$scope', '$modal', '$location', 'userdatacontext', 'querydatacontext', payment]);
+    angular.module('app').controller(controllerId, ['common', '$scope', '$modal', '$location', 'userdatacontext', 'querydatacontext','masterdatacontext', payment]);
 
     function payment
-        (common, $scope, $modal, $location, userdatacontext, querydatacontext) {
+        (common, $scope, $modal, $location, userdatacontext, querydatacontext, masterdatacontext) {
         debugger;
         var vm = this;
         vm.news = {
@@ -36,7 +36,7 @@
 
         function getExperts()
         {
-            userdatacontext.GetExperts().success(function (result) {
+            masterdatacontext.GetExperts().success(function (result) {
                 $scope.ExpertList = result;
             });
         }

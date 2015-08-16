@@ -53,6 +53,28 @@
                             }
                         },
                         {
+                            url: '/admin/hospitals',
+                            config: {
+                                templateUrl: 'app/admin/hospitals.html',
+                                title: 'Payment',
+                                settings: {
+                                    nav: 1,
+                                    content: '<i class="fa fa-dashboard"></i> Dashboard'
+                                }
+                            }
+                        },
+                        {
+                            url: '/admin/managehospitals',
+                            config: {
+                                templateUrl: 'app/admin/managehospitals.html',
+                                title: 'Manage Hospitals',
+                                settings: {
+                                    nav: 1,
+                                    content: '<i class="fa fa-dashboard"></i> Manage Hospitals'
+                                }
+                            }
+                        },
+                        {
                             url: '/payment',
                             config: {
                                 templateUrl: 'app/query/payment.html',

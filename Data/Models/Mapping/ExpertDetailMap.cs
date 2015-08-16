@@ -53,6 +53,10 @@ namespace Data.Models.Mapping
             this.Property(t => t.Certificate3)
                 .HasMaxLength(50);
 
+            this.Property(t => t.Qualification)
+                .HasMaxLength(300);
+
+
             // Table & Column Mappings
             this.ToTable("ExpertDetail");
             this.Property(t => t.ExpertDetailId).HasColumnName("ExpertDetailId");
@@ -76,6 +80,8 @@ namespace Data.Models.Mapping
             this.Property(t => t.Certificate1).HasColumnName("Certificate1");
             this.Property(t => t.Certificate2).HasColumnName("Certificate2");
             this.Property(t => t.Certificate3).HasColumnName("Certificate3");
+	    this.Property(t => t.Qualification).HasColumnName("Qualification");
+            this.Property(t => t.Description).HasColumnName("Description");
 
             // Relationships
             this.HasOptional(t => t.City)
