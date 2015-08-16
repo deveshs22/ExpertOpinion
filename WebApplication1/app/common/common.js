@@ -250,7 +250,6 @@ var SignUpModalInstanceCtrl = function ($scope, $modal, $modalInstance, userdata
 
     $scope.openLogin = function () {
         $modalInstance.dismiss(false);
-
         var modalInstance = $modal.open({
             templateUrl: 'app/dialogs/SignInModal.html',
             controller: SignInModalInstanceCtrl

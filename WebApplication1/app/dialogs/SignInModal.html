@@ -1,5 +1,60 @@
-                                                                             <div class="modal-header">
-    <h3>
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="cancel()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title"><span ng-show="IsAdminLogin">Expert</span> Log in</h4>
+    </div>
+    <div class="modal-body" id="divsignin">
+
+        <p ng-show="pwdInvalid" class="bg-warning">Invalid Login details</p>
+        <p ng-show="Inactive" class="bg-danger">Profile is Not Activated</p>
+        
+        <form id="userentry-form">
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input class="form-control" id="email" type="email" placeholder="Email Address" required ng-model="$parent.email" tabindex="1" autofocus>
+            </div>
+            <div class="form-group">
+                <label for="password" class="w100p">Password <a class="pull-right nrml fs11" ng-click="openReset()" tabindex="4">Forgot password</a></label>
+                <input class="form-control" type="password" placeholder="Password" required ng-model="$parent.password" tabindex="2">
+            </div>
+
+
+
+            <button ng-disabled="IsLoading" type="submit" class="btn btn-default" ng-click="login()" tabindex="3">Submit</button> <img ng-show="IsLoading" src="content/images/loading.gif" />
+        </form>
+    </div>
+    <div class="modal-footer">
+
+
+
+        Don't have an account? <a href ng-click="openSignup()">Sign up</a>
+        <button class="btn btn-warning" ng-click="cancel()" tabindex="5">
+            Cancel
+        </button>
+    </div>
+</div><!-- /.modal-content -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+<div class="modal-header">
+    
+                                                                                 
+                                                                                 
+                                                                                 
+                                                                                 <h3>
         <span ng-show="IsAdminLogin">Expert</span> Log in
     </h3>
 
@@ -22,7 +77,7 @@
             <button ng-disabled="IsLoading" type="submit" ng-click="login()" class="btn btn-primary btn-large large padded-btn-block">
                 Log In
             </button>
-            <img ng-show="IsLoading" src="content/images/loading.gif" />
+            
         </div>
     </div>
     </form>
@@ -32,3 +87,4 @@
     <button class="btn btn-warning" ng-click="cancel()">
         Cancel</button>
 </div>
+    -->

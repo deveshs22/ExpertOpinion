@@ -27,10 +27,10 @@
                     fnName = 'logWarning'; break;
             }
 
-            var logFn = service[fnName] || service.log;
-            return function (msg, data, showToast) {
-                logFn(msg, data, moduleId, (showToast === undefined) ? true : showToast);
-            };
+            //var logFn = service[fnName] || service.log;
+            //return function (msg, data, showToast) {
+            //    logFn(msg, data, moduleId, (showToast === undefined) ? true : showToast);
+           // };
         }
 
         function log(message, data, source, showToast) {

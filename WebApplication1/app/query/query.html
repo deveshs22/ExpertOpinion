@@ -13,94 +13,109 @@
                                 <div class="frmcontent">
                                     <form ng-submit="ProceedQuery()">
                                         <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <label for="exampleInputEmail1">Age</label>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <input type="number" required class="form-control" ng-model="PatientAge" />
-                                                </div>
-                                            </div>
-                                            <br/>
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <label for="exampleInputEmail1">Gender</label>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <select class="form-control" ng-model="PatientGender" required>
-                                                        <option>Male</option>
-                                                        <option>FeMale</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <br/>
-                                            <div class="row">
-                                                <div class="col-lg-3">
-                                                    <label for="exampleInputEmail1">Have you visited a Doctor yet?</label>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="radio-inline">
-                                                        <label><input type="radio" name="optradio" data-ng-model="VisitedDoctor" data-ng-value="true">Yes</label>
+                                            <div class="row mrgbtm2">
+                                                <div class="col-md-6 col-lg-6">
+                                                    <div class="row">
+                                                        <div class="col-md-12 col-lg-12">
+                                                            <label >Age</label>
+                                                        </div>
+                                                        <div class="col-md-12 col-lg-12">
+                                                            <input type="number" required class="form-control" ng-model="PatientAge" />
+                                                        </div>
                                                     </div>
-                                                    <div class="radio-inline">
-                                                        <label><input type="radio" name="optradio" data-ng-model="VisitedDoctor" data-ng-value="false">No</label>
+                                                </div>
+
+                                                <div class="col-md-6 col-lg-6">
+                                                    <div class="row">
+                                                        <div class="col-md-12 col-lg-12">
+                                                            <label>Gender</label>
+                                                        </div>
+                                                        <div class="col-md-12 col-lg-12">
+                                                            <select class="form-control" ng-model="PatientGender" required>
+                                                                <option>Male</option>
+                                                                <option>Female</option>
+                                                            </select>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <br/>
-                                            <div class="row">
-                                                <div class="col-md-3">
+
+
+                                            <div class="row mrgbtm2">
+                                                <div class="col-lg-12 col-md-12">
+                                                    <label>Have you visited a Doctor yet?</label>
+                                                </div>
+                                                <div class="col-lg-12 col-md-12">
+                                                    <div class="radio-inline">
+                                                        <label class="nrml"><input type="radio" name="optradio" data-ng-model="VisitedDoctor" data-ng-value="true">Yes</label>
+                                                    </div>
+                                                    <div class="radio-inline">
+                                                        <label class="nrml"><input type="radio" name="optradio" data-ng-model="VisitedDoctor" data-ng-value="false">No</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row mrgbtm2">
+                                                <div class="col-lg-12 col-md-12">
                                                     <label for="exampleInputEmail1">What have you already tried?</label>
                                                 </div>
-                                                <div class="col-md-8">
-                                                    <textarea class="form-control" rows="5" ng-model="Remarks"></textarea>
+                                                <div class="col-lg-12 col-md-12">
+                                                    <textarea class="form-control" rows="5" ng-model="Remarks" class="nrml"></textarea>
                                                 </div>
                                             </div>
-                                            <br/>
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <label for="exampleInputEmail1">Upload Report/Image</label>
+
+
+                                            <div class="row mrgbtm2">
+                                                <div class="col-lg-12 col-md-12">
+                                                    <label for="exampleInputEmail1" >Upload Report/Image</label>
                                                 </div>
-                                                <div class="col-md-8">
+                                                <div class="col-lg-12 col-md-12 fs11 text-info">
                                                     <b>You can upload upto 3 reports </b>
                                                     <span>(Formats accepted: pdf, image) Max size 2 MB</span>
                                                 </div>
                                             </div>
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <label class="pull-right" for="exampleInputEmail1">Report1</label>
-                                            </div>
-                                            <div class="col-md-8">
-                                                <input id="file1" class="form-control" type="file" accept="application/pdf,image/*" onchange="angular.element(this).scope().fileadded(1,this)" />
-                                            </div>
-                                        </div>
-                                        <div class="row" ng-show="showoption2">
-                                            <div class="col-md-3">
-                                                <label class="pull-right" for="exampleInputEmail1">Report2</label>
-                                            </div>
-                                            <div class="col-md-8">
-                                                <input id="file2" class="form-control" type="file" accept="application/pdf,image/*" onchange="angular.element(this).scope().fileadded(2,this)" />
-                                            </div>
-                                        </div>
-                                        <div class="row" ng-show="showoption3">
-                                            <div class="col-md-3">
-                                                <label class="pull-right" for="exampleInputEmail1">Report3</label>
-                                            </div>
-                                            <div class="col-md-8">
-                                                <input id="file3" class="form-control" type="file" accept="application/pdf,image/*" onchange="angular.element(this).scope().fileadded(3,this)" />
-                                            </div>
-                                        </div>
-                                            <div class="row" ng-show="showaddanother">
-                                                <div class="col-md-6">
-                                                    <a class="form-control; pull-right" href ng-click="addAnother()" >Add another Report</a>
+                                            <div class="row mrgbtm2">
+                                                <div class="pull-left mrgtop2 mrgleft3">
+                                                    <label class="pull-right fs11 nrml">Report 1</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <input id="file1" class="form-control" type="file" accept="application/pdf,image/*" onchange="angular.element(this).scope().fileadded(1,this)" />
                                                 </div>
                                             </div>
+                                            <div class="row" ng-show="showoption2">
+                                                <div class="pull-left mrgtop2 mrgleft3">
+                                                    <label class="pull-right fs11 nrml">Report 2</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <input id="file2" class="form-control" type="file" accept="application/pdf,image/*" onchange="angular.element(this).scope().fileadded(2,this)" />
+                                                </div>
                                             </div>
+                                            <div class="row" ng-show="showoption3">
+                                                <div class="pull-left mrgtop2 mrgleft3">
+                                                    <label class="pull-right fs11 nrml">Report 3</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <input id="file3" class="form-control" type="file" accept="application/pdf,image/*" onchange="angular.element(this).scope().fileadded(3,this)" />
+                                                </div>
+                                            </div>
+                                            <div class="row" ng-show="showaddanother">
+                                                <div class="col-md-6">
+                                                    <a class="form-control; pull-right" href="#" ng-click="addAnother()"><span class="glyphicon glyphicon-plus fs12 mrgrgt1"></span>Add another Report</a>
+                                                </div>
+                                            </div>
+                                        </div>
                                             <br/>
-                                        <button type="button" ng-click="gotoPayment()" class="btn btn-mini pull-left">Skip</button>
-                                        <button ng-disabled="IsLoading" type="submit" class="btn btn-primary pull-right">Proceed</button>
-                                        <img ng-show="IsLoading" class="pull-right" src="content/images/loading.gif" />
-                                        <div class="clearfix"></div>
+                                        
+
+                                        <div class="row" >
+                                            <div class="col-md-12 col-lg-12 text-center">
+                                                <a href="#" type="button" ng-click="gotoPayment()" class="mrgrgt2">Skip</a>
+                                                <button ng-disabled="IsLoading" type="submit" class="btn btn-primary ">Proceed</button>
+                                                <img ng-show="IsLoading" class="pull-right" src="content/images/loading.gif" />
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </div>
+
                                     </form>
                                 </div>
                             </div>
