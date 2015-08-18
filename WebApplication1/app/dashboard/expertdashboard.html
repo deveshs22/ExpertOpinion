@@ -1,77 +1,96 @@
 ﻿<section id="expertdashboard-view" class="mainbar" data-ng-controller="expertdashboard as vm">
-    <div class="pull-left w100p">
+    <div class="pull-left w100p ">
         <!-- Jumbotron Header -->
-        <header class="jumbotron eo-header">
-            <div class="container">
-                <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6 hidden-sm hidden-xs">
-                    <div style="float:left">
-                        <ul>
-                            <li>
-                                <a href> Transactions</a>
-                            </li>
-                            <li>
-                                <a href> Questions</a>
-                            </li>
-                            <li>
-                                <a ng-href="#/experthistory">History</a>
-                            </li>
-                            <li>
-                                <a href>Report</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
-                    <div class="clearfix"></div>
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 bxshadow">
+      
+        <div class="container dis_flex dis_flex_wrap">
+            <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6 hidden-sm hidden-xs dashboardMenu bggblk minhgt500" data-ng-include="'/app/layout/expertsidebar.html'">
 
-                        
-                        <div class="w100p fl frmbx">
+            </div>
+            <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+                <div class="clearfix"></div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-                            <div class="frmbg">
 
-                                <p>Welcome Dr.{{UserName}}</p>
-                            
-                                <div class="frmheader ff_myriad bold col-md-9">Action Items (Questions)</div>
-                                <div class="frmheader ff_myriad bold col-md-3"><a href="#/questions" class="alert-danger">View All</a></div>
-                                <div class="frmcontent">
-                                    <div class="row" ng-repeat="question in Questions">
-                                        <div class="col-md-8">
-                                            {{question.Description}}
-                                        </div>
-                                        <div class="col-md-2">
-                                            {{question.CreatedOn | date:'dd-MM-yyyy'}}
-                                        </div>
-                                        <div class="col-md-1">
-                                            <a ng-href="#/reply?qid={{question.QuestionId}}">Answer</a>
-                                        </div>
-                                    </div>
+                    <div class="w100p fl">
+
+                        <div class="bgwht">
+
+                            <div class="panel panel-default">
+                                <!-- Default panel contents -->
+                                <div class="panel-heading">Action Items (Questions)    <a href="#/questions" class="pull-right fs12">View All<span class="glyphicon glyphicon-chevron-right"></span></a> 
+                                
+                                
                                 </div>
-                                <br/>
-                                <br />
-                                <div class="frmheader ff_myriad bold col-md-9">Action Items (Follow Up)</div>
-                                <div class="frmheader ff_myriad bold col-md-3"><a href="#/questions" class="alert-danger">View All</a></div>
-                                <div class="frmcontent">
-                                    <div class="row" ng-repeat="question in FollowUps">
-                                        <div class="col-md-8">
-                                            {{question.FollowUpQuestion}}
+                              
+                                <!-- Table -->
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Description</th>
+                                            <th>Date</th>
+                                            <th>Reply</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="question in Questions">
 
-                                        </div>
-                                        <div class="col-md-2">
-                                            {{question.CreatedOn | date:'dd-MM-yyyy'}}
-                                        </div>
-                                        <div class="col-md-1">
-                                            <a ng-href="#/reply?fid={{question.QuestionId}}&fupid={{question.FollowUpId}}">Answer</a>
-                                        </div>
-                                    </div>
-                                </div>
+                                            <td>{{question.Description}}</td>
+                                            <td>{{question.CreatedOn | date:'dd-MM-yyyy'}}</td>
+                                            <td><a ng-href="#/reply?qid={{question.QuestionId}}">Answer</a></td>
+                                        </tr>
+                                       
+                                    </tbody>
+                                </table>
                             </div>
+
+                <br />
+
+
+                            <div class="panel panel-default">
+                                <!-- Default panel contents -->
+                                <div class="panel-heading">
+                                    Action Items (Follow Up)   <a href="#/questions" class="pull-right fs12 ">View All<span class="glyphicon glyphicon-chevron-right"></span></a>
+
+
+                                </div>
+
+                                <!-- Table -->
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Description</th>
+                                            <th>Date</th>
+                                            <th>Reply</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+<tr ng-hide="FollowUps.lenght > 1">
+
+                                            <td colspan="3" class="text-center">No Record Found</td>
+                                           
+                                        </tr>
+
+                                        <tr ng-show="FollowUps.lenght >0 " ng-repeat="question in FollowUps">
+
+                                            <td>{{question.FollowUpQuestion}}</td>
+                                            <td>{{question.CreatedOn | date:'dd-MM-yyyy'}}</td>
+                                            <td><a ng-href="#/reply?fid={{question.QuestionId}}&fupid={{question.FollowUpId}}">Answer</a></td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+
+
+
                         </div>
-
-
-
                     </div>
+
+
+
                 </div>
-        </header>
-    </div>
+            </div>
+
+        </div>
     </section>

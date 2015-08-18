@@ -47,6 +47,10 @@
               //          debugger;
                         $location.url('/expertdashboard');
                     }
+                    if (result.UserTypeId == 3) {
+                        //          debugger;
+                        $location.url('/admin');
+                    }
                 }
                 );
             }
@@ -83,7 +87,7 @@
             localStorage.removeItem("uid");
             $scope.userLoggedIn = false;
             $scope.UserName = '';
-            $location.url('/');
+            $location.url('/#');
         }
 
         $scope.openSignIn = function (logintype) {

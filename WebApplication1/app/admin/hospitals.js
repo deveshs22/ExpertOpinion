@@ -60,6 +60,7 @@
             admindatacontext.CreateHospital(hospitalData).success(function (result) {
                 debugger;
                 $scope.IsLoading = false;
+                $location.url('/admin/managehospitals');
             });
             
         }

@@ -45,7 +45,7 @@
             textContains: textContains,
             getParameterByName: getParameterByName,
             getGUID:getGUID,
-            serviceBaseURL: 'http://localhost:1179/api/',
+            serviceBaseURL: 'http://localhost:1179/api/',  //http://66.219.98.58/api
             queryData: queryData
         };
 
@@ -250,7 +250,6 @@ var SignUpModalInstanceCtrl = function ($scope, $modal, $modalInstance, userdata
 
     $scope.openLogin = function () {
         $modalInstance.dismiss(false);
-
         var modalInstance = $modal.open({
             templateUrl: 'app/dialogs/SignInModal.html',
             controller: SignInModalInstanceCtrl

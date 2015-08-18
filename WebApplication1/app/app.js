@@ -3,7 +3,8 @@
     
     var roles = {
         User: 1,
-        Expert: 2
+        Expert: 2,
+        Admin :3
     };
 
     var routeForUnauthorizedAccess = '/dashboard';

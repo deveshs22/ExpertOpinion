@@ -2,7 +2,7 @@
     <div class="container eo_menu">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topnav-collapse">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -12,9 +12,13 @@
 
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="topnav-collapse">
 
         <ul class="nav navbar-nav nav_largeview">
             <li>
+                    <a ng-href="{{'#'}}">Home </a>
+                </li>
+                <li>
                 <a ng-href="{{'#/expert'}}">Experts </a>
             </li>
             <li>
@@ -54,7 +58,7 @@
                         </a>
                     </li>
                     <li ng-show="UserTypeId==2">
-                        <a ng-href="{{UserTypeId==2 ? '#/profile?edit=true' : '#/userdashboard'}}" style="background-color: #4888de;">
+                        <a ng-href="{{UserTypeId==2 ? '#/profile?edit=true' : '#/expertdashboard'}}" style="background-color: #4888de;">
                             View Profile
                         </a>
                     </li>
