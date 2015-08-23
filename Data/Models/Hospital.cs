@@ -22,6 +22,6 @@ namespace Data.Models
         public City City { get; set; }
         public Country Country { get; set; }
         public State State { get; set; }
-        public ICollection<HospitalSpecialityDetail> HospitalSpecialityDetails { get; set; }
+        public virtual ICollection<HospitalSpecialityDetail> HospitalSpecialityDetails { get; set; }
     }
 }

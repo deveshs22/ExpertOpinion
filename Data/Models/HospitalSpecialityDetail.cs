@@ -9,6 +9,6 @@ namespace Data.Models
         public int HospitalId { get; set; }
         public int HospitalSpecialityId { get; set; }
         public Hospital Hospital { get; set; }
-        public HospitalSpeciality HospitalSpeciality { get; set; }
+        public virtual HospitalSpeciality HospitalSpeciality { get; set; }
     }
 }

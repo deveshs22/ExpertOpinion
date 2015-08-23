@@ -11,17 +11,17 @@
             GetCountryList: GetCountryList,
             GetStateList: GetStateList,
             GetCityList: GetCityList,
-            GetSpecialities:GetSpecialities,
+            GetSpecialities: GetSpecialities,
             GetExperts: GetExperts,
             GetHospitalSpecialities: GetHospitalSpecialities,
             GetHospitalList: GetHospitalList,
             uploadFile: uploadFile
         };
+        var usersApi = common.serviceBaseURL + 'users/';
+        return service;
 
-        return service;       
 
-        function GetExperts()
-        {
+        function GetExperts() {
             return common.$http.get(usersApi + 'experts');
         }
 
@@ -29,8 +29,7 @@
             return common.$http.get(common.serviceBaseURL + 'Speciality/');
         }
 
-        function GetHospitalSpecialities()
-        {
+        function GetHospitalSpecialities() {
             return common.$http.get(common.serviceBaseURL + 'hospitalspecialities/');
         }
 
@@ -55,8 +54,7 @@
             return common.$http.get(common.serviceBaseURL + 'cities/bystate/' + stateId);
         }
 
-        function GetHospitalList()
-        {
+        function GetHospitalList() {
             return common.$http.get(common.serviceBaseURL + 'hospitals');
         }
     }

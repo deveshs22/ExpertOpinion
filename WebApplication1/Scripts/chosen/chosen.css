@@ -169,6 +169,7 @@
 }
 .chzn-container-multi .chzn-choices .search-field .default {
   color: #999;
+  height:25px;
 }
 .chzn-container-multi .chzn-choices .search-choice {
   -webkit-border-radius: 3px;

@@ -12,6 +12,7 @@
         vm.messageCount = 0;
         vm.people = [];
         vm.title = 'Dashboard';
+        $scope.hospital = {};
         $scope.selectedSpeciality = [];
         $scope.selectedCountry = {};
         $scope.selectedState = {};
@@ -20,9 +21,42 @@
         $scope.showoption3 = false;
         $scope.showaddanother = false;
         $scope.Specialities = [];
+        $scope.IsEditMode = false;
+        var hospitalId = 0;
 
-        $scope.CountryChanged = function()
+        if (common.getParameterByName("edit") != undefined && common.getParameterByName("edit") != "") {
+            $scope.IsEditMode = true;
+            hospitalId = common.getParameterByName("edit");
+            //loadHospitalDetails();
+        }
+        activate();
+
+
+        function loadHospitalDetails()
         {
+            if ($scope.IsEditMode) {
+                admindatacontext.GetHospital(hospitalId).success(function (result) {
+                    debugger;
+                    $scope.hospital = result;
+                    getCountryList();
+                    $scope.name = result.HospitalName;
+                    $scope.address = result.Address;
+                    $scope.phone = result.Phone;
+                    $scope.description = result.Description;
+                    $scope.photoname = result.Photo;
+                    $scope.selectedSpeciality = result.HospitalSpecialityDetails;
+                    var selectedSpecialities = [];
+                    for (var i = 0; i < result.HospitalSpecialityDetails.length; i++) {
+                        selectedSpecialities.push($scope.selectedSpeciality[i].HospitalSpecialityId);
+                    }
+
+                    $("#cmbspeciality").val(selectedSpecialities);
+                    $('#cmbspeciality').trigger('liszt:updated');
+                });
+            }
+        }
+
+        $scope.CountryChanged = function () {
             getStateList($scope.selectedCountry.CountryId);
         }
 
@@ -31,14 +65,11 @@
         }
 
         $scope.StateChanged = function () {
-            debugger;
             getCityList($scope.selectedState.StateId);
         }
 
-        
-        $scope.saveHospital = function ()
-        {
-            debugger;
+
+        $scope.saveHospital = function () {
             $scope.IsLoading = true;
             if ($('#Photo').val()) {
                 $scope.photoname = common.getGUID() + '.' + $('#Photo').val().split('.')[1];
@@ -56,27 +87,58 @@
             hospitalData.Photo = $scope.photoname;
             hospitalData.Description = $scope.description;
             hospitalData.HospitalSpecialityDetails = $scope.selectedSpeciality;
-            
-            admindatacontext.CreateHospital(hospitalData).success(function (result) {
-                debugger;
-                $scope.IsLoading = false;
-                $location.url('/admin/managehospitals');
-            });
-            
+
+            if (!$scope.IsEditMode) {
+                admindatacontext.CreateHospital(hospitalData).success(function (result) {
+                    $scope.IsLoading = false;
+                });
+            }
+            else
+            {
+                hospitalData.HospitalId = hospitalId;
+                admindatacontext.UpdateHospital(hospitalId, hospitalData).success(function (result) {
+                    $scope.IsLoading = false;
+                });
+            }
+            $location.url('/admin/managehospitals');
         }
 
-        activate();
-
-        function getCountryList()
+        function setCountry()
         {
+                $scope.selectedCountry = $scope.CountryList.filter(function (r) {
+                    return r.CountryId == $scope.hospital.CountryId;
+                })[0];
+                getStateList($scope.hospital.CountryId);
+        }
+
+        function setState() {
+            $scope.selectedState = $scope.StateList.filter(function (r) {
+                return r.StateId == $scope.hospital.StateId;
+            })[0];
+            getCityList($scope.hospital.StateId);
+        }
+
+        function setCity() {
+            $scope.selectedCity = $scope.CityList.filter(function (r) {
+                return r.CityId == $scope.hospital.CityId;
+            })[0];
+        }
+
+        function getCountryList() {
             masterdatacontext.GetCountryList().success(function (result) {
                 $scope.CountryList = result;
+                if ($scope.IsEditMode) {
+                    setCountry();
+                }
             });
         }
 
         function getStateList(countryId) {
             masterdatacontext.GetStateList(countryId).success(function (result) {
                 $scope.StateList = result;
+                if ($scope.IsEditMode) {
+                    setState();
+                }
             });
         }
 
@@ -89,19 +151,18 @@
         function getCityList(stateId) {
             masterdatacontext.GetCityList(stateId).success(function (result) {
                 $scope.CityList = result;
+                setCity();
             });
         }
 
-        function getSpecialityList()
-        {
+        function getSpecialityList() {
             masterdatacontext.GetHospitalSpecialities().success(function (result) {
-                debugger;
                 $scope.Specialities = result;
             });
         }
 
         function activate() {
-            var promises = [getCountryList(),getSpecialityList()];
+            var promises = [loadHospitalDetails(), $scope.IsEditMode ? null : getCountryList(), getSpecialityList()];
             common.activateController(promises, controllerId);
         }
     }

@@ -100,7 +100,8 @@
                     }
                 }
             });
-            modalInstance.result.then(function (userLoggedIn,uname) {
+
+            modalInstance.results.then(function (userLoggedIn,uname) {
             }, function (userLoggedIn,uname) {
                 //$scope.userLoggedIn = userLoggedIn;
                 $scope.getUserNameFromUID();

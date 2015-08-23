@@ -186,7 +186,7 @@
                 url: '/hospital',
                 config: {
                     title: 'hospital',
-                    templateUrl: 'app/static/hospital.html',
+                    templateUrl: 'app/expert/hospital.html',
                     settings: {
                         nav: 2,
                         content: '<i class="fa fa-lock"></i> Hospital'
