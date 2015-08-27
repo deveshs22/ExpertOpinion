@@ -1,9 +1,9 @@
 ﻿(function () {
     'use strict';
-    var controllerId = 'hospital';
-    angular.module('app').controller(controllerId, ['common', '$scope', '$modal', '$location', 'querydatacontext', 'userdatacontext', 'masterdatacontext', hospital]);
+    var controllerId = 'hospitallist';
+    angular.module('app').controller(controllerId, ['common', '$scope', '$modal', '$location', 'querydatacontext', 'userdatacontext', 'masterdatacontext', hospitallist]);
 
-    function hospital
+    function hospitallist
         (common, $scope, $modal, $location, querydatacontext, userdatacontext, masterdatacontext) {
         var vm = this;
         vm.news = {
