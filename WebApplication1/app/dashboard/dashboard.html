@@ -1,180 +1,188 @@
 ﻿<section id="dashboard-view" class="mainbar" data-ng-controller="dashboard as vm">
-    <div class="pull-left w100p">
-        <!-- Jumbotron Header -->
-        <header class="jumbotron eo-header">
-            <div class="container">
-                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 hidden-sm hidden-xs"><img src="content/images/header_doc_img.png" /></div>
-                <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-                    <h1 class="eotitle">
-                        Ask Your Question,<br />
-                        A Doctor Will Answer You ASAP
-                    </h1>
-                    <p>
-                        Please Write your queryin below space. You can upload, reports, prescription and images on next page
-                    </p>
-
-                    <div class="clearfix"></div>
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 bxshadow">
-                        <div class="w100p fl frmbx">
-
-                            <div class="frmbg">
-                                <div class="frmheader ff_myriad bold">Post your question here! <span class="onlineuser">2562 Experts are Online Now</span></div>
-                                <div class="frmcontent">
-                                    <form ng-submit="PostQuestion()">
-                                        <div class="form-group">
-                                            <label>Question</label>
-                                            <textarea required rows="5" ng-model="question" class="form-control" placeholder="Give a suitable title to your question..." />
-                                        </div>
-                                        <button type="submit" class="btn btn-primary pull-right">Submit</button>
-                                        <div class="clearfix"></div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-
-
-
+    <div class="panel panel-default" style="background-color:gold; padding:2px;">
+        <a href ng-click="openSignIn(2)" style="margin-left:500px;"><b>Become an Expert</b></a>
+        <a href ng-click="openSignIn(1)" style="margin-left:130px;"><b>Become a Member</b></a>
+        
+     </div>
+        <div class="pull-left w100p">
+            <!-- Jumbotron Header -->
+            <header class="jumbotron eo-header">
+                <div class="container">
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 hidden-sm hidden-xs">
+                        <img src="content/images/header_doc_img.png" />
                     </div>
-                </div>
-        </header>
-    </div>
+                    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                        <h1 class="eotitle">
+                            Ask Your Question,<br />
+                            A Doctor Will Answer You ASAP
+                        </h1>
+                        <p>
+                            Please Write your queryin below space. You can upload, reports, prescription and images on next page
+                        </p>
 
+                        <div class="clearfix"></div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 bxshadow">
+                            <div class="w100p fl frmbx">
 
-    <div class="pull-left w100p  bglightgry pdtop4 pdbtm8 bdrblue">
-        <div class="container usercommentarea">
-
-            <h1 class="text-center pdtop0 pdbtm4 ff_myriadbold"><span>Customers</span>  Love Expert Opinion</h1>
-
-            <div id="carousel-example-generic" class="carousel slide  pdtop4 pdbtm4" data-ride="carousel">
-                <!-- Indicators -->
-                <ol class="carousel-indicators">
-                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                </ol>
-                <!-- Wrapper for slides -->
-                <div class="carousel-inner usercommentbx" role="listbox">
-                    <div class="item userslide active">
-                        <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12 userdetails">
-                            <div class="row text-center">
-                                <div class="userpic"><img src="http://placehold.it/140x140" alt="" class="img-circle"></div>
-                                <div class="username">
-                                    Pamela Myers-Lewis
-                                    <span>Anchorage, US</span>
-                                </div>
-                                <div class="userrating">
-                                    <div class="star-rating">
-                                        <span class="glyphicon glyphicon-star" data-rating="1"></span>
-                                        <span class="glyphicon glyphicon-star" data-rating="2"></span>
-                                        <span class="glyphicon glyphicon-star" data-rating="3"></span>
-                                        <span class="glyphicon glyphicon-star-empty" data-rating="4"></span>
-                                        <span class="glyphicon glyphicon-star-empty" data-rating="5"></span>
-                                        <input type="hidden" name="whatever" class="rating-value" value="3">
+                                <div class="frmbg">
+                                    <div class="frmheader ff_myriad bold">Post your question here! <span class="onlineuser">2562 Experts are Online Now</span></div>
+                                    <div class="frmcontent">
+                                        <form ng-submit="PostQuestion()">
+                                            <div class="form-group">
+                                                <label>Question</label>
+                                                <textarea required rows="5" ng-model="question" class="form-control" placeholder="Give a suitable title to your question..." />
+                                            </div>
+                                            <button type="submit" class="btn btn-primary pull-right">Submit</button>
+                                            <div class="clearfix"></div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="col-md-9 col-lg-9 col-sm-12  col-xs-12 usercomment">
-                            <div class="uc_date w100p fl">Friday, April 3, 2015</div>
 
-                            <h2 class="uc_title w100p fl">I was very pleased with the service I received.</h2>
-
-                            <p class="uc_description w100p fl">
-                                I discovered some disturbing skin anomalies on my 9-year-old dog's belly one evening, which made me very concerned. I googled about them, and one of the hits was justanswer.com, where I had the opportunity to ask a vet about what I'd seen. The price was very reasonable, and I really needed to know how to proceed. I described the appearance of the skin, and Dr. Jo replied to me in short order. She was knowledgeable and very reassuring.
-                                The whole experience was easy, and the response was professional. I will definitely use justanswer.com the next time I have a question about my dogs health and my own vet's office is closed. I really like that I can ask for the same vet again, too.
-                            </p>
 
                         </div>
-
-
-
                     </div>
 
-
-
-                </div>
-                <!-- Controls -->
-                <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
-
-            <div class="center-block col-lg-5 col-md-6 col-sm-7 col-xs-12 float-none"><button type="button" class="btn btn-primary btn-lg btn-block">Read More Reviews</button></div>
-
+            </header>
         </div>
-    </div>
 
 
-    <div class="pull-left w100p  pdtop4 pdbtm6  ">
-        <div class="container expert">
-            <h1 class="text-center pdtop0 pdbtm4 ff_myriadbold">Our <span>Experts</span></h1>
-            <!-- Page Features -->
-            <div class="row text-center">
-                <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12">
-                    <div class="thumbnail ">
-                        <a href="#"><img src="http://placehold.it/200x200" alt="" class="img-responsive center-block"></a>
-                        <div class="caption ">
+        <div class="pull-left w100p  bglightgry pdtop4 pdbtm8 bdrblue">
+            <div class="container usercommentarea">
 
-                            <p class="username">
-                                Dr. Pamela Myers-Lewis
-                                <span>Anchorage, US (Child Specialist)</span>
-                            </p>
+                <h1 class="text-center pdtop0 pdbtm4 ff_myriadbold"><span>Customers</span>  Love Expert Opinion</h1>
 
-                        </div>
-                    </div>
-                </div>
+                <div id="carousel-example-generic" class="carousel slide  pdtop4 pdbtm4" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner usercommentbx" role="listbox">
+                        <div class="item userslide active">
+                            <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12 userdetails">
+                                <div class="row text-center">
+                                    <div class="userpic"><img src="http://placehold.it/140x140" alt="" class="img-circle"></div>
+                                    <div class="username">
+                                        Pamela Myers-Lewis
+                                        <span>Anchorage, US</span>
+                                    </div>
+                                    <div class="userrating">
+                                        <div class="star-rating">
+                                            <span class="glyphicon glyphicon-star" data-rating="1"></span>
+                                            <span class="glyphicon glyphicon-star" data-rating="2"></span>
+                                            <span class="glyphicon glyphicon-star" data-rating="3"></span>
+                                            <span class="glyphicon glyphicon-star-empty" data-rating="4"></span>
+                                            <span class="glyphicon glyphicon-star-empty" data-rating="5"></span>
+                                            <input type="hidden" name="whatever" class="rating-value" value="3">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-9 col-lg-9 col-sm-12  col-xs-12 usercomment">
+                                <div class="uc_date w100p fl">Friday, April 3, 2015</div>
+
+                                <h2 class="uc_title w100p fl">I was very pleased with the service I received.</h2>
+
+                                <p class="uc_description w100p fl">
+                                    I discovered some disturbing skin anomalies on my 9-year-old dog's belly one evening, which made me very concerned. I googled about them, and one of the hits was justanswer.com, where I had the opportunity to ask a vet about what I'd seen. The price was very reasonable, and I really needed to know how to proceed. I described the appearance of the skin, and Dr. Jo replied to me in short order. She was knowledgeable and very reassuring.
+                                    The whole experience was easy, and the response was professional. I will definitely use justanswer.com the next time I have a question about my dogs health and my own vet's office is closed. I really like that I can ask for the same vet again, too.
+                                </p>
+
+                            </div>
 
 
-                <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12">
-                    <div class="thumbnail ">
-                        <a href="#"><img src="http://placehold.it/200x200" alt="" class="img-responsive center-block"></a>
-                        <div class="caption ">
-
-                            <p class="username">
-                                Dr. Pamela Myers-Lewis
-                                <span>Anchorage, US (Child Specialist)</span>
-                            </p>
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12">
-                    <div class="thumbnail ">
-                        <a href="#"><img src="http://placehold.it/200x200" alt="" class="img-responsive center-block"></a>
-                        <div class="caption ">
-
-                            <p class="username">
-                                Dr. Pamela Myers-Lewis
-                                <span>Anchorage, US (Child Specialist)</span>
-                            </p>
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12">
-                    <div class="thumbnail ">
-                        <a href="#"><img src="http://placehold.it/200x200" alt="" class="img-responsive center-block"></a>
-                        <div class="caption ">
-
-                            <p class="username">
-                                Dr. Pamela Myers-Lewis
-                                <span>Anchorage, US (Child Specialist)</span>
-                            </p>
 
                         </div>
+
+
+
                     </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
                 </div>
+
+                <div class="center-block col-lg-5 col-md-6 col-sm-7 col-xs-12 float-none"><button type="button" class="btn btn-primary btn-lg btn-block">Read More Reviews</button></div>
 
             </div>
         </div>
-        <!-- /.row -->
-    </div>
+
+
+        <div class="pull-left w100p  pdtop4 pdbtm6  ">
+            <div class="container expert">
+                <h1 class="text-center pdtop0 pdbtm4 ff_myriadbold">Our <span>Experts</span></h1>
+                <!-- Page Features -->
+                <div class="row text-center">
+                    <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12">
+                        <div class="thumbnail ">
+                            <a href="#"><img src="http://placehold.it/200x200" alt="" class="img-responsive center-block"></a>
+                            <div class="caption ">
+
+                                <p class="username">
+                                    Dr. Pamela Myers-Lewis
+                                    <span>Anchorage, US (Child Specialist)</span>
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+                 
+
+                    <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12">
+                        <div class="thumbnail ">
+                            <a href="#"><img src="http://placehold.it/200x200" alt="" class="img-responsive center-block"></a>
+                            <div class="caption ">
+
+                                <p class="username">
+                                    Dr. Pamela Myers-Lewis
+                                    <span>Anchorage, US (Child Specialist)</span>
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12">
+                        <div class="thumbnail ">
+                            <a href="#"><img src="http://placehold.it/200x200" alt="" class="img-responsive center-block"></a>
+                            <div class="caption ">
+
+                                <p class="username">
+                                    Dr. Pamela Myers-Lewis
+                                    <span>Anchorage, US (Child Specialist)</span>
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12">
+                        <div class="thumbnail ">
+                            <a href="#"><img src="http://placehold.it/200x200" alt="" class="img-responsive center-block"></a>
+                            <div class="caption ">
+
+                                <p class="username">
+                                    Dr. Pamela Myers-Lewis
+                                    <span>Anchorage, US (Child Specialist)</span>
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
 </section>
