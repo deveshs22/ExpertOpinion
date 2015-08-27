@@ -9,120 +9,146 @@
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
                         <div class="row">
+                            <div class="userbx userbxouter"><span class="fl mrgrgt2"><b>Posted By: </b> {{PatientName}} ({{question.PatientGender}})</span> </div>
+                            <div class="userbx userbxouter">
+                                <b>Posted Date: </b>{{question.CreatedOn| date:'dd-MM-yyyy'}}</div>
+                            <div class="w100p pull-left qstnbx mrgtop3  mrgbtm3">
 
-                            <div class="w100p pull-left qstnbx  mrgbtm3">
-                               
                                 <h1 class="bold">{{question.Description}}</h1>
-                                <div class="userbx"><span class="fl mrgrgt2"><b>Posted By: </b> {{PatientName}} ({{question.PatientGender}})</span> <a class="dropdown-toggle" data-toggle="dropdown" href="#" ng-click="ShowHideAdditional()"><span class="glyphicon glyphicon-option-horizontal bold custICon "></span></a></div>
+
                             </div>
-                            <div class="w100p pull-left mrgbtm3 mrgtop3" ng-show="showingAdditional">
-                                Date:{{question.CreatedOn| date:'dd-MM-yyyy'}}
 
-                                <div class="fl pull-left w100p">
-                                    <div class="row">
-                                        <div class="col-md-2">
-                                            <label> Visited Doctor </label>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <label>{{question.VisitedDoctor?'Yes':'No'}}</label>
-                                        </div>
-                                    </div>
-                                    <div class="rows">
-                                        Remarks:
-                                    </div>
-                                    <div class="rows">
-                                        <div>{{question.Remarks}}</div>
-                                    </div>
-                                </div>
-
-
-                                <div class="col-md-6">
-                                    <label class="nrml" ng-hide="question.Attach1!=undefined && question.Attach1!=''">No Reports Attached</label>
-                                    <div class="btn-group" ng-show="question.Attach1!=undefined && question.Attach1!=''">
-                                        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-                                            View Reports:
-                                            <span class="caret"></span>
+                             <div class="w100p pull-left mrgbtm3 mrgtop3 " >
+                                <a class="dropdown-toggle btn btn-default" data-toggle="dropdown" href="#" ng-click="ShowHideAdditional()">View additional details <span class="glyphicon glyphicon-option-horizontal bold custICon "></span></a>
+                               
+                            
+                           
+                            <label class="nrml" ng-hide="question.Attach1!=undefined && question.Attach1!=''">No Reports Attached</label>
+                            <div class="btn-group pull-right" ng-show="question.Attach1!=undefined && question.Attach1!=''">
+                                <a class="dropdown-toggle btn btn-default " data-toggle="dropdown" href="#">
+                                    View Reports:
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li ng-show="question.Attach1!=undefined && question.Attach1!=''">
+                                        <a target="_blank" ng-href='http://localhost:1179/Attachments/{{question.Attach1}}'>
+                                            Report 1
                                         </a>
-                                        <ul class="dropdown-menu">
-                                            <li ng-show="question.Attach1!=undefined && question.Attach1!=''">
-                                                <a target="_blank" ng-href='http://localhost:1179/Attachments/{{question.Attach1}}'>
-                                                    Report 1
-                                                </a>
-                                            </li>
-                                            <li ng-show="question.Attach2!=undefined && question.Attach2!=''">
-                                                <a target="_blank" ng-href='http://localhost:1179/Attachments/{{question.Attach2}}'>
-                                                    Report 2
-                                                </a>
-                                            </li>
-                                            <li ng-show="question.Attach3!=undefined && question.Attach3!=''">
-                                                <a target="_blank" ng-href='http://localhost:1179/Attachments/{{question.Attach3}}'>
-                                                    Report 3
-                                                </a>
-                                            </li>
-                                        </ul>
+                                    </li>
+                                    <li ng-show="question.Attach2!=undefined && question.Attach2!=''">
+                                        <a target="_blank" ng-href='http://localhost:1179/Attachments/{{question.Attach2}}'>
+                                            Report 2
+                                        </a>
+                                    </li>
+                                    <li ng-show="question.Attach3!=undefined && question.Attach3!=''">
+                                        <a target="_blank" ng-href='http://localhost:1179/Attachments/{{question.Attach3}}'>
+                                            Report 3
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            </div>
+                            
+                             <div class="w100p pull-left mrgbtm3 mrgtop3 " ng-show="showingAdditional">
+
+
+                                    <div class="fl pull-left w100p">
+                                        <div class="row">
+                                            <div class="col-md-4">
+
+                                                <ul class="list-group">
+                                                    <li class="list-group-item">
+                                                        <span class="badge" ng-class="question.VisitedDoctor?'Yes':'No'">{{question.VisitedDoctor?'Yes':'No'}}</span>
+                                                        Visited Doctor
+                                                    </li>
+
+                                                  
+
+                                                </ul>
+
+
+                                               
+                                            </div>
+                                            <div class="col-md-8">
+                                               
+                                                <div class="panel panel-default">
+                                                    <div class="panel-heading"> Remarks</div>
+                                                    <div class="panel-body">
+                                                       {{question.Remarks}}
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        
+                                     
                                     </div>
 
+
+                                    <div class="col-md-6">
+                                       
+
+                                    </div>
+
+
+
                                 </div>
+                            <div class="w100p pull-left mrgtop3 ">
+                                <!--<div class="panel panel-default">
+        <div class="panel-body">-->
+                                <p class="fcgray pdbtm0 fs12 mrgbtm0">Post your reply : </p>
+                                <form class="frmcontent pdbtm0 " ng-submit="SubmitReply()" ng-show="IsreplyingtoQuestion">
+                                    <div class="row mrgbtm3">
+                                        <textarea rows="5" class="col-md-12" ng-model="question.ExpertReply" placeholder="Post your reply" required />
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-2 pull-right">
+                                            <input type="submit" class="btn btn-primary pull-right" value="Submit Answer" />
+                                        </div>
+                                    </div>
+                                </form>
+
+                                <form class="frmcontent pdbtm0" ng-submit="SubmitReplytoFollowup()" ng-show="IsreplyingtoFollowup">
+                                    <div class="row mrgbtm3">
+                                        <textarea rows="5" class="col-md-12" ng-model="ExpertFollowupReply" required />
+                                    </div>
+
+                                    <div class="row">
+                                        <div class=" pull-right">
+                                            <input type="submit" class="btn btn-primary pull-right" value="Submit Followup Answer" />
+                                        </div>
+                                    </div>
+
+                                    <div class="row mrgtop2" ng-repeat="followup in FollowUps | orderBy:'LastModifiedOn':true">
+                                        <p class="alert-success">{{followup.ExpertReply}} {{followup.RepliedOn | date:'dd-MM-yyyy'}}</p>
+                                        <p class="alert-danger">{{followup.FollowUpQuestion}} {{followup.CreatedOn | date:'dd-MM-yyyy'}}</p>
+                                    </div>
+                                </form>
+
+
+                                <form class="frmcontent pdbtm0" ng-submit="SubmitFollowuptoReply()" ng-show="IsFollowuptoreply">
+                                    <div class="row mrgbtm3">
+
+                                        <textarea rows="5" class="col-md-12" ng-model="FollowUpQuestion" required />
+
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="pull-right">
+                                            <input type="submit" class="btn btn-primary pull-right" value="Submit Followup" />
+                                        </div>
+                                    </div>
+
+
+                                </form>
+
+                                <!--      </div>
+        </div>-->
 
 
 
                             </div>
-                                <div class="w100p pull-left  ">
-                                    <!--<div class="panel panel-default">
-                <div class="panel-body">-->
-                                    <p class="fcgray pdbtm0 fs12 mrgbtm0">Post your reply : </p>
-                                    <form class="frmcontent pdbtm0 " ng-submit="SubmitReply()" ng-show="IsreplyingtoQuestion">
-                                        <div class="row mrgbtm3">
-                                            <textarea rows="5" class="col-md-12" ng-model="question.ExpertReply" placeholder="Post your reply" required />
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-md-2 pull-right">
-                                                <input type="submit" class="btn btn-primary pull-right" value="Submit Answer" />
-                                            </div>
-                                        </div>
-                                    </form>
-
-                                    <form class="frmcontent pdbtm0" ng-submit="SubmitReplytoFollowup()" ng-show="IsreplyingtoFollowup">
-                                        <div class="row mrgbtm3">
-                                            <textarea rows="5" class="col-md-12" ng-model="ExpertFollowupReply" required />
-                                        </div>
-
-                                        <div class="row">
-                                            <div class=" pull-right">
-                                                <input type="submit" class="btn btn-primary pull-right" value="Submit Followup Answer" />
-                                            </div>
-                                        </div>
-
-                                        <div class="row mrgtop2" ng-repeat="followup in FollowUps | orderBy:'LastModifiedOn':true">
-                                            <p class="alert-success">{{followup.ExpertReply}} {{followup.RepliedOn | date:'dd-MM-yyyy'}}</p>
-                                            <p class="alert-danger">{{followup.FollowUpQuestion}} {{followup.CreatedOn | date:'dd-MM-yyyy'}}</p>
-                                        </div>
-                                    </form>
-
-
-                                    <form class="frmcontent pdbtm0" ng-submit="SubmitFollowuptoReply()" ng-show="IsFollowuptoreply">
-                                        <div class="row mrgbtm3">
-
-                                            <textarea rows="5" class="col-md-12" ng-model="FollowUpQuestion" required />
-
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="pull-right">
-                                                <input type="submit" class="btn btn-primary pull-right" value="Submit Followup" />
-                                            </div>
-                                        </div>
-
-
-                                    </form>
-
-                                    <!--      </div>
-              </div>-->
-
-
-
-                                </div>
 
 
                                 <div class="col-lg-12 col-md-12">
