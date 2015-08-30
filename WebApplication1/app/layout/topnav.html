@@ -1,15 +1,6 @@
 ﻿
 <nav class="navbar navbar-inverse navbar-fixed-top bgblue" role="navigation">
-    <div ng-hide="userLoggedIn" class="fl w100p headertabouter bggblk">
-        <div class="container">
-
-            <ul class="fl headertab">
-                <li><a href="#" ng-click="openSignIn(2)">Become an Expert</a></li>
-                <li><a href="#" ng-click="openSignIn(1)">Become a Member</a></li>
-            </ul>
-
-        </div>
-    </div>
+   
     <div class="container eo_menu">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -27,7 +18,7 @@
 
         <ul class="nav navbar-nav nav_largeview">
             <li>
-                    <a ng-href="{{'#'}}">Home </a>
+                    <a ng-href="{{'#/dashboard'}}">Home </a>
                 </li>
                 <li>
                 <a ng-href="{{'#/expert'}}">Experts </a>
@@ -79,6 +70,17 @@
                 
         
         <!-- /.navbar-collapse -->
+        
     </div>
     <!-- /.container -->
+    <div ng-hide="userLoggedIn" class="fl w100p headertabouter" style="background-color:gold">
+        <div class="container">
+
+            <ul class="fl headertab">
+                <li><a href="#" ng-click="openSignIn(2)">Become an Expert</a></li>
+                <li><a href="#" ng-click="openSignIn(1)">Become a Member</a></li>
+            </ul>
+
+        </div>
+    </div>
 </nav>
