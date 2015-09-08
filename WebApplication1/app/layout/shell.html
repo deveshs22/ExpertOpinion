@@ -1,8 +1,8 @@
-﻿<div data-ng-controller="shell as vm">
+﻿<div class="pull-left w100p" data-ng-controller="shell as vm">
     <header class="clearfix">
         <div data-ng-include="'/app/layout/topnav.html'"></div>
     </header>
-    <section id="content" class="content">
+    <section id="content" class="content minhgt500">
         <div data-ng-show="vm.isBusy" class="page-splash dissolve-animation">
             <div data-cc-spinner="vm.spinnerOptions"></div>
             <div class="page-splash-message page-splash-message-subtle">{{vm.busyMessage}}</div>
@@ -12,4 +12,7 @@
 
         <div data-ng-view class="shuffle-animation"></div>
     </section>
+    <footer class="clearfix">
+        <div data-ng-include="'/app/layout/footer.html'"></div>
+    </footer>
 </div>

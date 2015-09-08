@@ -143,6 +143,20 @@
             return text && -1 !== text.toLowerCase().indexOf(searchText.toLowerCase());
         }
 
+        function cutString(text) {
+            var wordsToCut = 5;
+            var wordsArray = text.split(" ");
+            if (wordsArray.length > wordsToCut) {
+                var strShort = "";
+                for (i = 0; i < wordsToCut; i++) {
+                    strShort += wordsArray[i] + " ";
+                }
+                return strShort + "...";
+            } else {
+                return text;
+            }
+        };
+
         function getParameterByName(name) {
             name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
             var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),

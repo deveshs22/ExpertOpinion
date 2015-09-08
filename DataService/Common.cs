@@ -16,7 +16,17 @@ public static class Common
         {
             MailMessage msg = new MailMessage(ConfigurationManager.AppSettings["AdminEmailId"].ToString(), toEmail,subject, message);
             msg.IsBodyHtml=true;
-            client.Send(msg);
+            
+            try
+            {
+                client.Send(msg);
+                //client.SendAsync(msg, null);
+            }
+            catch (Exception) { }
+            finally
+            {
+                msg.Dispose();            
+            }
         }
     }
 }
