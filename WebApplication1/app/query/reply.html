@@ -45,17 +45,17 @@
                                         </a>
                                         <ul class="dropdown-menu">
                                             <li ng-show="question.Attach1!=undefined && question.Attach1!=''">
-                                                <a target="_blank" ng-href='http://localhost:1179/Attachments/{{question.Attach1}}'>
+                                                <a target="_blank" ng-href='{{ServerURL}}/Attachments/{{question.Attach1}}'>
                                                     Report 1
                                                 </a>
                                             </li>
                                             <li ng-show="question.Attach2!=undefined && question.Attach2!=''">
-                                                <a target="_blank" ng-href='http://localhost:1179/Attachments/{{question.Attach2}}'>
+                                                <a target="_blank" ng-href='{{ServerURL}}/Attachments/{{question.Attach2}}'>
                                                     Report 2
                                                 </a>
                                             </li>
                                             <li ng-show="question.Attach3!=undefined && question.Attach3!=''">
-                                                <a target="_blank" ng-href='http://localhost:1179/Attachments/{{question.Attach3}}'>
+                                                <a target="_blank" ng-href='{{ServerURL}}/Attachments/{{question.Attach3}}'>
                                                     Report 3
                                                 </a>
                                             </li>
@@ -135,9 +135,9 @@
                                                 <div class="w100p fl" ng-repeat="followup in FollowUps | orderBy:'FollowUpIndex'">
                                                     <div class="media brdbtm1gry pdbtm3">
                                                         <div class="media-left">
-                                                            <!--<a href="#">
+                                                            <a href="#">
                                         <img class="media-object userProimg" src="..." alt="...">
-                                    </a> -->
+                                    </a> 
                                                             <span class="nouser ">
 
                                                             </span>

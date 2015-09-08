@@ -31,6 +31,23 @@ namespace DataService.Repository
             return _objectSet.AsEnumerable();
         }
 
+        public IEnumerable<T> GetAllWithInclude(Func<T, bool> predicate = null, params Expression<Func<T, object>>[] includes)
+        {
+            IQueryable<T> query = _objectSet;
+            if (includes != null)
+            {
+                foreach (var include in includes)
+                    query = query.Include(include);
+            }
+
+            if (predicate != null)
+            {
+                return query.Where(predicate);
+            }
+
+            return query.AsEnumerable();
+        }
+
         public T Get(Func<T, bool> predicate)
         {
             return _objectSet.FirstOrDefault(predicate);

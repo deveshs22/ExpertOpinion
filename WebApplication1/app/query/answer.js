@@ -13,6 +13,7 @@
         vm.messageCount = 0;
         vm.people = [];
         vm.title = 'Answer';
+        $scope.ServerURL = common.serverURL;
         activate();
         $scope.question = {};
         $scope.FollowUps = [];

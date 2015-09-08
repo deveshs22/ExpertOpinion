@@ -11,6 +11,7 @@ using System.Web.Script.Serialization;
 
 using Data.Models;
 using DataService.Repository;
+using System.Configuration;
 
 namespace DataService.Controllers
 {
@@ -143,8 +144,8 @@ namespace DataService.Controllers
                 sb.Append("<div><center><b>Verification Mail from Expert Opinion</b></center></div><br />");
                 sb.Append("<p>Dear " + user.Name+ "</p>");
                 sb.Append("<p>Welcome to Expert Opinion!</p> <p>In order to get started, you need to click on the link below to verify your account.</p>");
-                sb.Append("<p><a href='http://localhost:5888/?email=" + user.Email + "/'>" + user.Email + "</a></p>");
-                sb.Append("<br/><p>Yours,</p><p>The Expert Opinion Team</p></div>");
+                sb.Append("<p><a href='" + ConfigurationManager.AppSettings["ServerURL"].ToString() + "/?email=" + user.Email + "/'>" + user.Email + "</a></p>");
+                sb.Append("<br/><p>Yours,</p><p>The Expert Opinion Team</p></div>");    
                 sb.Append("</body></html>");
                 Common.SendMail(user.Email, sb.ToString(), "Please confirm your e-mail address - Expert Opinion");
                 return response;

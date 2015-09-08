@@ -43,6 +43,7 @@
                         $scope.UserName = result.Name.replace('"', '').replace('"', '');
                     $scope.userLoggedIn = true;
                     $scope.UserTypeId = result.UserTypeId;
+                    debugger;
                     if (result.UserTypeId == 2) {
               //          debugger;
                         $location.url('/expertdashboard');
@@ -101,7 +102,7 @@
                 }
             });
 
-            modalInstance.results.then(function (userLoggedIn,uname) {
+            modalInstance.result.then(function (userLoggedIn,uname) {
             }, function (userLoggedIn,uname) {
                 //$scope.userLoggedIn = userLoggedIn;
                 $scope.getUserNameFromUID();

@@ -13,6 +13,7 @@
         vm.messageCount = 0;
         vm.HospitalList = [];
         vm.title = 'Hospital';
+        $scope.ServerURL = common.serverURL;
         activate();
 
 

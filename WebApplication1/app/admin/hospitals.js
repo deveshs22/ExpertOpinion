@@ -12,6 +12,7 @@
         vm.messageCount = 0;
         vm.people = [];
         vm.title = 'Dashboard';
+        $scope.ServerURL = common.serverURL;
         $scope.hospital = {};
         $scope.selectedSpeciality = [];
         $scope.selectedCountry = {};

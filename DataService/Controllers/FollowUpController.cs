@@ -51,9 +51,17 @@ namespace DataService.Controllers
 
         [HttpGet]
         [Route("byquestion/{id:int}")]
-        public IEnumerable<FollowUp> GetFollowUpsbyQuestionId(int id)
+        public IEnumerable<object> GetFollowUpsbyQuestionId(int id)
         {
-            return FollowUpRepository.GetAll(t => t.QuestionId == id);
+            return FollowUpRepository.GetAllWithInclude(t => t.QuestionId == id, i => i.User1.ExpertDetails).Select(f => new
+            {
+                FollowUpId = f.FollowUpId,
+                QuestionId=f.QuestionId,
+                UserId=f.UserId,
+                FollowUpQuestion = f.FollowUpQuestion,
+                ExpertName=f.User1.Name,
+                ExpertPhoto=f.User1.ExpertDetails.First().Photo
+            }); 
         }
 
         // POST api/<controller>

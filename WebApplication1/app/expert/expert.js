@@ -14,7 +14,7 @@
         vm.ExpertList = [];
         vm.title = 'Expert';
         activate();
-
+        $scope.ServerURL = common.serverURL;
 
         function activate() {
             var promises = [getExperts()];
