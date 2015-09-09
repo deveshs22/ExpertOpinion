@@ -128,10 +128,10 @@
                                             </div>
                                             </div>
                                         </div>
-                                        <div class="row mrgtop2" ng-repeat="followup in FollowUps | orderBy:'LastModifiedOn':true">
+                                        <!--<div class="row mrgtop2" ng-repeat="followup in FollowUps | orderBy:'LastModifiedOn':true">
                                             <p class="alert-success">{{followup.ExpertReply}} {{followup.RepliedOn | date:'dd-MM-yyyy'}}</p>
                                             <p class="alert-danger">{{followup.FollowUpQuestion}} {{followup.CreatedOn | date:'dd-MM-yyyy'}}</p>
-                                        </div>
+                                        </div>-->
                                     </form>
 
                                 <form class="frmcontent" ng-submit="SubmitFollowuptoReply()" ng-show="IsFollowuptoreply">
@@ -167,12 +167,12 @@
                                                 <div class="w100p fl" ng-repeat="followup in FollowUps | orderBy:'FollowUpIndex'">
                                                     <div class="media brdbtm1gry pdbtm3">
                                                         <div class="media-left">
-                                                            <!--<a href="#">
-                                        <img class="media-object userProimg" src="..." alt="...">
-                                    </a> -->
-                                                            <span class="nouser ">
+                                                            <a href="#">
+                                                                <img class="media-object userProimg" ng-src="{{ServerURL+'/Attachments/'+(followup.ExpertPhoto||'nophoto.jpg')}}">
+                                    </a> 
+                                                            <!--<span class="nouser ">
 
-                                                            </span>
+                                                            </span>-->
                                                         </div>
                                                         <div class="media-body">
 
@@ -182,7 +182,7 @@
                                                             <div class="w100p fl text-left fs11 posteddate pdbtm2">
                                                                         Date : {{followup.RepliedOn | date:'dd-MM-yyyy'}}
                                                             </div>
-                                                                    <div class="w100p fl text-left fs11  ">  <span class="btn btn-default alert-success btn-xs btn-info mrgrgt1 ">Followup Reply</span> </div>
+                                                                    <div class="w100p fl text-left fs11  ">  <span class="btn btn-default alert-success btn-xs btn-info mrgrgt1 ">Followup Reply by Dr. {{followup.ExpertName}}</span> </div>
 
                                                         </div>
                                                     </div>
@@ -190,7 +190,7 @@
                                                     <div class="media brdbtm1gry pdbtm3">
                                                         <div class="media-left">
                                                             <a href="#">
-                                                                <img class="media-object userProimg" src="..." alt="...">
+                                                                <img class="media-object userProimg" ng-src="{{ServerURL+'/Attachments/nophoto.jpg'}}">
                                                             </a>
                                                         </div>
                                                         <div class="media-body">
@@ -200,7 +200,7 @@
                                                             <div class="clearfix"></div>
                                                                     <div class="w100p fl text-left fs11 posteddate pdbtm2">Date : {{followup.CreatedOn | date:'dd-MM-yyyy'}}</div>
 
-                                                            <div class="w100p fl text-left fs11"><span class="btn btn-default alert-danger btn-xs btn-info mrgrgt1 ">Follow Up</span> </div>
+                                                            <div class="w100p fl text-left fs11"><span class="btn btn-default alert-danger btn-xs btn-info mrgrgt1 ">Follow Up by {{PatientName}}</span> </div>
 
 
                                                         </div>
@@ -208,7 +208,7 @@
                                                 </div>
                                                         <div class="media" ng-show="question.ExpertReply != undefined">
                                                     <div class="media-left">
-                                                                <img class="media-object userProimg" ng-src="{{'http://localhost:1179/Attachments/'+(expert.ExpertInfo[0].Photo||'nophoto.jpg')}}" alt="">
+                                                        <img class="media-object userProimg" ng-src="{{ServerURL+'/Attachments/nophoto.jpg'}}" alt="">
                                                     </div>
                                                     <div class="media-body">
                                                         <p class="media-heading">{{question.ExpertReply}}</p>
@@ -222,7 +222,6 @@
                                                         <!--  <div class="w100p fl text-left">{{followup.CreatedOn | date:'dd-MM-yyyy'}}</div>-->
                                                     </div>
                                                 </div>
-
                                                         <div class="media" ng-show="question.ExpertReply == undefined">
                                                             <p>No reply has been submitted for this question.</p>
                                             </div>

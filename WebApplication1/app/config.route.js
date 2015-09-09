@@ -51,6 +51,30 @@
                                     content: '<i class="fa fa-dashboard"></i> Dashboard'
                                 }
                             }
+                        }
+                        ,
+                        {
+                            url: '/userquestionsubmit',
+                            config: {
+                                templateUrl: 'app/dashboard/userquestionsubmit.html',
+                                title: 'Payment',
+                                settings: {
+                                    nav: 1,
+                                    content: '<i class="fa fa-dashboard"></i> Dashboard'
+                                }
+                            }
+                        }
+                        ,
+                        {
+                            url: '/userquestions',
+                            config: {
+                                templateUrl: 'app/dashboard/userquestions.html',
+                                title: 'Payment',
+                                settings: {
+                                    nav: 1,
+                                    content: '<i class="fa fa-dashboard"></i> Dashboard'
+                                }
+                            }
                         },
                         {
                             url: '/admin/hospitals',
@@ -130,6 +154,18 @@
                                 settings: {
                                     nav: 1,
                                     content: '<i class="fa fa-dashboard"></i> Expert History'
+                                }
+                            }
+                        }
+                        ,
+                        {
+                            url: '/userhistory',
+                            config: {
+                                templateUrl: 'app/dashboard/userhistory.html',
+                                title: 'UserHistory',
+                                settings: {
+                                    nav: 1,
+                                    content: '<i class="fa fa-dashboard"></i> User History'
                                 }
                             }
                         }

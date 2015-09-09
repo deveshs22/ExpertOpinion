@@ -10,14 +10,15 @@
             CreateQuestion: CreateQuestion,
             uploadFile: uploadFile,
             GetQuestionsforExpert: GetQuestionsforExpert,
-            GetQuestionsforUser:GetQuestionsforUser,
+            GetQuestionsforUser: GetQuestionsforUser,
             GetFollowupsforExpert: GetFollowupsforExpert,
-            GetFollowUpForQuestion:GetFollowUpForQuestion,
+            GetFollowUpForQuestion: GetFollowUpForQuestion,
             GetQuestion: GetQuestion,
             UpdateQuestion: UpdateQuestion,
             CreateFollowup: CreateFollowup,
             UpdateFollowup: UpdateFollowup,
-            GetQuestionsHistoryforExpert: GetQuestionsHistoryforExpert
+            GetQuestionsHistoryforExpert: GetQuestionsHistoryforExpert,
+            GetFollowupsforUser: GetFollowupsforUser
         };
 
         return service;
@@ -47,18 +48,20 @@
             return common.$http.get(common.serviceBaseURL + 'questions/byuser/' + userId);
         }
 
-        function GetQuestion(qid)
-        {
+        function GetFollowupsforUser(userId) {
+            return common.$http.get(common.serviceBaseURL + 'followups/byuser/' + userId);
+        }
+
+        function GetQuestion(qid) {
             return common.$http.get(common.serviceBaseURL + 'questions/' + qid);
         }
 
 
-         function GetFollowUpForQuestion(qid) {
-             return common.$http.get(common.serviceBaseURL + 'followups/byquestion/' + qid);
+        function GetFollowUpForQuestion(qid) {
+            return common.$http.get(common.serviceBaseURL + 'followups/byquestion/' + qid);
         }
 
-        function UpdateQuestion(qid,question)
-        {
+        function UpdateQuestion(qid, question) {
             return common.$http.put(common.serviceBaseURL + 'questions/' + qid, question);
         }
 
@@ -70,7 +73,7 @@
             var fd = new FormData();
             fd.append("file", files[0]);
             return common.$http.post(common.serviceBaseURL + 'upload/PostFormData', fd, {
-                headers: {'Content-Type': undefined },
+                headers: { 'Content-Type': undefined },
                 transformRequest: angular.identity
             })
         };

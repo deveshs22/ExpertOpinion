@@ -16,6 +16,7 @@
         activate();
         $scope.question = {};
         $scope.FollowUps = [];
+        $scope.ServerURL = common.serverURL;
         $scope.showingAdditional = false;
 
         $scope.ShowHideAdditional=function()

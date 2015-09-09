@@ -59,9 +59,20 @@ namespace DataService.Controllers
                 QuestionId=f.QuestionId,
                 UserId=f.UserId,
                 FollowUpQuestion = f.FollowUpQuestion,
+                ExpertReply =f.ExpertReply,
+                RepliedOn=f.RepliedOn,
+                CreatedOn=f.CreatedOn,
                 ExpertName=f.User1.Name,
                 ExpertPhoto=f.User1.ExpertDetails.First().Photo
             }); 
+        }
+
+        // GET api/<controller>/5
+        [HttpGet]
+        [Route("byuser/{id:int}")]
+        public IEnumerable<FollowUp> GetFollowupsbyUserId(int id)
+        {
+            return FollowUpRepository.GetAll(t => t.UserId == id && t.Active == true);
         }
 
         // POST api/<controller>

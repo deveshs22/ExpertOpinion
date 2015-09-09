@@ -108,5 +108,18 @@
                 $scope.getUserNameFromUID();
             });
         };
+
+        $scope.openSignup = function (logintype) {
+            var modalInstance = $modal.open({
+                templateUrl: 'app/dialogs/SignUpModal.html',
+                controller: SignUpModalInstanceCtrl,
+                resolve: {
+                    logintype: function () {
+                        return logintype;
+                    }
+                }
+            })
+        };
+
     };
 })();
