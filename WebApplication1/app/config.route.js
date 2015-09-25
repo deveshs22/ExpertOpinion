@@ -253,6 +253,18 @@
                     }
                 }
             }
+            ,
+            {
+                url: '/terms',
+                config: {
+                    title: 'terms',
+                    templateUrl: 'app/static/terms.html',
+                    settings: {
+                        nav: 2,
+                        content: '<i class="fa fa-lock"></i> Terms & Conditions'
+                    }
+                }
+            }
         ];
     }
 })();

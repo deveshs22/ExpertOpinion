@@ -114,6 +114,24 @@ namespace DataService.Controllers
             }
             return null;
         }
+
+        // POST api/<controller>
+        [HttpPost]
+        [Route("contact/")]
+        public void ContactMessage(object msgobj)
+        {
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            var json = msgobj;
+            dynamic user = js.Deserialize<dynamic>(json.ToString());
+
+            StringBuilder sb = new StringBuilder();
+            sb.Append("<html><body>");
+            sb.Append("<div><center><b>Contact Detail and Message</b></center></div><br />");
+            sb.Append("<p>Following message has been forwarded by user : </p>");
+            sb.Append("<br/><p>Name :"+user["name"] +"</p><br/><p>Email :"+user["email"] +"</p><br/><p><Contact Detail:"+user["contact"]+"</p><br/><p>Message:"+user["message"]+"</p></div>");
+            sb.Append("</body></html>");
+            Common.SendMail(ConfigurationManager.AppSettings["AdminEmailId"].ToString(), sb.ToString(), "Contact Us Message - Expert Opinion");
+        }
  
         // POST api/<controller>
         [HttpPost]

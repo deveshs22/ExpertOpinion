@@ -1,43 +1,81 @@
-﻿<section id="contactus-view" class="mainbar">
-
-
+﻿<section id="contactus-view" class="mainbar" data-ng-controller="dashboard as vm">
     <div class="pull-left w100p pdbtm6  ">
         <div class="container expert">
-            <h1 class="text-center pdtop0 pdbtm4 ff_myriadbold">About <span>Expert Opinion</span></h1>
+            <h1 class="text-center pdtop0 pdbtm4 ff_myriadbold">Contact<span>Expert Opinion</span></h1>
             <!-- Page Features -->
             <div class="row text-center">
                 <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                     <div class="row">
 
                         <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 bdrbtm mrgbtm3">
-                            <div class="col-md-2 col-lg-2 col-sm-3 col-xs-12">
+                            <div class="col-md-8 col-lg-8 col-sm-10 col-xs-12">
                                 <div class="row">
-                                    <div class="thumbnail p2px">
-                                        <a href="#"><img src="Content/images/doc.jpg" alt="" class="Square img-responsive center-block"></a>
-                                    </div>
+                                    <form ng-submit="sendQuery()">
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <label class="pull-left">Name<span style="color:red;">*</span></label>
+                                                <input type="text" required ng-model="contactDetail.name" class="form-control pull-left" />
+                                            </div>
+                                        </div>
+                                        <div class="row mrgtop3">
+                                            <div class="col-md-8">
+                                                <label class="pull-left">Email<span style="color:red;">*</span></label>
+                                                <input type="email" required ng-model="contactDetail.email" class="form-control pull-left" />
+                                            </div>
+                                        </div>
+
+                                        <div class="row mrgtop3">
+                                            <div class="col-md-8">
+                                                <label class="pull-left">Contact Number</label>
+                                                <input type="text" class="form-control pull-left" ng-model="contactDetail.contact" />
+                                            </div>
+                                        </div>
+
+                                        <div class="row mrgtop3">
+                                            <div class="col-md-8">
+                                                <label class="pull-left">Message<span style="color:red;">*</span></label>
+                                                <textarea required rows="5" ng-model="contactDetail.message" class="form-control" />
+                                            </div>
+                                        </div>
+                                        <div class="row mrgtop3">
+                                            <div class="col-md-8">
+                                                <i class="pull-left"><span style="color:red;">*</span>indicates required information</i>
+                                            </div>
+                                        </div>
+                                        <div class="row mrgtop3">
+                                            <div class="col-md-12">
+                                                <input type="button" value="Clear" class="btn-warning" />
+                                                <input type="submit" value="Send Message" class="btn-primary" />
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="row" ng-hide="IsQuerySubmitted">
+                                    <h2>
+                                        Thanks for contacting Expert Opinion Team, we will get back to you soon!
+                                    </h2>
                                 </div>
                             </div>
 
-                            <div class="col-md-10 col-lg-10 col-sm-9 col-xs-12">
+                            <div class="col-md-4">
 
                                 <div class="caption">
 
-                                    <h2 class="text-left mrgbtm1 mrgtop0 fs19 mrgbtm2">Self-designated practice specialties (SDPS)</h2>
+                                    <h2 class="text-left mrgbtm1 mrgtop0 fs19 mrgbtm2"><u>US Offices:</u></h2>
                                     <p class="text-left mrgbtm1">
-                                        Child Specialist, Child Specialist, Child Specialist, Child Specialist, Child Specialist, Child Specialist,
-
+                                        Tampa, FL                  Atlanta, GA
                                     </p>
-                                    <p class="text-left">Self-designated practice specialties (SDPS) listed on the AMA Physician Profile do not imply recognition or endor sement of any field of medical practice by the Association..</p>
-                                    <p class="text-left">Self-designated practice specialties (SDPS) listed on the AMA Physician Profile do not imply recognition or endor sement of any field of medical practice by the Association..</p>
-                                    <p class="text-left">Self-designated practice specialties (SDPS) listed on the AMA Physician Profile do not imply recognition or endor sement of any field of medical practice by the Association..</p>
-                                    <p class="text-left">Self-designated practice specialties (SDPS) listed on the AMA Physician Profile do not imply recognition or endor sement of any field of medical practice by the Association..</p>
-                                    <p class="text-left">Self-designated practice specialties (SDPS) listed on the AMA Physician Profile do not imply recognition or endor sement of any field of medical practice by the Association..</p>
+                                    <h2 class="text-left mrgbtm1 mrgtop0 fs19 mrgbtm2"><u>International Offices:</u></h2>
+                                    <p class="text-left">New Delhi, India</p>
+                                    <h2 class="text-left mrgbtm1 mrgtop0 fs19 mrgbtm2"><u>Email:</u></h2>
+                                    <p class="text-left"><i>info@ExpertOpinion.us</i></p>
                                 </div>
                             </div>
 
 
 
                         </div>
+
 
 
                     </div>
@@ -50,7 +88,7 @@
     </div>
 
     <!--<div class="w100p pull-left pdtop4 pdbtm4 footer">
-         Footer 
+         Footer
         <footer>
             <div class="row">
                 <div class="col-lg-12 text-center">

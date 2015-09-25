@@ -16,7 +16,8 @@
             GetUserLoginbyUID: GetUserLoginbyUID,
             GetUserNamebyUID: GetUserNamebyUID,
             GetUserNamebyID:GetUserNamebyID,
-            CreateExpertProfile: CreateExpertProfile
+            CreateExpertProfile: CreateExpertProfile,
+            SendContactMessage: SendContactMessage
         };
 
         var usersApi = common.serviceBaseURL + 'users/';
@@ -49,6 +50,10 @@
 
         function CreateUser(userInfoData) {
             return common.$http.post(usersApi , userInfoData);
+        }
+
+        function SendContactMessage(userInfoData) {
+            return common.$http.post(usersApi + 'contact/', userInfoData);
         }
 
         function CreateExpertProfile(profileData)

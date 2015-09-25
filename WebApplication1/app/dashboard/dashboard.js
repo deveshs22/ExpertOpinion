@@ -1,18 +1,22 @@
 ﻿(function () {
     'use strict';
     var controllerId = 'dashboard';
-    angular.module('app').controller(controllerId, ['common','$scope', '$modal','$location', dashboard]);
+    angular.module('app').controller(controllerId, ['common', '$scope', '$modal', '$location', 'userdatacontext', dashboard]);
 
-    function dashboard(common, $scope, $modal, $location) {
+    function dashboard(common, $scope, $modal, $location, userdatacontext) {
         debugger;
         var vm = this;
-        vm.news = {
-            title: 'Expert Opinion',
-            description: 'Expert Opinion'
-        };
-        vm.messageCount = 0;
-        vm.people = [];
+
         vm.title = 'Dashboard';
+
+        $scope.contactDetail = {};
+
+        $scope.sendQuery = function()
+        {
+            debugger;
+            //var details = "<p><b>Name:" + $scope.contactDetail.name + " </b></p><br/><p><b>Email:" + $scope.contactDetail.email + " </b></p><br/><p><b>Contact Number:" + $scope.contactDetail.contact + " </b></p><br/><p><b>Message:" + $scope.contactDetail.message + " </b></p>";
+            userdatacontext.SendContactMessage($scope.contactDetail);
+        }
 
         $scope.PostQuestion = function ()
         {
