@@ -24,11 +24,15 @@ namespace Data.Models
         public DbSet<HospitalSpeciality> HospitalSpecialities { get; set; }
         public DbSet<HospitalSpecialityDetail> HospitalSpecialityDetails { get; set; }
         public DbSet<Payment> Payments { get; set; }
+        public DbSet<PriceCategory> PriceCategories { get; set; }
         public DbSet<Question> Questions { get; set; }
         public DbSet<Speciality> Specialities { get; set; }
         public DbSet<State> States { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<UserType> UserTypes { get; set; }
+        public DbSet<Offer> Offers { get; set; }
+        public DbSet<OfferType> OfferType { get; set; }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -39,7 +43,10 @@ namespace Data.Models
             modelBuilder.Configurations.Add(new HospitalMap());
             modelBuilder.Configurations.Add(new HospitalSpecialityMap());
             modelBuilder.Configurations.Add(new HospitalSpecialityDetailMap());
+            modelBuilder.Configurations.Add(new OfferMap());
+            modelBuilder.Configurations.Add(new OfferTypeMap());
             modelBuilder.Configurations.Add(new PaymentMap());
+            modelBuilder.Configurations.Add(new PriceCategoryMap());
             modelBuilder.Configurations.Add(new QuestionMap());
             modelBuilder.Configurations.Add(new SpecialityMap());
             modelBuilder.Configurations.Add(new StateMap());

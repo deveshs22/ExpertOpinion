@@ -15,6 +15,8 @@
             GetExperts: GetExperts,
             GetHospitalSpecialities: GetHospitalSpecialities,
             GetHospitalList: GetHospitalList,
+            GetPriceCategories: GetPriceCategories,
+            GetDicountCouponByCode:GetDicountCouponByCode,
             uploadFile: uploadFile
         };
         var usersApi = common.serviceBaseURL + 'users/';
@@ -31,6 +33,14 @@
 
         function GetHospitalSpecialities() {
             return common.$http.get(common.serviceBaseURL + 'hospitalspecialities/');
+        }
+
+        function GetPriceCategories() {
+            return common.$http.get(common.serviceBaseURL + 'pricecategories/');
+        }
+
+        function GetDicountCouponByCode(offercode) {
+            return common.$http.get(common.serviceBaseURL + 'offers/getbycodecode/' + offercode);
         }
 
         function uploadFile(files, filename) {

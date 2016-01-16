@@ -28,6 +28,7 @@ namespace Data.Models
         public ICollection<FollowUp> FollowUps1 { get; set; }
         public ICollection<Question> Questions { get; set; }
         public ICollection<Question> Questions1 { get; set; }
+        public ICollection<Offer> Offers { get; set; }
         public UserType UserType { get; set; }
     }
 }

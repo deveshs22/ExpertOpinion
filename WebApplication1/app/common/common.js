@@ -45,8 +45,10 @@
             textContains: textContains,
             getParameterByName: getParameterByName,
             getGUID:getGUID,
-            serviceBaseURL: 'http://localhost:1179/api/',  //http://66.219.98.58/api
-            serverURL: 'http://localhost:1179/',  //http://66.219.98.58
+            //serviceBaseURL: 'http://66.219.98.58/api',  //'http://localhost:1179/api/'
+            //serverURL: 'http://66.219.98.58/', //'http://localhost:1179/'
+            serviceBaseURL: 'http://localhost:1179/api/',
+            serverURL: 'http://localhost:1179/',
             queryData: queryData
         };
 
@@ -258,6 +260,13 @@ var SignInModalInstanceCtrl = function ($scope, $modal, $modalInstance, userdata
 var SignUpModalInstanceCtrl = function ($scope, $modal, $modalInstance, userdatacontext, common, logintype) {
 
     $scope.IsAdminLogin = logintype == 2;
+
+    if (logintype == 1)
+        $scope.LoginType = "a Member";
+    else if (logintype == 2)
+        $scope.LoginType = "an Expert";
+    else if (logintype == 3)
+        $scope.LoginType = "an Affiliate";
 
     $scope.cancel = function () {
         $modalInstance.dismiss(false);

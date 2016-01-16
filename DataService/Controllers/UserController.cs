@@ -42,7 +42,7 @@ namespace DataService.Controllers
         [Route("experts")]
         public IEnumerable<object> GetExperts()
         {
-            return UserRepository.GetWithInclude(t => t.ExpertDetails).Where(u => u.UserTypeId == Constants.UserTypeExpert).Select(user => new
+            return UserRepository.GetAllWithInclude(null,t => t.ExpertDetails).Where(u => u.UserTypeId == Constants.UserTypeExpert).Select(user => new
             {
                 UserId = user.UserId,
                 Name = user.Name,

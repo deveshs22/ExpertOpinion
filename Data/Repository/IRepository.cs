@@ -10,7 +10,7 @@ namespace DataService.Repository
     {
         IEnumerable<T> GetAll(Func<T, bool> predicate = null);
         T Get(Func<T, bool> predicate);
-        IEnumerable<T> GetWithInclude(params Expression<Func<T, object>>[] includes);
+        T GetWithInclude(Func<T, bool> predicate = null, params Expression<Func<T, object>>[] includes);
         IEnumerable<T> GetAllWithInclude(Func<T, bool> predicate = null, params Expression<Func<T, object>>[] includes);
         T GetById(object id);
         void Add(T entity);

@@ -18,7 +18,8 @@
             CreateFollowup: CreateFollowup,
             UpdateFollowup: UpdateFollowup,
             GetQuestionsHistoryforExpert: GetQuestionsHistoryforExpert,
-            GetFollowupsforUser: GetFollowupsforUser
+            GetFollowupsforUser: GetFollowupsforUser,
+            SubmitPayment: SubmitPayment
         };
 
         return service;
@@ -67,6 +68,10 @@
 
         function UpdateFollowup(fid, followup) {
             return common.$http.put(common.serviceBaseURL + 'followups/' + fid, followup);
+        }
+
+        function SubmitPayment(pmt) {
+            return common.$http.post(common.serviceBaseURL + 'payment', pmt);
         }
 
         function uploadFile(files) {

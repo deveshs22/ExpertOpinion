@@ -156,8 +156,11 @@
     <Compile Include="Common.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Controllers\CityController.cs" />
+    <Compile Include="Controllers\OffersController.cs" />
+    <Compile Include="Controllers\PriceCategoriesController.cs" />
     <Compile Include="Controllers\HospitalController.cs" />
     <Compile Include="Controllers\HospitalSpecialityController.cs" />
+    <Compile Include="Controllers\PaymentController.cs" />
     <Compile Include="Controllers\SpecialityController.cs" />
     <Compile Include="Controllers\CountryController.cs" />
     <Compile Include="Controllers\FollowUpController.cs" />
@@ -195,6 +198,9 @@
       <Project>{5698860c-8b87-498c-80bf-b2eea157ccc2}</Project>
       <Name>Data</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\service.pubxml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

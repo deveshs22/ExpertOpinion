@@ -8,10 +8,10 @@ public static class Common
 { 
     public static void SendMail(string toEmail, string message, string subject)
     {
-        using (var client = new SmtpClient("smtp.gmail.com", 587)
+        using (var client = new SmtpClient(ConfigurationManager.AppSettings["SMTP"].ToString(), Convert.ToInt32(ConfigurationManager.AppSettings["SMTPPort"]))
         {
             Credentials = new NetworkCredential(ConfigurationManager.AppSettings["AdminEmailId"].ToString(), ConfigurationManager.AppSettings["AdminEmailPassword"].ToString()),
-            EnableSsl = true
+            EnableSsl = false
         })
         {
             MailMessage msg = new MailMessage(ConfigurationManager.AppSettings["AdminEmailId"].ToString(), toEmail,subject, message);

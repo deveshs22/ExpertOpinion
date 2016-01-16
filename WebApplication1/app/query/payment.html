@@ -11,6 +11,7 @@
                             <div class="frmbg">
                                 <div class="frmheader ff_myriad bold">Payment Details</div>
                                 <form class="frmcontent " ng-submit="SubmitPayment()">
+
                                     <div class="mrgbtm2 row">
                                         <div class="col-lg-12">
                                             <div class="col-md-3">
@@ -22,18 +23,40 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                    <div class="mrgbtm2 row">
+                                        <div class="col-lg-12">
+                                            <div class="col-md-7">
+                                                <label for="exampleInputEmail1">Charges Per Question are Rs. {{PriceList[0].Price}}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="mrgbtm2 row">
+                                        <div class="col-lg-12">
+                                            <div class="col-md-3">
+                                                <label for="exampleInputEmail1">Discount/Promo Code</label>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <input type="text" width="30" ng-model="dicountcode"  />
+                                            </div>
+                                            <div class="col-md-1">
+                                                <a ng-click="ApplyDiscount()" href>Apply</a>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <h6>{{PromoCodeMsg}}</h6>
+                                            </div>
+                                    </div>
+
                                     <div class=" row">
                                         <div class="col-lg-12">
-                                            <button type="submit" class="btn btn-primary pull-right" ng-hide="expertSubmitted">Submit</button>
-
+                                            <button type="submit" class="btn btn-primary pull-right" ng-hide="expertSubmitted">Pay Now</button>
                                         </div>
                                     </div>
                                     <div class=" mrgtop2 row" ng-show="expertSubmitted">
-
                                         <div class="col-lg-12">
                                             <p class=" bg-success pd2 fs12 mrgbtm0">
                                                 Expert has been assigned to this question
-
                                             </p>
                                             <div class="clearfix"></div>
                                         </div>

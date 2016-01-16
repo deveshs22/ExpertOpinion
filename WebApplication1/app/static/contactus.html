@@ -1,7 +1,7 @@
 ﻿<section id="contactus-view" class="mainbar" data-ng-controller="dashboard as vm">
     <div class="pull-left w100p pdbtm6  ">
         <div class="container expert">
-            <h1 class="text-center pdtop0 pdbtm4 ff_myriadbold">Contact<span>Expert Opinion</span></h1>
+            <h1 class="text-center pdtop0 pdbtm4 ff_myriadbold">Contact Expert Opinion</h1>
             <!-- Page Features -->
             <div class="row text-center">
                 <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
@@ -9,7 +9,7 @@
 
                         <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 bdrbtm mrgbtm3">
                             <div class="col-md-8 col-lg-8 col-sm-10 col-xs-12">
-                                <div class="row">
+                                <div class="row" ng-hide="IsQuerySubmitted">
                                     <form ng-submit="sendQuery()">
                                         <div class="row">
                                             <div class="col-md-8">
@@ -50,7 +50,7 @@
                                         </div>
                                     </form>
                                 </div>
-                                <div class="row" ng-hide="IsQuerySubmitted">
+                                <div class="row" ng-show="IsQuerySubmitted">
                                     <h2>
                                         Thanks for contacting Expert Opinion Team, we will get back to you soon!
                                     </h2>
