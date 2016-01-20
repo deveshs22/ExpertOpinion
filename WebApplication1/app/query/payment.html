@@ -1,0 +1,75 @@
+﻿<section id="payment-view" class="mainbar" data-ng-controller="payment as vm">
+    <div class="pull-left w100p">
+        <!-- Jumbotron Header -->
+        <header class="eo-header">
+            <div class="container">
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 hidden-sm hidden-xs"><img src="content/images/header_doc_img.png" /></div>
+                <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                    <div class="clearfix"></div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 bxshadow">
+                        <div class="w100p fl frmbx minhgt0">
+                            <div class="frmbg">
+                                <div class="frmheader ff_myriad bold">Payment Details</div>
+                                <form class="frmcontent " ng-submit="SubmitPayment()">
+
+                                    <div class="mrgbtm2 row">
+                                        <div class="col-lg-12">
+                                            <div class="col-md-3">
+                                                <label for="exampleInputEmail1">Select Expert</label>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <select class="form-control" data-ng-model="selectedExpert"
+                                                        data-ng-options="s.Name for s in ExpertList"></select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="mrgbtm2 row">
+                                        <div class="col-lg-12">
+                                            <div class="col-md-7">
+                                                <label for="exampleInputEmail1">Charges Per Question are Rs. {{PriceList[0].Price}}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="mrgbtm2 row">
+                                        <div class="col-lg-12">
+                                            <div class="col-md-3">
+                                                <label for="exampleInputEmail1">Discount/Promo Code</label>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <input type="text" width="30" ng-model="dicountcode"  />
+                                            </div>
+                                            <div class="col-md-1">
+                                                <a ng-click="ApplyDiscount()" href>Apply</a>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <h6>{{PromoCodeMsg}}</h6>
+                                            </div>
+                                    </div>
+
+                                    <div class=" row">
+                                        <div class="col-lg-12">
+                                            <button type="submit" class="btn btn-primary pull-right" ng-hide="expertSubmitted">Pay Now</button>
+                                        </div>
+                                    </div>
+                                    <div class=" mrgtop2 row" ng-show="expertSubmitted">
+                                        <div class="col-lg-12">
+                                            <p class=" bg-success pd2 fs12 mrgbtm0">
+                                                Expert has been assigned to this question
+                                            </p>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </form>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+        </header>
+    </div>
+</section>

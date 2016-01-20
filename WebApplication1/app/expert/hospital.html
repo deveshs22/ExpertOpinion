@@ -1,0 +1,42 @@
+﻿<section id="hospital-view" class="mainbar" data-ng-controller="hospitallist as vm">
+    <div class="pull-left w100p pdbtm6  ">
+        <div class="container expert">
+            <h1 class="text-center pdtop0 pdbtm4 ff_myriadbold">Our Hospitals</h1>
+            <!-- Page Features -->
+            <div class="row text-center">
+                <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                    <div class="row">
+                        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 bdrbtm mrgbtm3" ng-repeat="hospital in HospitalList">
+                            <div class="col-md-2 col-lg-2 col-sm-3 col-xs-12">
+                                <div class="row">
+                                    <div class="thumbnail p2px">
+                                        <a href="#"><img ng-src="{{ServerURL+'/Attachments/'+(hospital.Photo||'nophoto.jpg')}}" alt="" class="Square img-responsive center-block"></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-10 col-lg-10 col-sm-9 col-xs-12">
+                                <div class="caption">
+                                    <h2 class="text-left mrgbtm1 mrgtop0 fs19 username">{{hospital.HospitalName}}</h2>
+                                    <p class="text-left mrgbtm1">
+                                        <span ng-repeat="speciality in hospital.HospitalSpecialityDetails">
+                                            {{speciality.HospitalSpeciality.HospitalSpeciality1}}.
+                                        </span>
+                                    </p>
+                                    <p class="text-left pdtop1">
+                                        {{hospital.Description}}
+                                    </p>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+</section>

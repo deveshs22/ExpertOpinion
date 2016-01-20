@@ -1,0 +1,86 @@
+﻿
+<nav class="navbar navbar-inverse navbar-fixed-top bgblue" role="navigation">
+   
+    <div class="container eo_menu">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topnav-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Expert Opinion</a>
+
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="topnav-collapse">
+
+        <ul class="nav navbar-nav nav_largeview">
+            <li>
+                    <a ng-href="{{'#/dashboard'}}">Home </a>
+                </li>
+                <li>
+                <a ng-href="{{'#/expert'}}">Experts </a>
+            </li>
+            <li>
+                <a ng-href="{{'#/hospital'}}">Hospitals</a>
+            </li>
+           
+            <li ng-hide="userLoggedIn">
+
+                <a class="btn dropdown-toggle" data-toggle="dropdown" href="#" style="background-color: #4888de;">
+                    Login
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" style="background-color: #4888de;">
+                    <li>
+                        <a href ng-click="openSignIn(1)"> Patient</a>
+                    </li>
+                    <li>
+                        <a href ng-click="openSignIn(2)"> Expert </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li ng-show="userLoggedIn">
+                <a class="btn dropdown-toggle" data-toggle="dropdown" href="#" style="background-color: #4888de;">
+                    Welcome {{UserName}}
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" style="background-color: #4888de;">
+                    <li>
+                        <a ng-href="{{UserTypeId==2 ? '#/expertdashboard' : '#/userdashboard'}}" style="background-color: #4888de;">
+                            View Dashboard
+                        </a>
+                    </li>
+                    <li ng-show="UserTypeId==2">
+                        <a ng-href="{{UserTypeId==2 ? '#/profile?edit=true' : '#/expertdashboard'}}" style="background-color: #4888de;">
+                            View Profile
+                        </a>
+                    </li>
+                </ul>
+                
+            </li>
+            <li ng-show="userLoggedIn">
+                <a href ng-click="SignOut()">Sign Out</a>
+                </li>
+</ul>
+    </div>
+                
+        
+        <!-- /.navbar-collapse -->
+        
+    </div>
+    <!-- /.container -->
+    <div ng-hide="userLoggedIn" class="fl w100p headertabouter" style="background-color:gold">
+        <div class="container">
+
+            <ul class="fl headertab">
+                <li><a href ng-click="openSignup(2)">Become an Expert</a></li>
+                <li><a href ng-click="openSignup(1)">Become a Member</a></li>
+            </ul>
+
+        </div>
+    </div>
+</nav>

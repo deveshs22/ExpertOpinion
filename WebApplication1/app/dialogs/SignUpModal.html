@@ -1,0 +1,38 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="cancel()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title"><span ng-show="IsAdminLogin">Expert</span> Log in</h4>
+    </div>
+    <div class="modal-body" id="divsignup">
+
+
+        <p ng-show="userCreated" class="bg-success">Thank you for Registering, An Email has been sent to your registered Mail Id for verification</p>
+        <p ng-show="emailExists" class="bg-danger">Email Already Exists</p>
+
+
+        <form id="userentry-form" ng-submit="addUser()" ng-hide="userCreated">
+            <div class="form-group">
+                <label>Name</label>
+                <input class="form-control" type="text" placeholder="First name" name="" required ng-model="$parent.Name">
+            </div>
+            <div class="form-group">
+                <label class="w100p">Email Address</label>
+                <input class="form-control" type="email" placeholder="Email Address" required ng-model="$parent.email">
+            </div>
+
+            <div class="form-group">
+                <label for="password" class="w100p">Password </label>
+                <input class="form-control" type="password" placeholder="Password" required ng-model="$parent.password">
+            </div>
+
+            <button ng-disabled="IsLoading" type="submit" class="btn btn-default">Submit</button> <img ng-show="IsLoading" src="content/images/loading.gif" />
+        </form>
+    </div>
+    <div class="modal-footer">
+
+        Already {{LoginType}}? <a href="#" ng-click="openLogin()">Log In</a>
+        <button class="btn btn-warning" ng-click="cancel()">
+            Cancel
+        </button>
+    </div>
+</div><!-- /.modal-content -->

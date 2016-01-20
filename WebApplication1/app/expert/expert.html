@@ -1,0 +1,44 @@
+﻿<section id="expert-view" class="mainbar" data-ng-controller="expert as vm">
+    <!-- Page Content -->
+    <div class="pull-left w100p pdbtm6 ">
+        <div class="container expert">
+            <h1 class="text-center pdtop0 pdbtm4 ff_myriadbold">Our Experts</h1>
+            <!-- Page Features -->
+            <div class="row text-center">
+                <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12" ng-repeat="expert in ExpertList">
+                            <div class=" col-md-4 col-lg-3 col-sm-5 col-xs-12">
+                                <div class="row">
+                                    <div class="thumbnail p2px">
+                                        <a href="#"><img ng-src="{{ServerURL+'/Attachments/'+(expert.ExpertInfo[0].Photo||'nophoto.jpg')}}" alt="" class="p2px img-responsive img-circle center-block"></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-8 col-lg-9 col-sm-7 col-xs-12">
+
+                                <div class="caption">
+                                    <p class="username text-left mrgbtm2 pull-left">
+                                        <b class="pull-left">{{expert.Name}}</b> <span class="fs11 edu pull-left">({{expert.ExpertInfo[0].Qualification}})</span>
+                                        <span>{{expert.ExpertInfo[0].Speciality.Speciality1}}</span>
+                                    </p>
+                                    <p class="text-left mrgbtm1 pull-left">
+                                        {{expert.ExpertInfo[0].Description}}
+                                    </p>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+    
+</section>
