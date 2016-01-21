@@ -176,28 +176,37 @@
             return guid;
         }
     }
+}
 
 
-    var ResetPasswordModalInstanceCtrl = function ($scope, $modalInstance) {
-        $scope.emailMessage = "";
-        $scope.cancel = function () {
-            $modalInstance.dismiss('cancel');
-        };
-        $scope.IsLoading = false;
-        $scope.SendResetMail = function () {
-            $scope.IsLoading = true;
-            $http.get('http://66.219.98.58/api/userinfo/GetResetPasswordLink/' + $scope.email).success(function (result) {
-                $scope.IsLoading = false;
-                if (result == 0) {
-                    $scope.emailMessage = "Email Address is not correct.";
-                }
-                else {
-                    $scope.emailMessage = "Mail has been sent to your Email Address.";
-                }
-            });
-        };
+)();
+
+
+
+var ResetPasswordModalInstanceCtrl = function ($scope, $modalInstance, userdatacontext) {
+    $scope.emailMessage = "";
+    $scope.cancel = function () {
+        $modalInstance.dismiss('cancel');
     };
-})();
+    $scope.IsLoading = false;
+    $scope.SendResetMail = function () {
+        $scope.IsLoading = true;
+
+        userdatacontext.UpdateMailPWD($scope.email).success(function (result) {
+            $scope.IsLoading = false;
+            debugger;
+            if (result == "null") {
+                $scope.emailMessage = "Email Address is not correct.";
+                return;
+            }
+            else {
+                $scope.emailMessage = "Mail has been sent to your Email Address.";
+            }
+        });
+    
+
+    };
+};
 
 
 var SignInModalInstanceCtrl = function ($scope, $modal, $modalInstance, userdatacontext, logintype) {

@@ -28,7 +28,7 @@
         }
 
         function GetSpecialities() {
-            return common.$http.get(common.serviceBaseURL + 'Speciality/');
+            return common.$http.get(common.serviceBaseURL + 'specialities/');
         }
 
         function GetHospitalSpecialities() {

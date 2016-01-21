@@ -17,16 +17,16 @@
         $scope.showoption2 = false;
         $scope.showoption3 = false;
         $scope.showaddanother = false;
-        $scope.addAnother = function()
-        {
+        $scope.addAnother = function () {
+            debugger;
             $scope.showaddanother = false;
-            if (!$scope.showoption2)
-            {
+            if (!$scope.showoption2) {
                 $scope.showoption2 = true;
             }
             else if (!$scope.showoption3) {
                 $scope.showoption3 = true;
             }
+            return;
         }
 
         $scope.gotoPayment = function()

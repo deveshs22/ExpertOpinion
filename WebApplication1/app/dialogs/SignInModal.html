@@ -14,7 +14,7 @@
                 <input class="form-control" id="email" type="email" placeholder="Email Address" required ng-model="$parent.email" tabindex="1" autofocus>
             </div>
             <div class="form-group">
-                <label for="password" class="w100p">Password <a class="pull-right nrml fs11" ng-click="openReset()" tabindex="4">Forgot password</a></label>
+                <label for="password" class="w100p">Password <a href class="pull-right nrml fs11" ng-click="openReset()" tabindex="4">Forgot password</a></label>
                 <input class="form-control" type="password" placeholder="Password" required ng-model="$parent.password" tabindex="2">
             </div>
 
@@ -32,59 +32,4 @@
             Cancel
         </button>
     </div>
-</div><!-- /.modal-content -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--
-<div class="modal-header">
-    
-                                                                                 
-                                                                                 
-                                                                                 
-                                                                                 <h3>
-        <span ng-show="IsAdminLogin">Expert</span> Log in
-    </h3>
-
-
 </div>
-<div class="modal-body" id="divsignin">
-</div>
-    <h4 ng-show="pwdInvalid">Invalid Login details</h4>
-<h4 ng-show="Inactive">Profile is Not Activated</h4>
-    <form id="userentry-form">
-    <div style="margin-left:15px;">
-        <input type="email" placeholder="Email Address" required ng-model="$parent.email">
-        <input type="password" placeholder="Password" required ng-model="$parent.password">
-        <br />
-        <small>
-        <a href style="margin-left:50px;" ng-click="openReset()">Forgot password</a>
-        </small>
-        <div>
-            <br />
-            <button ng-disabled="IsLoading" type="submit" ng-click="login()" class="btn btn-primary btn-large large padded-btn-block">
-                Log In
-            </button>
-            
-        </div>
-    </div>
-    </form>
-</div>
-<div class="modal-footer">
-    Don't have an account? <a href ng-click="openSignup()">Sign up</a>
-    <button class="btn btn-warning" ng-click="cancel()">
-        Cancel</button>
-</div>
-    -->
