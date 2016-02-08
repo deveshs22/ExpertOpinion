@@ -37,6 +37,66 @@
             querydatacontext.SubmitPayment(paymentobj);
         }
 
+
+        $scope.addFormFields = function (form, data) {
+            if (data != null) {
+                $.each(data, function (name, value) {
+                    if (value != null) {
+                        var input = $("<input></input>").attr("type", "hidden").attr("name", name).val(value);
+                        form.append(input);
+                    }
+                });
+            }
+        };
+
+
+        $scope.checkout = function()
+        {
+            var data = {
+                cmd: "_cart",
+                business: 'info-facilitator@expertopinion.us',
+                upload: "1",
+                rm: "2",
+                charset: "utf-8"
+            };
+
+            // item data
+            for (var i = 0; i < 1; i++) {
+                data["item_number_1"] = 'Charges for query';
+                data["item_name_1"] = 'query';
+                data["quantity_1"] = 1;
+                data["amount_1" ] = 5;
+                data["notify_url"] = "http://www.expertopinion.us/#/payment?success=true"
+            }
+
+            // build form
+            var form = $('<form/></form>');
+            form.attr("action", "https://www.sandbox.paypal.com/cgi-bin/webscr");
+            form.attr("method", "POST");
+            form.attr("style", "display:none;");
+            this.addFormFields(form, data);
+            //this.addFormFields(form, parms.options);
+            $("body").append(form);
+
+            // submit form
+            //this.clearCart = clearCart == null || clearCart;
+            form.submit();
+
+            form.submit(function () {
+                $.ajax({
+                    url: form.attr('action'),
+                    type: post,
+                    data: form.serialize(),
+                    success: function (response,data) {
+                        debugger;
+                    }
+                });
+                return false;
+            });
+
+            form.remove();
+        }
+
         $scope.ApplyDiscount = function()
         {
             var todaydate = new Date();

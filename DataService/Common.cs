@@ -5,27 +5,27 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 public static class Common
-{ 
+{
     public static void SendMail(string toEmail, string message, string subject)
     {
-        using (var client = new SmtpClient(ConfigurationManager.AppSettings["SMTP"].ToString(), Convert.ToInt32(ConfigurationManager.AppSettings["SMTPPort"]))
+        using (SmtpClient smtpClient = new SmtpClient(ConfigurationManager.AppSettings["SMTP"].ToString(), Convert.ToInt32(ConfigurationManager.AppSettings["SMTPPort"]))
         {
             Credentials = new NetworkCredential(ConfigurationManager.AppSettings["AdminEmailId"].ToString(), ConfigurationManager.AppSettings["AdminEmailPassword"].ToString()),
             EnableSsl = false
         })
         {
-            MailMessage msg = new MailMessage(ConfigurationManager.AppSettings["AdminEmailId"].ToString(), toEmail,subject, message);
-            msg.IsBodyHtml=true;
-            
+            MailMessage mailMessage = new MailMessage(ConfigurationManager.AppSettings["AdminEmailId"].ToString(), toEmail, subject, message);
+            mailMessage.IsBodyHtml = true;
             try
             {
-                client.Send(msg);
-                //client.SendAsync(msg, null);
+                smtpClient.Send(mailMessage);
             }
-            catch (Exception) { }
+            catch (Exception)
+            {
+            }
             finally
             {
-                msg.Dispose();            
+                mailMessage.Dispose();
             }
         }
     }

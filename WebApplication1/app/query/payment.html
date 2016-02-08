@@ -10,7 +10,7 @@
                         <div class="w100p fl frmbx minhgt0">
                             <div class="frmbg">
                                 <div class="frmheader ff_myriad bold">Payment Details</div>
-                                <form class="frmcontent " ng-submit="SubmitPayment()">
+                                <form class="frmcontent " >
 
                                     <div class="mrgbtm2 row">
                                         <div class="col-lg-12">
@@ -50,7 +50,11 @@
 
                                     <div class=" row">
                                         <div class="col-lg-12">
-                                            <button type="submit" class="btn btn-primary pull-right" ng-hide="expertSubmitted">Pay Now</button>
+                                            <button class="btn btn-block btn-primary"
+                                                    ng-click="checkout()"                                                    >
+                                                <i class="icon-ok icon-white" /> check out using PayPal
+                                            </button>
+                                            <!--<button type="submit" class="btn btn-primary pull-right" ng-hide="expertSubmitted">Pay Now</button>-->
                                         </div>
                                     </div>
                                     <div class=" mrgtop2 row" ng-show="expertSubmitted">
