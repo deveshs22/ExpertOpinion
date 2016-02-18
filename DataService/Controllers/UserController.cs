@@ -113,6 +113,34 @@ namespace DataService.Controllers
         }
 
 
+        [HttpGet]
+        [Route("login/fpwd/{id}")]
+        public User ChangePWD(string id)
+        {
+            User user = UserRepository.Get(t => t.Email == id);
+            if (user != null)
+            {
+                string pwd = "temp" + id.Substring(0, 4);
+
+                user.Pwd = pwd;
+                if (ModelState.IsValid)
+                {
+                    StringBuilder sb = new StringBuilder();
+                    sb.Append("<html><body>");
+                    sb.Append("<div><center><b>New Password</b></center></div><br />");
+                    sb.Append("<p>Please find below your new password. Please login with this password and update the password after login. </p>");
+                    sb.Append("<br/><p>New Password :" + pwd + "</p></p></div>");
+                    sb.Append("</body></html>");
+                    Common.SendMail(ConfigurationManager.AppSettings["AdminEmailId"].ToString(), sb.ToString(), "Password - Expert Opinion");
+
+                    UserRepository.Attach(user);
+                    unitOfWork.SaveChanges();
+                }
+            }
+            return user;
+        }
+
+
 
         [HttpGet]
         [Route("login/uid/{id}")]
@@ -205,7 +233,7 @@ namespace DataService.Controllers
             }
         }
  
-        // PUT api/<controller>
+        // PUT api/<controller> 
         [HttpPut()]
         [Route("{id:int}")]
         public HttpResponseMessage PutUser(int id, User user)

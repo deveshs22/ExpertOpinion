@@ -10,5 +10,7 @@ namespace Data.Models
         public Nullable<System.DateTime> PmtDate { get; set; }
         public Nullable<int> UserId { get; set; }
         public string TransactionId { get; set; }
+        public string Invoice { get; set; }
+        public Nullable<int> QuestionId { get; set; }
     }
 }

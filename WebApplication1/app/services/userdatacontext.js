@@ -18,7 +18,8 @@
             GetUserNamebyID:GetUserNamebyID,
             CreateExpertProfile: CreateExpertProfile,
             SendContactMessage: SendContactMessage,
-            UpdateMailPWD: UpdateMailPWD
+            UpdateMailPWD: UpdateMailPWD,
+            ChangePWD: ChangePWD
         };
 
         var usersApi = common.serviceBaseURL + 'users/';
@@ -65,6 +66,11 @@
         function UpdateMailPWD(email)
         {
             return common.$http.get(usersApi + 'login/fpwd/' + email + '/');
+        }
+
+        function ChangePWD(id, user)
+        {
+            return common.$http.put(usersApi + id, user);
         }
     }
 })();

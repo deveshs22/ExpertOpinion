@@ -60,6 +60,7 @@ namespace DataService.Controllers
             var json = Paymentobj;
             Payment Payment = js.Deserialize<Payment>(json.ToString());
             Payment.PmtDate = DateTime.Now;
+
             if (ModelState.IsValid)
             {
                 PaymentRepository.Add(Payment);
@@ -78,18 +79,26 @@ namespace DataService.Controllers
          //PUT api/<controller>
         [HttpPut()]
         [Route("{id:int}")]
-        public HttpResponseMessage UpdatePayment(int id, Payment Payment)
+        public HttpResponseMessage UpdatePayment(int id, object Paymentobj)
         {
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            var json = Paymentobj;
+            Payment PaymentUpdate = js.Deserialize<Payment>(json.ToString());
+
             if (!ModelState.IsValid)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
             }
 
-            if (id != Payment.PaymentId)
-            {
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
-            }
+            //if (id != Payment.PaymentId)
+            //{
+            //    return Request.CreateResponse(HttpStatusCode.BadRequest);
+            //}
 
+            Payment Payment = Get(id);
+
+            Payment.TransactionId = PaymentUpdate.TransactionId;
+            Payment.Invoice = PaymentUpdate.Invoice;
             PaymentRepository.Attach(Payment);
 
             try

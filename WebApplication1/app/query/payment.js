@@ -25,6 +25,7 @@
         $scope.PromoCodeMsg='';
         $scope.SubmitPayment = function()
         {
+            
             $scope.Question.ExpertId = $scope.selectedExpert.UserId;
             querydatacontext.UpdateQuestion(qid, $scope.Question).success(function (result) {
                 $scope.expertSubmitted = true;
@@ -33,8 +34,12 @@
             var paymentobj = {};
             paymentobj.Amount = $scope.AmountPayable;
             paymentobj.UserId = localStorage.getItem("id");
-            paymentobj.TransactionId = localStorage.getItem("id") + '-' + qid + '-' + common.getGUID().substring(0,8);
-            querydatacontext.SubmitPayment(paymentobj);
+            paymentobj.QuestionId = qid;
+            paymentobj.Invoice = localStorage.getItem("id") + '-' + qid + '-' + common.getGUID().substring(0,3);
+            querydatacontext.SubmitPayment(paymentobj).success(function (result) {
+                debugger;
+                $scope.checkout(paymentobj.Invoice, result, $scope.AmountPayable);
+            });
         }
 
 
@@ -50,24 +55,23 @@
         };
 
 
-        $scope.checkout = function()
+        $scope.checkout = function(invoice, tId, amt)
         {
             var data = {
-                cmd: "_cart",
+                cmd: "_xclick",
                 business: 'info-facilitator@expertopinion.us',
                 upload: "1",
                 rm: "2",
-                charset: "utf-8"
+                charset: "utf-8",
+                item_name:"Charges for Query",
+                amount: amt,
+                currency_code: "USD",
+                return: "http://localhost:49729/PaymentSuccess.aspx",
+                invoice: invoice+'-'+tId,
+                lc: "US",
+                bn: "PP-BuyNowBF"
             };
 
-            // item data
-            for (var i = 0; i < 1; i++) {
-                data["item_number_1"] = 'Charges for query';
-                data["item_name_1"] = 'query';
-                data["quantity_1"] = 1;
-                data["amount_1" ] = 5;
-                data["notify_url"] = "http://www.expertopinion.us/#/payment?success=true"
-            }
 
             // build form
             var form = $('<form/></form>');

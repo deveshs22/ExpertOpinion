@@ -208,6 +208,42 @@ var ResetPasswordModalInstanceCtrl = function ($scope, $modalInstance, userdatac
     };
 };
 
+var ChangePasswordModalInstanceCtrl = function ($scope, $modalInstance, userdatacontext) {
+    $scope.emailMessage = "";
+    $scope.cancel = function () {
+        $modalInstance.dismiss('cancel');
+    };
+    $scope.IsLoading = false;
+    $scope.pwd='';
+    $scope.npwd='';
+    $scope.SendResetMail = function () {
+        $scope.IsLoading = true;
+        debugger;
+        userdatacontext.GetUserLoginbyUID(localStorage.getItem("uid")).success(function (result) {
+            if (result != "" && result != "null" && result != null && result != undefined) {
+                if (result.Pwd != $scope.pwd)
+                {
+                    $scope.emailMessage = 'Your current password is not matching.'
+                    $scope.IsLoading = false;
+                }
+                else
+                {
+                    result.Pwd = $scope.npwd;
+                    userdatacontext.ChangePWD(result.UserId, result).success(function (res) {
+                        $scope.emailMessage = 'Your password has been changed.'
+                        $scope.pwd = '';
+                        $scope.npwd = '';
+                        $scope.IsLoading = false;
+                    }
+                    );
+                }
+            }
+        }
+                );
+
+    };
+};
+
 
 var SignInModalInstanceCtrl = function ($scope, $modal, $modalInstance, userdatacontext, logintype) {
     $scope.email = "";
@@ -251,6 +287,7 @@ var SignInModalInstanceCtrl = function ($scope, $modal, $modalInstance, userdata
         });
     };
 
+    
     $scope.openSignup = function () {
         $modalInstance.dismiss(false);
 

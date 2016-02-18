@@ -21,6 +21,8 @@ namespace Data.Models.Mapping
             this.Property(t => t.PmtDate).HasColumnName("PmtDate");
             this.Property(t => t.UserId).HasColumnName("UserId");
             this.Property(t => t.TransactionId).HasColumnName("TransactionId");
+            this.Property(t => t.Invoice).HasColumnName("Invoice");
+            this.Property(t => t.QuestionId).HasColumnName("QuestionId");
         }
     }
 }

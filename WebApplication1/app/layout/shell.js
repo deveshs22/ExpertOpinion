@@ -59,6 +59,15 @@
             $location.url('/#');
         }
 
+        $scope.openChangePwd = function () {
+            debugger;
+            ///$modalInstance.dismiss(false);
+            var modalInstance = $modal.open({
+                templateUrl: 'app/dialogs/ChangePasswordModal.html',
+                controller: ChangePasswordModalInstanceCtrl
+            });
+        };
+
         $scope.openSignIn = function (logintype) {
             var modalInstance = $modal.open({
                 templateUrl: 'app/dialogs/SignInModal.html',
