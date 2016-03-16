@@ -29,9 +29,17 @@ namespace DataService.Controllers
         // GET api/<controller>
         [HttpGet]
         [Route("")]
-        public IEnumerable<Payment> GetPayments()
+        public IEnumerable<object> GetPayments()
         {
-            return PaymentRepository.GetAll();
+            return PaymentRepository.GetAllWithInclude(null, i => i.User).Select(f => new
+            {
+                UserName = f.User.Name,
+                PmtDate = f.PmtDate,
+                QuestionId = f.QuestionId,
+                Invoice = f.Invoice,
+                Amount = f.Amount,
+                Currency = f.Currency,
+            }); 
         }
  
         // GET api/<controller>/5
@@ -50,6 +58,7 @@ namespace DataService.Controllers
         {
             return PaymentRepository.GetAll(t => t.UserId == id);
         }
+
         
         // POST api/<controller>
         [HttpPost]
@@ -64,6 +73,33 @@ namespace DataService.Controllers
             if (ModelState.IsValid)
             {
                 PaymentRepository.Add(Payment);
+                unitOfWork.SaveChanges();
+                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, Payment);
+                response.Content = new StringContent(Payment.PaymentId.ToString());
+                return response;
+            }
+            else
+            {
+                var errors = ModelState.Values.SelectMany(v => v.Errors);
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+            }
+        }
+
+        // POST api/<controller>
+        [HttpPost]
+        [Route("updatePayment")]
+        public HttpResponseMessage UpatePaymentStatus(object Paymentobj1)
+        {
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            var json = Paymentobj1;
+            Payment Payment = js.Deserialize<Payment>(json.ToString());
+            Payment paymentobj = PaymentRepository.GetAll(t => t.Invoice == Payment.Invoice).FirstOrDefault();
+            paymentobj.TransactionId = Payment.TransactionId;
+            paymentobj.Status = Payment.Status;
+            paymentobj.Response = Payment.Response;
+            if (ModelState.IsValid)
+            {
+                PaymentRepository.Attach(Payment);
                 unitOfWork.SaveChanges();
                 HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, Payment);
                 response.Content = new StringContent(Payment.PaymentId.ToString());

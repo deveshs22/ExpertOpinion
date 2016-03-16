@@ -49,7 +49,8 @@
             //serverURL: 'http://66.219.98.58/', //'http://localhost:1179/'
             serviceBaseURL: 'http://localhost:1179/api/',
             serverURL: 'http://localhost:1179/',
-            queryData: queryData
+            queryData: queryData,
+            dateCheck: dateCheck
         };
 
         return service;
@@ -164,6 +165,19 @@
             var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
                 results = regex.exec(window.location);
             return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+
+        function dateCheck(from, to, check) {
+
+            var fDate, lDate, cDate;
+            fDate = Date.parse(from);
+            lDate = Date.parse(to);
+            cDate = Date.parse(check);
+
+            if ((cDate <= lDate && cDate >= fDate)) {
+                return true;
+            }
+            return false;
         }
 
 

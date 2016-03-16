@@ -19,7 +19,8 @@
             CreateExpertProfile: CreateExpertProfile,
             SendContactMessage: SendContactMessage,
             UpdateMailPWD: UpdateMailPWD,
-            ChangePWD: ChangePWD
+            ChangePWD: ChangePWD,
+            GetPaymentTransactions: GetPaymentTransactions
         };
 
         var usersApi = common.serviceBaseURL + 'users/';
@@ -71,6 +72,14 @@
         function ChangePWD(id, user)
         {
             return common.$http.put(usersApi + id, user);
+        }
+
+        function GetPaymentTransactions(isAdmin, userid)
+        {
+            if (isAdmin)
+                return common.$http.get(common.serviceBaseURL + 'payment/');
+            else
+                return common.$http.get(common.serviceBaseURL + 'payment/byuser/'+userid);
         }
     }
 })();

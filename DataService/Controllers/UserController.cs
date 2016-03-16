@@ -131,7 +131,7 @@ namespace DataService.Controllers
                     sb.Append("<p>Please find below your new password. Please login with this password and update the password after login. </p>");
                     sb.Append("<br/><p>New Password :" + pwd + "</p></p></div>");
                     sb.Append("</body></html>");
-                    Common.SendMail(ConfigurationManager.AppSettings["AdminEmailId"].ToString(), sb.ToString(), "Password - Expert Opinion");
+                    Common.SendMail(user.Email , sb.ToString(), "Password - Expert Opinion");
 
                     UserRepository.Attach(user);
                     unitOfWork.SaveChanges();

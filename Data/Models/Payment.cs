@@ -11,6 +11,10 @@ namespace Data.Models
         public Nullable<int> UserId { get; set; }
         public string TransactionId { get; set; }
         public string Invoice { get; set; }
+        public string Currency { get; set; }
+        public string Status { get; set; }
+        public string Response { get; set; }
         public Nullable<int> QuestionId { get; set; }
+       public User User { get; set; }
     }
 }

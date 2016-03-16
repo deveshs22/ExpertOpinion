@@ -1,6 +1,6 @@
 ﻿(function () {
     'use strict';
-    var controllerId = 'questions';
+    var controllerId = 'userquestions';
     angular.module('app').controller(controllerId, ['common', '$scope', '$modal', '$location', 'querydatacontext', 'userdatacontext', questions]);
 
     function questions(common, $scope, $modal, $location, querydatacontext, userdatacontext) {

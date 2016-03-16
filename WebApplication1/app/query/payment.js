@@ -25,15 +25,16 @@
         $scope.PromoCodeMsg='';
         $scope.SubmitPayment = function()
         {
-            
-            $scope.Question.ExpertId = $scope.selectedExpert.UserId;
-            querydatacontext.UpdateQuestion(qid, $scope.Question).success(function (result) {
-                $scope.expertSubmitted = true;
-            });
+            //$scope.Question.ExpertId = $scope.selectedExpert.UserId;
+            //querydatacontext.UpdateQuestion(qid, $scope.Question).success(function (result) {
+                //$scope.expertSubmitted = true;
+            //});
 
             var paymentobj = {};
             paymentobj.Amount = $scope.AmountPayable;
+            paymentobj.Currency = 'USD'
             paymentobj.UserId = localStorage.getItem("id");
+            paymentobj.Status = 'P';
             paymentobj.QuestionId = qid;
             paymentobj.Invoice = localStorage.getItem("id") + '-' + qid + '-' + common.getGUID().substring(0,3);
             querydatacontext.SubmitPayment(paymentobj).success(function (result) {
@@ -63,7 +64,7 @@
                 upload: "1",
                 rm: "2",
                 charset: "utf-8",
-                item_name:"Charges for Query",
+                item_name: 'Charges for Query from Expert-'+$scope.selectedExpert.UserId,
                 amount: amt,
                 currency_code: "USD",
                 return: "http://localhost:49729/PaymentSuccess.aspx",
@@ -127,7 +128,7 @@
                     $scope.PromoCodeMsg = 'This Promo code is not working.';
                     return;
                 }
-                else if (!dateCheck(vfrom, vto, todaydate))
+                else if (!common.dateCheck(vfrom, vto, todaydate))
                 {
                     $scope.PromoCodeMsg = 'This Promo Code has expired.';
                     return;
@@ -173,17 +174,6 @@
             });
         }
 
-        function dateCheck(from, to, check) {
-
-            var fDate, lDate, cDate;
-            fDate = Date.parse(from);
-            lDate = Date.parse(to);
-            cDate = Date.parse(check);
-
-            if ((cDate <= lDate && cDate >= fDate)) {
-                return true;
-            }
-            return false;
-        }
+        
     }
 })();

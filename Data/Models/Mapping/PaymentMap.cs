@@ -22,7 +22,14 @@ namespace Data.Models.Mapping
             this.Property(t => t.UserId).HasColumnName("UserId");
             this.Property(t => t.TransactionId).HasColumnName("TransactionId");
             this.Property(t => t.Invoice).HasColumnName("Invoice");
+            this.Property(t => t.Currency).HasColumnName("Currency");
+            this.Property(t => t.Status).HasColumnName("Status");
+            this.Property(t => t.Response).HasColumnName("Response");
             this.Property(t => t.QuestionId).HasColumnName("QuestionId");
+
+            this.HasOptional(t => t.User)
+                .WithMany(t => t.Payments)
+                .HasForeignKey(d => d.UserId);
         }
     }
 }

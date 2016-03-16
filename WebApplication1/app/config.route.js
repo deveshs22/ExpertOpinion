@@ -169,7 +169,31 @@
                                 }
                             }
                         }
-                                              ,
+                        ,
+                        {
+                            url: '/userpaymentreport',
+                            config: {
+                                templateUrl: 'app/dashboard/userpaymentreport.html',
+                                title: 'UserHistory',
+                                settings: {
+                                    nav: 1,
+                                    content: '<i class="fa fa-dashboard"></i> User Payment Report'
+                                }
+                            }
+                        }
+                        ,
+                        {
+                            url: '/adminpaymentreport',
+                            config: {
+                                templateUrl: 'app/dashboard/adminpaymentreport.html',
+                                title: 'UserHistory',
+                                settings: {
+                                    nav: 1,
+                                    content: '<i class="fa fa-dashboard"></i> Admin Payment Report'
+                                }
+                            }
+                        }
+                        ,
                         {
                             url: '/answer',
                             config: {
