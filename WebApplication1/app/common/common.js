@@ -268,7 +268,7 @@ var SignInModalInstanceCtrl = function ($scope, $modal, $modalInstance, userdata
     $scope.login = function () {
         $scope.IsLoading = true;
         userdatacontext.GetUserLogin($scope.email, $scope.password).success(function (result) {
-            if (result == null) {
+           if (result == "null") {
                 $scope.pwdInvalid = true;
                 return;
             }
@@ -363,6 +363,18 @@ var SignUpModalInstanceCtrl = function ($scope, $modal, $modalInstance, userdata
                 }
                 $scope.userCreated = true;
             });
+        }
+    };
+
+    $scope.switchshowpwd = function () {
+        debugger;
+        if (document.getElementById('txtpwd').style.display != 'none') {
+            $('#txtpwd').hide();
+            $('#txttextpwd').show();
+        }
+        else {
+            $('#txtpwd').show();
+            $('#txttextpwd').hide();
         }
     };
 };

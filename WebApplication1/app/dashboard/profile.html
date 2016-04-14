@@ -80,7 +80,7 @@
                                                 </div>
                                                 <div class="col-md-3">
                                                     <select class="form-control" data-ng-model="selectedCountry" ng-change="CountryChanged()"
-                                                            data-ng-options="s.CountryName for s in CountryList"
+                                                            data-ng-options="s.CountryName for s in CountryList | orderBy:'s.CountryName'"
                                                             data-ng-values="s.CountryId for s in CountryList"></select>
                                                 </div>
                                             </div>
@@ -91,7 +91,7 @@
                                                 </div>
                                                 <div class="col-md-3">
                                                     <select class="form-control" data-ng-model="selectedState" ng-change="StateChanged()"
-                                                            data-ng-options="s.StateName for s in StateList"
+                                                            data-ng-options="s.StateName for s in StateList | orderBy:'s.StateName'"
                                                             data-ng-values="s.StateId for s in StateList"></select>
                                                 </div>
                                             </div>
@@ -102,7 +102,7 @@
                                                 </div>
                                                 <div class="col-md-3">
                                                     <select class="form-control" data-ng-model="selectedCity"
-                                                            data-ng-options="s.CityName for s in CityList"
+                                                            data-ng-options="s.CityName for s in CityList | orderBy:'s.CityName'"
                                                             data-ng-values="s.CityId for s in CityList"></select>
                                                 </div>
                                             </div>

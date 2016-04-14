@@ -39,7 +39,7 @@ namespace DataService.Controllers
         [Route("{id:int}")]
         public ExpertDetail Get(int id)
         {
-            return ExpertDetailRepository.Get(t => t.ExpertDetailId == id);
+            return ExpertDetailRepository.Get(t => t.UserId == id);
         }
     
         // POST api/<controller>

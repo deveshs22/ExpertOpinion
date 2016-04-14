@@ -22,7 +22,12 @@
 
             <div class="form-group">
                 <label for="password" class="w100p">Password </label>
-                <input class="form-control" type="password" placeholder="Password" required ng-model="$parent.password">
+                <input class="form-control" id="txtpwd" type="password" placeholder="Password" required ng-model="$parent.password">
+                <input class="form-control" id="txttextpwd" type="text" style="display:none;" ng-model="$parent.password">
+            </div>
+
+            <div class="form-group">
+                <input type="checkbox" ng-click="switchshowpwd()"> Show Password
             </div>
 
             <button ng-disabled="IsLoading" type="submit" class="btn btn-default">Submit</button> <img ng-show="IsLoading" src="content/images/loading.gif" />

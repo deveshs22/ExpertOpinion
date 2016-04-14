@@ -21,6 +21,12 @@
         $scope.showaddanother = false;
         $scope.Specialities = [];
 
+        activate();
+
+        if (common.getParameterByName("edit") != undefined && common.getParameterByName("edit") != "") {
+            $scope.IsEditMode = true;
+        }
+
         masterdatacontext.GetSpecialities().success(function (result) {
             debugger;
             $scope.Specialities = result;
@@ -37,11 +43,56 @@
         }
 
         if (localStorage.getItem("uid") != undefined) {
+            var uid = 0;
             userdatacontext.GetUserNamebyUID(localStorage.getItem("uid")).success(function (result) {
-                if (result != "" && result != "null" && result != null && result != undefined)
+                if (result != "" && result != "null" && result != null && result != undefined) 
                     $scope.UserName = result.replace('"', '').replace('"', '');
             });
+
+
+            if (common.getParameterByName("edit") != undefined && common.getParameterByName("edit") != "") {
+                $scope.IsEditMode = true;
+                loadExpertDetails(localStorage.getItem("id"));
+            }
         }
+
+        function loadExpertDetails(uid) {
+            userdatacontext.GetExpertProfile(uid).success(function (result) {
+                debugger;
+                $scope.dob = new Date();
+                $scope.gender = result.Gender;
+                $scope.phone = result.Phone;
+                $scope.mobile = result.Mobile;
+                $scope.address = result.Address;
+                $scope.selectedCountry.CountryId = $scope.CountryList.filter(function (r) {
+                    return r.CountryId == result.CountryId;
+                })[0]; 
+                $scope.selectedState.StateId = $scope.StateList.filter(function (r) {
+                    return r.StateId == result.StateId;
+                })[0]; 
+                $scope.selectedCity.CityId = $scope.CityList.filter(function (r) {
+                    return r.CityId == result.CityId;
+                })[0]; 
+                $scope.selectedSpeciality.SpecialityId = result.SpecialityId;
+                $scope.licenceno = result.LicenceNo;
+                $scope.issuerName = result.Issuer;
+                $scope.selectedIssuerCountry = $scope.CountryList.filter(function (r) {
+                    return r.CountryId == result.IssuerCountryId;
+                })[0]; 
+                $scope.selectedIssuerState.StateId = $scope.StateList.filter(function (r) {
+                    return r.StateId == result.IssuerStateId;
+                })[0]; 
+                $scope.issuerContactNo = result.IssuerContact;
+                $scope.photoname = result.Photo;
+                $scope.resumename = result.Resume;
+                $scope.certificate1name = result.Certificate1;
+                $scope.certificate2name = result.Certificate2;
+                $scope.certificate3name = result.Certificate3;
+                $scope.qualification = result.Qualification;
+                $scope.description = result.Description;
+            });
+        }
+    
 
         $scope.fileadded = function (fileid, ctrl) {
             debugger;
@@ -140,9 +191,7 @@
             
         }
 
-        activate();
-
-        function getCountryList()
+       function getCountryList()
         {
             masterdatacontext.GetCountryList().success(function (result) {
                 $scope.CountryList = result;

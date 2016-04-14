@@ -20,7 +20,8 @@
             SendContactMessage: SendContactMessage,
             UpdateMailPWD: UpdateMailPWD,
             ChangePWD: ChangePWD,
-            GetPaymentTransactions: GetPaymentTransactions
+            GetPaymentTransactions: GetPaymentTransactions,
+            GetExpertProfile: GetExpertProfile
         };
 
         var usersApi = common.serviceBaseURL + 'users/';
@@ -61,7 +62,11 @@
 
         function CreateExpertProfile(profileData)
         {
-            return common.$http.post(common.serviceBaseURL + 'ExpertDetail/PostExpertDetail', profileData);
+            return common.$http.post(common.serviceBaseURL + 'expertdetails/PostExpertDetail', profileData);
+        }
+
+        function GetExpertProfile(uid) {
+            return common.$http.get(common.serviceBaseURL + 'expertdetails/'+uid);
         }
 
         function UpdateMailPWD(email)
